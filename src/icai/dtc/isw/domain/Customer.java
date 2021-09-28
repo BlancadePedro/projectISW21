@@ -2,39 +2,112 @@ package icai.dtc.isw.domain;
 
 import java.io.Serializable;
 
-public class Customer implements Serializable{
+public class Customer implements Serializable {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
-	private String id;
-	private String name;
-	
-	public Customer() {
-		this.setId(new String());
-		this.setName(new String());
-	}
-	
-	public Customer(String id, String name) {
-		this.setName(name);
-		this.setId(id);
+	//Inicio de sesión
+	private String clave = null;
+	private String usuario = null;
+	//Caracteristicas usuario
+	private String nombreCompleto;
+	private int edad;
+	private String nacionlidad;
+	private String descripcion;
+	//Opcional
+	private int telefono = 0;
+	private String correo = null;
+
+	public Customer(String correo, String descripcion, int edad, String nacionlidad, String nombreCompleto, int telefono, String usuario, String clave) {
+		this.nombreCompleto = nombreCompleto;
+		this.edad = edad;
+		this.nacionlidad = nacionlidad;
+		this.descripcion = descripcion;
+		this.telefono = telefono;
+		this.correo = correo;
+		this.usuario = usuario;
+		this.clave = clave;
 	}
 
-	public String getId() {
-		return id;
+
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public String getClave() {
+		return clave;
 	}
 
-	public String getName() {
-		return name;
+	public String getNombreCompleto() {
+		return nombreCompleto;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public int getEdad() {
+		return edad;
 	}
-	
-	
+
+	public String getNacionalidad() {
+		return nacionlidad;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public int getTelefono() {
+		return telefono;
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public void setClave(String clave) {
+		this.clave = clave;
+	}
+
+	public void setNombreCompleto(String nombreCompleto) {
+		this.nombreCompleto = nombreCompleto;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	public void setNacionalidad(String nacionalidad) {
+		this.nacionlidad = nacionalidad;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public void setTelefono(int telefono) {
+		this.telefono = telefono;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	@Override
+	public String toString() {
+		return nombreCompleto + edad + nacionlidad;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
