@@ -18,7 +18,8 @@ public class CustomerDAO {
                 ResultSet rs = pst.executeQuery()) {
 
             while (rs.next()) {
-            	lista.add(new Customer(rs.getString(1),rs.getString(2),rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), rs.getString(8)));
+            	lista.add(new Customer(rs.getString(1),rs.getString(2),rs.getInt(3), rs.getString(4),
+									   rs.getString(5), rs.getInt(6), rs.getString(7), rs.getString(8)));
             }
 
         } catch (SQLException ex) {
@@ -26,18 +27,26 @@ public class CustomerDAO {
             System.out.println(ex.getMessage());
         }
 	}
+
+	public static void addCliente(Customer perfil) {
+		Connection con=ConnectionDAO.getInstance().getConnection();
+		try (PreparedStatement pst = con.prepareStatement("INSERT INTO usuarios(correo,descripcion,edad,nacionalidad,nombrecompleto,telefono,usuario,clave) VALUES ('"+perfil.getCorreo()+"','"+perfil.getDescripcion()+"',"+perfil.getEdad()+",'"+perfil.getNacionalidad()+"','"+perfil.getNombreCompleto()+"',"+perfil.getTelefono()+",'"+perfil.getUsuario()+"','"+perfil.getClave()+"')");
+			 ResultSet rs = pst.executeQuery()){
+
+		} catch (SQLException ex) {
+
+			System.out.println(ex.getMessage());
+		}
+	}
 	
 	public static void main(String[] args) {
-		
-		
+
 		ArrayList<Customer> lista=new ArrayList<Customer>();
 		CustomerDAO.getClientes(lista);
-		
 		
 		 for (Customer customer : lista) {			
 			System.out.println("Nombre: "+customer.getNombreCompleto()+"; Edad: "+customer.getEdad()+ "; Nacionalidad: "+customer.getNacionalidad());
 		}
-		
 	
 	}
 

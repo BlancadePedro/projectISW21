@@ -1,4 +1,5 @@
 package icai.dtc.isw.domain;
+import icai.dtc.isw.dao.CustomerDAO;
 import icai.dtc.isw.domain.Customer;
 
 import java.awt.BorderLayout;
@@ -31,7 +32,7 @@ public class Registro extends JFrame{
     private JLabel lblNacionalidad = new JLabel("Nacionalidad: ");
     private JLabel lblDescripcion = new JLabel("Pequeña descripción: ");
     private JLabel lblCorreo = new JLabel("Correo: ");
-    private JLabel lblTelefono = new JLabel("Nº teléfono: ");
+    private JLabel lblTelefono = new JLabel("Teléfono: ");
     
     private JTextField txtNombre = new JTextField();
     private JTextField txtEdad = new JTextField();
@@ -79,7 +80,7 @@ public class Registro extends JFrame{
                 dispose();
                 Customer perfil = new Customer(correo,descripcion,Integer.parseInt(edad),nacionalidad,nombreCompleto,Integer.parseInt(telefono),usuarioPerfil,contraseñaPerfil);
                 new InfoUsuario(perfil);
-
+                CustomerDAO.addCliente(perfil);
             }
 
         });

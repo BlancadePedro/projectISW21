@@ -3,26 +3,24 @@ package icai.dtc.isw.domain;
 import java.io.Serializable;
 
 public class Customer implements Serializable {
-	/**
-	 *
-	 */
+
 	private static final long serialVersionUID = 1L;
 	//Inicio de sesión
-	private String clave = null;
-	private String usuario = null;
+	private String clave;
+	private String usuario;
 	//Caracteristicas usuario
 	private String nombreCompleto;
 	private int edad;
-	private String nacionlidad;
+	private String nacionalidad;
 	private String descripcion;
 	//Opcional
-	private int telefono = 0;
-	private String correo = null;
+	private int telefono;
+	private String correo;
 
-	public Customer(String correo, String descripcion, int edad, String nacionlidad, String nombreCompleto, int telefono, String usuario, String clave) {
+	public Customer(String correo, String descripcion, int edad, String nacionalidad, String nombreCompleto, int telefono, String usuario, String clave) {
 		this.nombreCompleto = nombreCompleto;
 		this.edad = edad;
-		this.nacionlidad = nacionlidad;
+		this.nacionalidad = nacionalidad;
 		this.descripcion = descripcion;
 		this.telefono = telefono;
 		this.correo = correo;
@@ -47,9 +45,7 @@ public class Customer implements Serializable {
 		return edad;
 	}
 
-	public String getNacionalidad() {
-		return nacionlidad;
-	}
+	public String getNacionalidad() { return nacionalidad; }
 
 	public String getDescripcion() {
 		return descripcion;
@@ -80,7 +76,7 @@ public class Customer implements Serializable {
 	}
 
 	public void setNacionalidad(String nacionalidad) {
-		this.nacionlidad = nacionalidad;
+		this.nacionalidad = nacionalidad;
 	}
 
 	public void setDescripcion(String descripcion) {
@@ -97,7 +93,7 @@ public class Customer implements Serializable {
 
 	@Override
 	public String toString() {
-		return nombreCompleto + edad + nacionlidad;
+		return nombreCompleto + edad + nacionalidad;
 	}
 }
 
