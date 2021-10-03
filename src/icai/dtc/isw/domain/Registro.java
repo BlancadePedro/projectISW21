@@ -80,7 +80,7 @@ public class Registro extends JFrame{
                 dispose();
                 Customer perfil = new Customer(correo,descripcion,Integer.parseInt(edad),nacionalidad,nombreCompleto,Integer.parseInt(telefono),usuarioPerfil,contraseñaPerfil);
                 new InfoUsuario(perfil);
-                CustomerDAO.addCliente(perfil);
+                CustomerDAO.addCliente(perfil); //Guardamos datos en la base de datos
             }
 
         });

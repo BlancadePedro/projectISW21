@@ -34,7 +34,7 @@ public class CustomerDAO {
 			 ResultSet rs = pst.executeQuery()){
 
 		} catch (SQLException ex) {
-
+ 		//Esto se puede quitar?
 			System.out.println(ex.getMessage());
 		}
 	}
