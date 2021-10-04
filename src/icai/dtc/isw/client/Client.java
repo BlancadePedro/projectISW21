@@ -21,7 +21,7 @@ public class Client {
 	private int port;
 	final static Logger logger = Logger.getLogger(Client.class);
 
-	public static void main(String args[]) {
+	public void enviar(String contexto,HashMap<String,Object> session )
 		//Configure connections
 		String host = PropertiesISW.getInstance().getProperty("host");
 		int port = Integer.parseInt(PropertiesISW.getInstance().getProperty("port"));
@@ -29,19 +29,19 @@ public class Client {
 		//Create a cliente class
 		Client cliente=new Client(host, port);
 		
-		HashMap<String,Object> session=new HashMap<String, Object>();
+		//HashMap<String,Object> session=new HashMap<String, Object>();
 		//session.put("/getCustomer","");
 		
 		Message mensajeEnvio=new Message();
 		Message mensajeVuelta=new Message();
-		mensajeEnvio.setContext("/getCustomer");
+		mensajeEnvio.setContext(contexto);
 		mensajeEnvio.setSession(session);
 		cliente.sent(mensajeEnvio,mensajeVuelta);
 		
 		
 		switch (mensajeVuelta.getContext()) {
-			case "/getCustomerResponse":
-				ArrayList<Customer> customerList=(ArrayList<Customer>)(mensajeVuelta.getSession().get("Customer"));
+			case "/addClienteResponse":
+				ArrayList<Customer> customerList=(ArrayList<Customer>)(mensajeVuelta.getSession().get("RespuestaAlta"));
 				 for (Customer customer : customerList) {			
 						System.out.println("Nombre: "+customer.getNombreCompleto()+"; Edad: "+customer.getEdad()+ "; Nacionalidad: "+customer.getNacionalidad());
 					} 

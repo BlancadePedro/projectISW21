@@ -39,7 +39,7 @@ public class SocketServer extends Thread {
 		    ObjectOutputStream objectOutputStream = new ObjectOutputStream(out);
 		    Message mensajeOut=new Message();
 		    switch (mensajeIn.getContext()) {
-		    	case "/getCustomer":
+		    	case "/addCliente":
 		    		CustomerControler customerControler=new CustomerControler();
 		    		ArrayList<Customer> lista=new ArrayList<Customer>();
 		    		customerControler.getCustomer(lista);
