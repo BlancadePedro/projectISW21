@@ -1,14 +1,18 @@
 package icai.dtc.isw.domain;
 
-public class Evento extends Localidad{
-   
-    private String autor;
-    private String celebracion;//Concierto, lectur de libros, festival...
+public class Evento extends Ocio{
 
-    public Evento(String nombre, String direccion, String horario, String contacto, String precio, String autor, String celebracion) {
-        super(nombre, direccion, horario, contacto, precio);
+    private String precio;
+    private String autor;
+    private String celebracion;//Concierto, lectura de libros, festival...
+    private String fecha;
+
+    public Evento(String nombre, String direccion, String precio, String autor, String celebracion, String fecha) {
+        super(nombre, direccion);
+        this.precio = precio;
         this.autor = autor;
         this.celebracion = celebracion;
+        this.fecha = fecha;
     }
 
     public String getAutor() {

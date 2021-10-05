@@ -21,7 +21,7 @@ public class Client {
 	private int port;
 	final static Logger logger = Logger.getLogger(Client.class);
 
-	public void enviar(String contexto,HashMap<String,Object> session )
+	public void enviar(String contexto,HashMap<String,Object> session ){
 		//Configure connections
 		String host = PropertiesISW.getInstance().getProperty("host");
 		int port = Integer.parseInt(PropertiesISW.getInstance().getProperty("port"));
