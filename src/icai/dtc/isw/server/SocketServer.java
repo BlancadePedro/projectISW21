@@ -25,7 +25,7 @@ public class SocketServer extends Thread {
 		start();
 	}
 
-	public void run() {
+	public void run(){
 		InputStream in = null;
 		OutputStream out = null;
 		try {
@@ -39,7 +39,7 @@ public class SocketServer extends Thread {
 		    ObjectOutputStream objectOutputStream = new ObjectOutputStream(out);
 		    Message mensajeOut=new Message();
 		    switch (mensajeIn.getContext()) {
-		    	case "/getCustomer":
+		    	/*case "/getCustomer":
 		    		CustomerControler customerControler=new CustomerControler();
 		    		ArrayList<Customer> lista=new ArrayList<Customer>();
 		    		customerControler.getCustomer(lista);
@@ -48,10 +48,17 @@ public class SocketServer extends Thread {
 		    		session.put("Customer",lista);
 		    		mensajeOut.setSession(session);
 		    		objectOutputStream.writeObject(mensajeOut);		    		
-		    	break;
-		    	
-		    	
-		    	default:
+		    	break;*/
+				case "/altaUsuario":
+					CustomerControler customerControler=new CustomerControler();
+
+					customerControler.addCliente((Customer)mensajeIn.getSession().get("id"));
+					mensajeOut.setContext("/addClienteResponse");
+					objectOutputStream.writeObject(mensajeOut);
+				break;
+
+
+				default:
 		    		System.out.println("\nParámetro no encontrado");
 		    		break;
 		    }
@@ -74,7 +81,7 @@ public class SocketServer extends Thread {
 			// create an object output stream from the output stream so we can send an object through it
 			/*ObjectOutputStream objectOutputStream = new ObjectOutputStream(out);
 			
-			//Create the object to send
+			Create the object to send
 			String cadena=((String)mensaje.getSession().get("Nombre"));
 			cadena+=" añado información";
 			mensaje.getSession().put("Nombre", cadena);

@@ -27,7 +27,7 @@ public class CustomerDAO {
         }
 	}
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		
 		
 		ArrayList<Customer> lista=new ArrayList<Customer>();
@@ -39,6 +39,18 @@ public class CustomerDAO {
 		}
 		
 	
+	}*/
+
+	public static void addCliente(Customer perfil) {
+		Connection con=ConnectionDAO.getInstance().getConnection();
+		try (PreparedStatement pst = con.prepareStatement("INSERT INTO usuarios(correo,descripcion,edad,nacionalidad,nombrecompleto,telefono,usuario,clave) VALUES ('"+perfil.getCorreo()+"','"+perfil.getDescripcion()+"',"+perfil.getEdad()+",'"+perfil.getNacionalidad()+"','"+perfil.getNombreCompleto()+"',"+perfil.getTelefono()+",'"+perfil.getUsuario()+"','"+perfil.getClave()+"')");
+			 ResultSet rs = pst.executeQuery()){
+
+		} catch (SQLException ex) {
+			//Esto se puede quitar?
+			System.out.println(ex.getMessage());
+		}
 	}
+
 
 }

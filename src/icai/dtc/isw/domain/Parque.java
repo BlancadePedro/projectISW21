@@ -1,9 +1,12 @@
 package icai.dtc.isw.domain;
-public class Parque extends Localidad{
+public class Parque extends Ocio{
 
-    public Parque(String nombre, String direccion, String horario, String contacto, String precio) {
-        super(nombre, direccion, horario, contacto, precio);
-        
+    private String horario;
+
+    public Parque(String nombre, String direccion) {
+        super(nombre, direccion);
+        this.horario = horario;
+
     }
-    
+
 }

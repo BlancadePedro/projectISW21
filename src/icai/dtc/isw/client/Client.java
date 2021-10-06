@@ -21,7 +21,8 @@ public class Client {
 	private int port;
 	final static Logger logger = Logger.getLogger(Client.class);
 
-	public static void main(String args[]) {
+	public void enviar(String contexto, HashMap<String, Object> session)  //Deja ser main para ejecutarse reiteradamente
+		{
 		//Configure connections
 		String host = PropertiesISW.getInstance().getProperty("host");
 		int port = Integer.parseInt(PropertiesISW.getInstance().getProperty("port"));
@@ -29,24 +30,27 @@ public class Client {
 		//Create a cliente class
 		Client cliente=new Client(host, port);
 		
-		HashMap<String,Object> session=new HashMap<String, Object>();
+		//HashMap<String,Object> session=new HashMap<String, Object>();
 		//session.put("/getCustomer","");
 		
 		Message mensajeEnvio=new Message();
 		Message mensajeVuelta=new Message();
-		mensajeEnvio.setContext("/getCustomer");
+
 		mensajeEnvio.setSession(session);
+		mensajeEnvio.setContext(contexto);
 		cliente.sent(mensajeEnvio,mensajeVuelta);
 		
 		
 		switch (mensajeVuelta.getContext()) {
-			case "/getCustomerResponse":
+			/*case "/getCustomerResponse":
 				ArrayList<Customer> customerList=(ArrayList<Customer>)(mensajeVuelta.getSession().get("Customer"));
 				 for (Customer customer : customerList) {			
 						System.out.println("Nombre: "+customer.getNombreCompleto()+"; Edad: "+customer.getEdad()+ "; Nacionalidad: "+customer.getNacionalidad());
-					} 
+					}
+				break;*/
+			case "/addClienteResponse":
+				System.out.println("\nSe ha enviado");
 				break;
-				
 			default:
 				Logger.getRootLogger().info("Option not found");
 				System.out.println("\nError a la vuelta");
@@ -55,7 +59,9 @@ public class Client {
 		}
 		//System.out.println("3.- En Main.- El valor devuelto es: "+((String)mensajeVuelta.getSession().get("Nombre")));
 	}
-	
+	public Client(){
+	}
+
 	public Client(String host, int port) {
 		this.host=host;
 		this.port=port;

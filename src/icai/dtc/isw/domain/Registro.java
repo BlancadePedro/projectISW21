@@ -1,10 +1,13 @@
 package icai.dtc.isw.domain;
+import icai.dtc.isw.client.Client;
+import icai.dtc.isw.dao.CustomerDAO;
 import icai.dtc.isw.domain.Customer;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
 
 
 
@@ -79,6 +83,12 @@ public class Registro extends JFrame{
                 dispose();
                 Customer perfil = new Customer(correo,descripcion,Integer.parseInt(edad),nacionalidad,nombreCompleto,Integer.parseInt(telefono),usuarioPerfil,contraseñaPerfil);
                 new InfoUsuario(perfil);
+                //CustomerDAO.addCliente(perfil);//Cambiar
+                Client client = new Client();
+                HashMap<String, Object> session = new HashMap<>();
+                session.put("id",perfil);
+                client.enviar("/altaUsuario",session);
+
 
             }
 
@@ -88,7 +98,7 @@ public class Registro extends JFrame{
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
-        this.setResizable(true);//Para que no se pueda redimensionar
+        this.setResizable(false);//Para que no se pueda redimensionar
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         
