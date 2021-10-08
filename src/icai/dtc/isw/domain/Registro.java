@@ -81,14 +81,13 @@ public class Registro extends JFrame{
                 contraseñaPerfil = contraseña;
                 //Hay que cambiar el orden o aquí o en la base de datos
                 dispose();
-                Customer perfil = new Customer(correo,descripcion,Integer.parseInt(edad),nacionalidad,nombreCompleto,Integer.parseInt(telefono),usuarioPerfil,contraseñaPerfil);
+                Customer perfil = new Customer(correo,descripcion,Integer.parseInt(edad),nacionalidad,nombreCompleto,Integer.parseInt(telefono),usuarioPerfil,contraseñaPerfil,0);
                 new InfoUsuario(perfil);
-                //CustomerDAO.addCliente(perfil);//Cambiar
+
                 Client client = new Client();
                 HashMap<String, Object> session = new HashMap<>();
                 session.put("id",perfil);
                 client.enviar("/altaUsuario",session);
-
 
             }
 

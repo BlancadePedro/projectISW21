@@ -18,8 +18,8 @@ public class Customer implements Serializable {
 	//Opcional
 	private int telefono = 0;
 	private String correo = null;
-
-	public Customer(String correo, String descripcion, int edad, String nacionlidad, String nombreCompleto, int telefono, String usuario, String clave) {
+	private int foto = 0;
+	public Customer(String correo, String descripcion, int edad, String nacionlidad, String nombreCompleto, int telefono, String usuario, String clave, int foto) {
 		this.nombreCompleto = nombreCompleto;
 		this.edad = edad;
 		this.nacionlidad = nacionlidad;
@@ -28,6 +28,7 @@ public class Customer implements Serializable {
 		this.correo = correo;
 		this.usuario = usuario;
 		this.clave = clave;
+		this.foto = foto;
 	}
 
 
@@ -63,6 +64,10 @@ public class Customer implements Serializable {
 		return correo;
 	}
 
+	public int getFoto() {
+		return foto;
+	}
+
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
@@ -89,6 +94,10 @@ public class Customer implements Serializable {
 
 	public void setTelefono(int telefono) {
 		this.telefono = telefono;
+	}
+
+	public void setFoto(int foto) {
+		this.foto = foto;
 	}
 
 	public void setCorreo(String correo) {

@@ -14,5 +14,8 @@ public class CustomerControler {
 	public void addCliente(Customer perfil){
 		CustomerDAO.addCliente(perfil);
 	}
+	public void checkCliente(String usuario){CustomerDAO.checkCliente(usuario);}
+	public void dropCliente(String usuario){CustomerDAO.dropCliente(usuario);}
+
 
 }

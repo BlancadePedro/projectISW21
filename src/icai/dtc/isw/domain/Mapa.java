@@ -33,7 +33,7 @@ public class Mapa extends JFrame {
         Monumento monumento = new Monumento("nombre", "direccion");
         Parque parque = new Parque("nombre", "direccion");
 
-        botonesMapa(museo, pnlMapa,100,100);
+        botonesMapa(museo, pnlMapa,250,100);
         this.add(pnlMapa);
 
 
@@ -48,33 +48,36 @@ public class Mapa extends JFrame {
     public static void botonesMapa(Object objects, JPanel panel, int x, int y){
 
         JButton btn = new JButton();
+        Image imagen = null;
 
         if(objects instanceof Restaurante){
             System.out.println("Restaurante");
-            btn.setIcon(new ImageIcon("/home/blanca/IdeaProjects/projectISW19/src/icai/dtc/isw/resources/FotosMapa/Restaurantes.PNG"));
+            imagen = new ImageIcon("/home/blanca/IdeaProjects/projectISW19/src/icai/dtc/isw/resources/FotosMapa/Restaurantes.PNG").getImage();
+
         }
         if(objects instanceof Hotel){
             System.out.println("Hotel");
-            btn.setIcon(new ImageIcon("/home/blanca/IdeaProjects/projectISW19/src/icai/dtc/isw/resources/FotosMapa/Hoteles.PNG"));
+            imagen = new ImageIcon("/home/blanca/IdeaProjects/projectISW19/src/icai/dtc/isw/resources/FotosMapa/Hoteles.PNG").getImage();
         }
         if(objects instanceof Museo){
             System.out.println("Museo");
-            btn.setIcon(new ImageIcon("/home/blanca/IdeaProjects/projectISW19/src/icai/dtc/isw/resources/FotosMapa/Museo.PNG"));
+            imagen = new ImageIcon("/home/blanca/IdeaProjects/projectISW19/src/icai/dtc/isw/resources/FotosMapa/Museo.PNG").getImage();
         }
         if(objects instanceof  Monumento){
             System.out.println("Monumento");
-            btn.setIcon(new ImageIcon("/home/blanca/IdeaProjects/projectISW19/src/icai/dtc/isw/resources/FotosMapa/Monumentos.PNG"));
+            imagen = new ImageIcon("/home/blanca/IdeaProjects/projectISW19/src/icai/dtc/isw/resources/FotosMapa/Monumentos.PNG").getImage();
         }
         if(objects instanceof  Parque){
             System.out.println("Parque");
-            btn.setIcon(new ImageIcon("/home/blanca/IdeaProjects/projectISW19/src/icai/dtc/isw/resources/FotosMapa/Parques.PNG"));
+            imagen = new ImageIcon("/home/blanca/IdeaProjects/projectISW19/src/icai/dtc/isw/resources/FotosMapa/Parques.PNG").getImage();
         }
         if(objects instanceof  Evento){
             System.out.println("Evento");
-            btn.setIcon(new ImageIcon("/home/blanca/IdeaProjects/projectISW19/src/icai/dtc/isw/resources/FotosMapa/Eventos.PNG"));
+            imagen = new ImageIcon("/home/blanca/IdeaProjects/projectISW19/src/icai/dtc/isw/resources/FotosMapa/Eventos.PNG").getImage();
         }
-
-        btn.setBounds(x,y,5,5);
+        ImageIcon icono = new ImageIcon(imagen.getScaledInstance(x, y , Image.SCALE_SMOOTH));
+        btn.setIcon(icono);
+        //btn.setSize(new Dimension(x,y));
         panel.add(btn);
 
         btn.addActionListener(new ActionListener() {

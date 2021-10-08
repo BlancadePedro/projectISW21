@@ -39,8 +39,9 @@ public class SocketServer extends Thread {
 		    ObjectOutputStream objectOutputStream = new ObjectOutputStream(out);
 		    Message mensajeOut=new Message();
 		    switch (mensajeIn.getContext()) {
+
 		    	/*case "/getCustomer":
-		    		CustomerControler customerControler=new CustomerControler();
+					CustomerControler customerControler=new CustomerControler();
 		    		ArrayList<Customer> lista=new ArrayList<Customer>();
 		    		customerControler.getCustomer(lista);
 		    		mensajeOut.setContext("/getCustomerResponse");
@@ -51,11 +52,11 @@ public class SocketServer extends Thread {
 		    	break;*/
 				case "/altaUsuario":
 					CustomerControler customerControler=new CustomerControler();
-
 					customerControler.addCliente((Customer)mensajeIn.getSession().get("id"));
 					mensajeOut.setContext("/addClienteResponse");
 					objectOutputStream.writeObject(mensajeOut);
 				break;
+
 
 
 				default:
