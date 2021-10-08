@@ -10,6 +10,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import icai.dtc.isw.client.Client;
 import icai.dtc.isw.controler.CustomerControler;
 import icai.dtc.isw.domain.Customer;
 import icai.dtc.isw.message.Message;
@@ -55,7 +56,17 @@ public class SocketServer extends Thread {
 					customerControler.addCliente((Customer)mensajeIn.getSession().get("id"));
 					mensajeOut.setContext("/addClienteResponse");
 					objectOutputStream.writeObject(mensajeOut);
+
+					Client client = new Client();
+					String usuario = (String)((Customer) mensajeIn.getSession().get("id")).getUsuario();
+					HashMap<String, Object> session = new HashMap<>();
+					session.put("usuario",usuario);
+					client.enviar("/checkUsuario",session);
 				break;
+				case "/checkUsuario":
+
+				break;
+
 
 
 
