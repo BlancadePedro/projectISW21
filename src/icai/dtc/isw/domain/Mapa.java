@@ -52,28 +52,28 @@ public class Mapa extends JFrame {
 
         if(objects instanceof Restaurante){
             System.out.println("Restaurante");
-            imagen = new ImageIcon("/home/blanca/IdeaProjects/projectISW19/src/icai/dtc/isw/resources/FotosMapa/Restaurantes.PNG").getImage();
+            imagen = new ImageIcon("./src/icai/dtc/isw/resources/FotosMapa/Restaurantes.PNG").getImage();
 
         }
         if(objects instanceof Hotel){
             System.out.println("Hotel");
-            imagen = new ImageIcon("/home/blanca/IdeaProjects/projectISW19/src/icai/dtc/isw/resources/FotosMapa/Hoteles.PNG").getImage();
+            imagen = new ImageIcon("./src/icai/dtc/isw/resources/FotosMapa/Hoteles.PNG").getImage();
         }
         if(objects instanceof Museo){
             System.out.println("Museo");
-            imagen = new ImageIcon("/home/blanca/IdeaProjects/projectISW19/src/icai/dtc/isw/resources/FotosMapa/Museo.PNG").getImage();
+            imagen = new ImageIcon("./src/icai/dtc/isw/resources/FotosMapa/Museo.PNG").getImage();
         }
         if(objects instanceof  Monumento){
             System.out.println("Monumento");
-            imagen = new ImageIcon("/home/blanca/IdeaProjects/projectISW19/src/icai/dtc/isw/resources/FotosMapa/Monumentos.PNG").getImage();
+            imagen = new ImageIcon("./src/icai/dtc/isw/resources/FotosMapa/Monumentos.PNG").getImage();
         }
         if(objects instanceof  Parque){
             System.out.println("Parque");
-            imagen = new ImageIcon("/home/blanca/IdeaProjects/projectISW19/src/icai/dtc/isw/resources/FotosMapa/Parques.PNG").getImage();
+            imagen = new ImageIcon("./src/icai/dtc/isw/resources/FotosMapa/Parques.PNG").getImage();
         }
         if(objects instanceof  Evento){
             System.out.println("Evento");
-            imagen = new ImageIcon("/home/blanca/IdeaProjects/projectISW19/src/icai/dtc/isw/resources/FotosMapa/Eventos.PNG").getImage();
+            imagen = new ImageIcon("./src/icai/dtc/isw/resources/FotosMapa/Eventos.PNG").getImage();
         }
         ImageIcon icono = new ImageIcon(imagen.getScaledInstance(x, y , Image.SCALE_SMOOTH));
         btn.setIcon(icono);
