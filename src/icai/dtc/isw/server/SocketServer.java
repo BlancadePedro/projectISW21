@@ -39,6 +39,7 @@ public class SocketServer extends Thread {
 		    //Object to return informations 
 		    ObjectOutputStream objectOutputStream = new ObjectOutputStream(out);
 		    Message mensajeOut=new Message();
+			CustomerControler customerControler=new CustomerControler();
 		    switch (mensajeIn.getContext()) {
 
 		    	/*case "/getCustomer":
@@ -52,19 +53,22 @@ public class SocketServer extends Thread {
 		    		objectOutputStream.writeObject(mensajeOut);		    		
 		    	break;*/
 				case "/altaUsuario":
-					CustomerControler customerControler=new CustomerControler();
+
 					customerControler.addCliente((Customer)mensajeIn.getSession().get("id"));
 					mensajeOut.setContext("/addClienteResponse");
 					objectOutputStream.writeObject(mensajeOut);
 
 					Client client = new Client();
-					String usuario = (String)((Customer) mensajeIn.getSession().get("id")).getUsuario();
+					Customer usuario = ((Customer) mensajeIn.getSession().get("id"));
+					System.out.println(usuario.getUsuario());
 					HashMap<String, Object> session = new HashMap<>();
 					session.put("usuario",usuario);
 					client.enviar("/checkUsuario",session);
 				break;
 				case "/checkUsuario":
-
+					customerControler.checkCliente((Customer)mensajeIn.getSession().get("usuario"));
+					mensajeOut.setContext("/checkClienteResponse");
+					objectOutputStream.writeObject(mensajeOut);
 				break;
 
 

@@ -56,7 +56,7 @@ public class Client {
 				System.out.println("\nSe ha eliminado");
 				break;
 			case "/checkClienteResponse":
-				System.out.println("\nSe ha comprobado");
+				System.out.println("\nSe ha comprobado, el cliente está");
 				break;
 			default:
 				Logger.getRootLogger().info("Option not found");

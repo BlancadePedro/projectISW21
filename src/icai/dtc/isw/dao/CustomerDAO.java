@@ -37,9 +37,9 @@ public class CustomerDAO {
 		}
 	}
 
-	public static void dropCliente(String usuario) {
+	public static void dropCliente(Customer perfil) {
 		Connection con = ConnectionDAO.getInstance().getConnection();
-
+		String usuario = perfil.getUsuario();
 		try (PreparedStatement pst = con.prepareStatement("delete from usuarios where usuario =" + usuario);
 			 ResultSet rs = pst.executeQuery()) {
 
@@ -48,9 +48,9 @@ public class CustomerDAO {
 		}
 	}
 
-	public static boolean checkCliente(String usuario){
+	public static boolean checkCliente(Customer perfil){
 		Connection con = ConnectionDAO.getInstance().getConnection();
-
+		String usuario = perfil.getUsuario();
 		try (PreparedStatement pst = con.prepareStatement("SELECT * FROM usuarios");
 			 ResultSet rs = pst.executeQuery()) {
 			while(rs.next()){

@@ -48,6 +48,7 @@ public class MapaTab {
         tabbedPane.addTab(tabEste, card3);
         tabbedPane.addTab(tabOeste, card4);
 
+
         pane.add(tabbedPane, BorderLayout.CENTER);
     }
 
@@ -68,6 +69,8 @@ public class MapaTab {
         //Display the window.
         frame.pack();
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
+
     }
 
     public static void main(String[] args) {
