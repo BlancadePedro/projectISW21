@@ -1,8 +1,17 @@
 package icai.dtc.isw.domain;
 
+import icai.dtc.isw.client.Client;
+import icai.dtc.isw.dao.ConnectionDAO;
+import icai.dtc.isw.domain.Customer;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
 
 import javax.swing.*;
 
@@ -10,12 +19,12 @@ import javax.swing.*;
 public class InfoUsuario extends JFrame
 {
    
-    public static void main(String[] argv){
+    /*public static void main(String[] argv){
         int foto = 0;
         Customer perfil = new Customer("correo", "descripcion", 20, "nacionalidad","nombreCompleto", 646513445, "usuario","clave",foto);
         new InfoUsuario(perfil);
 
-    }
+    }*/
     
     private JPanel info = new JPanel(new GridLayout(6, 1));
     private JPanel pnlfoto = new JPanel((new BorderLayout()));
@@ -30,7 +39,7 @@ public class InfoUsuario extends JFrame
     private JLabel foto = new JLabel();
     private JComboBox<String> opcionesFotos = new JComboBox<>();
 
-    public InfoUsuario(Customer perfil) {
+    public InfoUsuario(Customer perfil){
     
         this.setLayout(new GridLayout(1,2));
         this.setVisible(true);
@@ -68,12 +77,17 @@ public class InfoUsuario extends JFrame
 
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //String res = opcionesFotos.getSelectedItem().toString();
+
                 int i = opcionesFotos.getSelectedIndex();
                 int indice = i+1;
 
-                perfil.setFoto(indice);
+                perfil.setFoto(indice);//A lo mejor se puede quitar
 
+                Client client = new Client();
+                HashMap<String, Object> session = new HashMap<>();
+                session.put("perfil",perfil);
+                session.put("foto",indice);
+                client.enviar("/updateUsuario",session);
 
                     Image imagen = new ImageIcon("./src/icai/dtc/isw/resources/FotosPerfil/perfil"+perfil.getFoto()+".PNG").getImage();
                     ImageIcon icono = new ImageIcon(imagen.getScaledInstance(250, 250 , Image.SCALE_SMOOTH));
@@ -104,5 +118,9 @@ public class InfoUsuario extends JFrame
     }
 
 
-    
+
 }
+
+
+    
+

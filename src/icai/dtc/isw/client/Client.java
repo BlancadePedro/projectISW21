@@ -52,8 +52,8 @@ public class Client {
 			case "/addClienteResponse":
 				System.out.println("\nSe ha enviado");
 				break;
-			case "/dropClienteResponse":
-				System.out.println("\nSe ha eliminado");
+			case "/updateClienteResponse":
+				System.out.println("\nSe ha actualizado");
 				break;
 			case "/checkClienteResponse":
 				System.out.println("\nSe ha comprobado, el cliente está");

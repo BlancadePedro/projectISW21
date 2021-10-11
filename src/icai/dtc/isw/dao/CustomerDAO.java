@@ -28,22 +28,11 @@ public class CustomerDAO {
 
 	public static void addCliente(Customer perfil) {
 		Connection con = ConnectionDAO.getInstance().getConnection();
-		try (PreparedStatement pst = con.prepareStatement("INSERT INTO usuarios(correo,descripcion,edad,nacionalidad,nombrecompleto,telefono,usuario,clave) VALUES ('" + perfil.getCorreo() + "','" + perfil.getDescripcion() + "'," + perfil.getEdad() + ",'" + perfil.getNacionalidad() + "','" + perfil.getNombreCompleto() + "'," + perfil.getTelefono() + ",'" + perfil.getUsuario() + "','" + perfil.getClave() + "')");
+		try (PreparedStatement pst = con.prepareStatement("INSERT INTO usuarios(correo,descripcion,edad,nacionalidad,nombrecompleto,telefono,usuario,clave,foto) VALUES ('" + perfil.getCorreo() + "','" + perfil.getDescripcion() + "'," + perfil.getEdad() + ",'" + perfil.getNacionalidad() + "','" + perfil.getNombreCompleto() + "'," + perfil.getTelefono() + ",'" + perfil.getUsuario() + "','" + perfil.getClave() + "'," + perfil.getFoto()+")");
 			 ResultSet rs = pst.executeQuery()) {
 
 		} catch (SQLException ex) {
 			//Esto se puede quitar?
-			System.out.println(ex.getMessage());
-		}
-	}
-
-	public static void dropCliente(Customer perfil) {
-		Connection con = ConnectionDAO.getInstance().getConnection();
-		String usuario = perfil.getUsuario();
-		try (PreparedStatement pst = con.prepareStatement("delete from usuarios where usuario =" + usuario);
-			 ResultSet rs = pst.executeQuery()) {
-
-		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
 		}
 	}
@@ -69,4 +58,28 @@ public class CustomerDAO {
 
 		return false;
 	}
+
+	public static Customer cambiarFoto(int foto, Customer perfil) {
+		String update = "UPDATE usuarios SET correro ='" + perfil.getCorreo() + "', descripcion ='" + perfil.getDescripcion() + "', edad =" + perfil.getEdad() + ", nacionalidad = '" + perfil.getNacionalidad() + "', nombre ='" + perfil.getNombreCompleto() + "', telefono = " + perfil.getTelefono() + ", usuario = '" + perfil.getUsuario() + "', clave = '" + perfil.getClave() + "', WHERE foto = " + foto + ";";
+		Connection con = ConnectionDAO.getInstance().getConnection();
+		try (PreparedStatement pst = con.prepareStatement(update);
+			 ResultSet rs = pst.executeQuery()) {
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
+		return perfil;
+	}
+
+	/*public static void dropCliente(Customer perfil) {
+		Connection con = ConnectionDAO.getInstance().getConnection();
+		String usuario = perfil.getUsuario();
+		try (PreparedStatement pst = con.prepareStatement("delete from usuarios where usuario =" + usuario);
+			 ResultSet rs = pst.executeQuery()) {
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
+	}*/
+
+
 }

@@ -53,7 +53,6 @@ public class SocketServer extends Thread {
 		    		objectOutputStream.writeObject(mensajeOut);		    		
 		    	break;*/
 				case "/altaUsuario":
-
 					customerControler.addCliente((Customer)mensajeIn.getSession().get("id"));
 					mensajeOut.setContext("/addClienteResponse");
 					objectOutputStream.writeObject(mensajeOut);
@@ -65,15 +64,16 @@ public class SocketServer extends Thread {
 					session.put("usuario",usuario);
 					client.enviar("/checkUsuario",session);
 				break;
+				case "/updateUsuario":
+					customerControler.updateCliente((Customer)mensajeIn.getSession().get("usuario"),(Integer)mensajeIn.getSession().get("foto"));
+					mensajeOut.setContext("/updateClienteResponse");
+					objectOutputStream.writeObject(mensajeOut);
+				break;
 				case "/checkUsuario":
 					customerControler.checkCliente((Customer)mensajeIn.getSession().get("usuario"));
 					mensajeOut.setContext("/checkClienteResponse");
 					objectOutputStream.writeObject(mensajeOut);
 				break;
-
-
-
-
 				default:
 		    		System.out.println("\nParámetro no encontrado");
 		    		break;
