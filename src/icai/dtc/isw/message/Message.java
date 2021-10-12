@@ -11,12 +11,12 @@ public class Message implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String context;
 	private Map<String, Object> session;
-	
-	
+	private boolean comprobar;
+
 	public Message () {
 		context=new String();
-		session=new HashMap<String, Object>();	
-		
+		session=new HashMap<String, Object>();
+		boolean comprobar = false;
 	}
 
 	public String getContext() {
@@ -33,5 +33,12 @@ public class Message implements Serializable {
 
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
-	}	
+	}
+
+	public void setComprobar(boolean comprobar){
+		this.comprobar=comprobar;
+	}
+	public boolean getComprobar(){
+		return comprobar;
+	}
 }

@@ -60,10 +60,10 @@ public class SocketServer extends Thread {
 					mensajeOut.setContext("/addClienteResponse");
 					objectOutputStream.writeObject(mensajeOut);
 
-					boolean comprobacion  = comprobacion(perfil);
-					if(comprobacion == true){
-						System.out.println("\nSe ha introducido en la base de datos");
-					}else System.out.println("\nNO se ha introducido en la base de datos");
+					mensajeOut.setComprobar(comprobacion((Customer)mensajeIn.getSession().get("id")));
+					if(mensajeOut.getComprobar()){
+						System.out.println("Se ha añadido correctamente a la base de datos");
+					}
 					break;
 
 				default:
