@@ -39,41 +39,34 @@ public class SocketServer extends Thread {
 		    //Object to return informations 
 		    ObjectOutputStream objectOutputStream = new ObjectOutputStream(out);
 		    Message mensajeOut=new Message();
-			CustomerControler customerControler=new CustomerControler();
-		    switch (mensajeIn.getContext()) {
 
-		    	/*case "/getCustomer":
-					CustomerControler customerControler=new CustomerControler();
-		    		ArrayList<Customer> lista=new ArrayList<Customer>();
+			CustomerControler customerControler=new CustomerControler();
+			ArrayList<Customer> lista=new ArrayList<Customer>();
+			System.out.println("Pasa por aquí 1");
+		    switch (mensajeIn.getContext()) {
+				//Info localidades igual que este pero hay que cambiar la base de datos
+		    	case "/getCustomer":
+
 		    		customerControler.getCustomer(lista);
 		    		mensajeOut.setContext("/getCustomerResponse");
 		    		HashMap<String,Object> session=new HashMap<String, Object>();
 		    		session.put("Customer",lista);
 		    		mensajeOut.setSession(session);
 		    		objectOutputStream.writeObject(mensajeOut);		    		
-		    	break;*/
+		    		break;
 				case "/altaUsuario":
+					System.out.println("Pasa por aquí 2");
 					customerControler.addCliente((Customer)mensajeIn.getSession().get("id"));
+					Customer perfil = (Customer)mensajeIn.getSession().get("id");
 					mensajeOut.setContext("/addClienteResponse");
 					objectOutputStream.writeObject(mensajeOut);
 
-					Client client = new Client();
-					Customer usuario = ((Customer) mensajeIn.getSession().get("id"));
-					System.out.println(usuario.getUsuario());
-					HashMap<String, Object> session = new HashMap<>();
-					session.put("usuario",usuario);
-					client.enviar("/checkUsuario",session);
-				break;
-				case "/updateUsuario":
-					customerControler.updateCliente((Customer)mensajeIn.getSession().get("usuario"),(Integer)mensajeIn.getSession().get("foto"));
-					mensajeOut.setContext("/updateClienteResponse");
-					objectOutputStream.writeObject(mensajeOut);
-				break;
-				case "/checkUsuario":
-					customerControler.checkCliente((Customer)mensajeIn.getSession().get("usuario"));
-					mensajeOut.setContext("/checkClienteResponse");
-					objectOutputStream.writeObject(mensajeOut);
-				break;
+					boolean comprobacion  = comprobacion(perfil);
+					if(comprobacion == true){
+						System.out.println("\nSe ha introducido en la base de datos");
+					}else System.out.println("\nNO se ha introducido en la base de datos");
+					break;
+
 				default:
 		    		System.out.println("\nParámetro no encontrado");
 		    		break;
@@ -119,6 +112,19 @@ public class SocketServer extends Thread {
 				ex.printStackTrace();
 			}
 		}
+	}
+
+	public boolean comprobacion(Customer perfil){
+		CustomerControler customerControler = new CustomerControler();
+		ArrayList<Customer> lista = new ArrayList<Customer>();
+
+		for(Customer c : lista){
+			if(perfil.getUsuario().equals(c.getUsuario())){
+				System.out.println("\nSe ha introducido");
+				return true;
+			}else return false;
+		}
+		return false;
 	}
 
 	public static void main(String[] args) {

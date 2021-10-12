@@ -43,20 +43,17 @@ public class Client {
 		
 		switch (mensajeVuelta.getContext()) {
 			//Info localidades igual que este pero hay que cambiar la base de datos
-			/*case "/getCustomerResponse":
+			case "/getCustomerResponse":
 				ArrayList<Customer> customerList=(ArrayList<Customer>)(mensajeVuelta.getSession().get("Customer"));
 				 for (Customer customer : customerList) {			
 						System.out.println("Nombre: "+customer.getNombreCompleto()+"; Edad: "+customer.getEdad()+ "; Nacionalidad: "+customer.getNacionalidad());
 					}
-				break;*/
+				break;
 			case "/addClienteResponse":
 				System.out.println("\nSe ha enviado");
 				break;
 			case "/updateClienteResponse":
 				System.out.println("\nSe ha actualizado");
-				break;
-			case "/checkClienteResponse":
-				System.out.println("\nSe ha comprobado, el cliente está");
 				break;
 			default:
 				Logger.getRootLogger().info("Option not found");
