@@ -51,6 +51,7 @@ public class Client {
 				break;
 			case "/addClienteResponse":
 				System.out.println("\nSe ha enviado");
+				Customer perfil = (Customer)mensajeVuelta.getSession().get("id");
 				break;
 			case "/updateClienteResponse":
 				System.out.println("\nSe ha actualizado");

@@ -42,7 +42,6 @@ public class SocketServer extends Thread {
 
 			CustomerControler customerControler=new CustomerControler();
 			ArrayList<Customer> lista=new ArrayList<Customer>();
-			System.out.println("Pasa por aquí 1");
 		    switch (mensajeIn.getContext()) {
 				//Info localidades igual que este pero hay que cambiar la base de datos
 		    	case "/getCustomer":
@@ -55,8 +54,8 @@ public class SocketServer extends Thread {
 		    		objectOutputStream.writeObject(mensajeOut);		    		
 		    		break;
 				case "/altaUsuario":
-					System.out.println("Pasa por aquí 2");
 					customerControler.addCliente((Customer)mensajeIn.getSession().get("id"));
+
 					Customer perfil = (Customer)mensajeIn.getSession().get("id");
 					mensajeOut.setContext("/addClienteResponse");
 					objectOutputStream.writeObject(mensajeOut);
@@ -117,7 +116,7 @@ public class SocketServer extends Thread {
 	public boolean comprobacion(Customer perfil){
 		CustomerControler customerControler = new CustomerControler();
 		ArrayList<Customer> lista = new ArrayList<Customer>();
-
+		customerControler.getCustomer(lista);
 		for(Customer c : lista){
 			if(perfil.getUsuario().equals(c.getUsuario())){
 				System.out.println("\nSe ha introducido");
