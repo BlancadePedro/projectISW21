@@ -108,6 +108,15 @@ public class Customer implements Serializable {
 	public String toString() {
 		return nombreCompleto + edad + nacionlidad;
 	}
+
+	@Override
+	public boolean equals(Object o){
+		if(o instanceof Customer){
+			Customer perfil = (Customer)o;
+			if(perfil.getUsuario().equals(this.usuario))
+			{ return true;}else return false;
+		}else return false;
+	}
 }
 
 

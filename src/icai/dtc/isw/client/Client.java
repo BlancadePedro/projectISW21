@@ -51,7 +51,11 @@ public class Client {
 				break;
 			case "/addClienteResponse":
 				System.out.println("\nSe ha enviado");
-				Customer perfil = (Customer)mensajeVuelta.getSession().get("id");
+
+				if(mensajeVuelta.getComprobar()){
+					System.out.println("\nSe ha introducido adecuadamente en la base de datos");
+				}else System.out.println("\nNO se ha introducido adecuadamente en la base de datos");
+
 				break;
 			case "/updateClienteResponse":
 				System.out.println("\nSe ha actualizado");
@@ -96,6 +100,7 @@ public class Client {
 		        Message msg=(Message)objectInputStream.readObject();
 		        messageIn.setContext(msg.getContext());
 		        messageIn.setSession(msg.getSession());
+				messageIn.setComprobar(msg.getComprobar());
 		        /*System.out.println("\n1.- El valor devuelto es: "+messageIn.getContext());
 		        String cadena=(String) messageIn.getSession().get("Nombre");
 		        System.out.println("\n2.- La cadena devuelta es: "+cadena);*/

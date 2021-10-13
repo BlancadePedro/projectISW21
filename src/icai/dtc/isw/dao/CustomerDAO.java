@@ -58,6 +58,7 @@ public class CustomerDAO {
 		Connection con = ConnectionDAO.getInstance().getConnection();
 		try (PreparedStatement pst = con.prepareStatement(update);
 			 ResultSet rs = pst.executeQuery()) {
+			return perfil;
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
 		}

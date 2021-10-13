@@ -16,7 +16,7 @@ public class Message implements Serializable {
 	public Message () {
 		context=new String();
 		session=new HashMap<String, Object>();
-		boolean comprobar = false;
+		comprobar = false;
 	}
 
 	public String getContext() {
@@ -38,6 +38,7 @@ public class Message implements Serializable {
 	public void setComprobar(boolean comprobar){
 		this.comprobar=comprobar;
 	}
+
 	public boolean getComprobar(){
 		return comprobar;
 	}

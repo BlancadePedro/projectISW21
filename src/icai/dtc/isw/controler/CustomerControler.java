@@ -13,10 +13,10 @@ public class CustomerControler {
 	public void addCliente(Customer perfil){
 		CustomerDAO.addCliente(perfil);
 	}
+
+
 	public void updateCliente(Customer perfil,int foto){CustomerDAO.cambiarFoto(foto, perfil);}
 
 
-
-	//public void dropCliente(Customer usuario){CustomerDAO.dropCliente(usuario);}
 
 }

@@ -45,7 +45,6 @@ public class SocketServer extends Thread {
 		    switch (mensajeIn.getContext()) {
 				//Info localidades igual que este pero hay que cambiar la base de datos
 		    	case "/getCustomer":
-
 		    		customerControler.getCustomer(lista);
 		    		mensajeOut.setContext("/getCustomerResponse");
 		    		HashMap<String,Object> session=new HashMap<String, Object>();
@@ -54,16 +53,13 @@ public class SocketServer extends Thread {
 		    		objectOutputStream.writeObject(mensajeOut);		    		
 		    		break;
 				case "/altaUsuario":
-					customerControler.addCliente((Customer)mensajeIn.getSession().get("id"));
-
-					Customer perfil = (Customer)mensajeIn.getSession().get("id");
+					Customer customer = (Customer)mensajeIn.getSession().get("id");
+					customerControler.addCliente(customer);
 					mensajeOut.setContext("/addClienteResponse");
-					objectOutputStream.writeObject(mensajeOut);
-
-					mensajeOut.setComprobar(comprobacion((Customer)mensajeIn.getSession().get("id")));
-					if(mensajeOut.getComprobar()){
-						System.out.println("Se ha añadido correctamente a la base de datos");
+					if(comprobacion(customer)!=null){
+						mensajeOut.setComprobar(true);
 					}
+					objectOutputStream.writeObject(mensajeOut);
 					break;
 
 				default:
@@ -113,17 +109,16 @@ public class SocketServer extends Thread {
 		}
 	}
 
-	public boolean comprobacion(Customer perfil){
+	public Customer comprobacion(Customer perfil){
 		CustomerControler customerControler = new CustomerControler();
 		ArrayList<Customer> lista = new ArrayList<Customer>();
 		customerControler.getCustomer(lista);
 		for(Customer c : lista){
-			if(perfil.getUsuario().equals(c.getUsuario())){
-				System.out.println("\nSe ha introducido");
-				return true;
-			}else return false;
+			if(perfil.equals(c)){
+				return perfil;
+			}
 		}
-		return false;
+		return null;
 	}
 
 	public static void main(String[] args) {
