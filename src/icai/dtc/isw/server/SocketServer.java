@@ -54,10 +54,14 @@ public class SocketServer extends Thread {
 		    		break;
 				case "/altaUsuario":
 					Customer customer = (Customer)mensajeIn.getSession().get("id");
-					customerControler.addCliente(customer);
-					mensajeOut.setContext("/addClienteResponse");
-					if(comprobacion(customer)!=null){
-						mensajeOut.setComprobar(true);
+					if(comprobacion(customer)==null){
+						customerControler.addCliente(customer);
+						mensajeOut.setContext("/addClienteResponse");
+						if(comprobacion(customer)!=null){
+							mensajeOut.setComprobar(true);
+						}
+					}else{
+						mensajeOut.setContext("/addClienteResponseError");
 					}
 					objectOutputStream.writeObject(mensajeOut);
 					break;
@@ -109,7 +113,7 @@ public class SocketServer extends Thread {
 		}
 	}
 
-	public Customer comprobacion(Customer perfil){
+	public static Customer comprobacion(Customer perfil){
 		CustomerControler customerControler = new CustomerControler();
 		ArrayList<Customer> lista = new ArrayList<Customer>();
 		customerControler.getCustomer(lista);
