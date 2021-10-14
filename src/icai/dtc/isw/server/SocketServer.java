@@ -56,7 +56,7 @@ public class SocketServer extends Thread {
 					Customer customer = (Customer)mensajeIn.getSession().get("id");
 					customerControler.addCliente(customer);
 					mensajeOut.setContext("/addClienteResponse");
-					if(comprobacion(customer)!=null){
+					if(comprobacion(customer)!=null){ //Existe ese usuario en la DB
 						mensajeOut.setComprobar(true);
 					}
 					objectOutputStream.writeObject(mensajeOut);

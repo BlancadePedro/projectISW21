@@ -1,18 +1,18 @@
 package icai.dtc.isw.domain;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.FlowLayout;
-import java.awt.Font;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-public class MapaPrueba {
+public class MapaMenu {
     //variables y comtenedores
     private JLabel etiquetaSu;
     private JPanel pnlIzquierdo, pnlDerecho, pnlCentral;
     private JButton btnIz1, btnIz2, btnIz3, btnIz4, btnIz5;
-    private JButton btnDe1, btnDe2, btnDe3;
+    private JButton btnH, btnR, btnE, btnM, btnMu, btnP, btnPe;
     private JButton    btnIn1, btnIn2;
     private JScrollPane scroll;
 
@@ -35,19 +35,28 @@ public class MapaPrueba {
         pnlIzquierdo.add(btnIz4);
         pnlIzquierdo.add(Box.createVerticalStrut(40));
         pnlIzquierdo.add(btnIz5);
+        ImageIcon icon = new ImageIcon("./src/icai/dtc/isw/resources/FotosMapa/Restaurantes.PNG");
+        JLabel label = new JLabel(icon);
+        label.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent me) {
+                System.out.println("CLICKED");
+            }
+        });
+        pnlIzquierdo.add(label);
     }
 
     public void contruyepnlDerecho(){
         pnlDerecho = new JPanel();
-        JButton btnH = new JButton("Hoteles");
-        JButton btnR = new JButton("Restaurantes");
-        JButton btnE = new JButton("Eventos");
-        JButton btnM = new JButton("Monumentos");
-        JButton btnMu = new JButton("Museos");
-        JButton btnP = new JButton("Parques");
+        btnH = new JButton("Hoteles");
+        btnR = new JButton("Restaurantes");
+        btnE = new JButton("Eventos");
+        btnM = new JButton("Monumentos");
+        btnMu = new JButton("Museos");
+        btnP = new JButton("Parques");
+        btnPe = new JButton("Mi perfil");
         pnlDerecho.setLayout(new BoxLayout(pnlDerecho,BoxLayout.Y_AXIS));
         //pnlDerecho.setBackground(Color.blue);
-        pnlDerecho.add(Box.createVerticalStrut(40));
+        pnlDerecho.add(Box.createVerticalStrut(20));
         pnlDerecho.add(btnH);
         pnlDerecho.add(Box.createVerticalStrut(40));
         pnlDerecho.add(btnR);
@@ -59,6 +68,8 @@ public class MapaPrueba {
         pnlDerecho.add(btnMu);
         pnlDerecho.add(Box.createVerticalStrut(40));
         pnlDerecho.add(btnP);
+        pnlDerecho.add(Box.createVerticalStrut(350));
+        pnlDerecho.add(btnPe);
     }
 
     public void contruyepnlCentral(){
@@ -79,9 +90,9 @@ public class MapaPrueba {
     }*/
 
     public void contruyeVentana(){
-        JFrame frame = new JFrame("Mapa de Madrid");
+        JFrame frame = new JFrame("Mapa del centro de Madrid");
         //scroll = new JScrollPane(new JTextArea("JTextArea",10,15));
-        etiquetaSu = new JLabel("Mapa de madrid");
+        etiquetaSu = new JLabel("Para ver más información sobre cada categoría haga click en los botones junto al mapa");
         Font aux=etiquetaSu.getFont();
         etiquetaSu.setFont(new Font(aux.getFontName(), aux.getStyle(), 16));
         frame.setLayout(new BorderLayout());
@@ -98,15 +109,59 @@ public class MapaPrueba {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
-    public MapaPrueba(){
+    public MapaMenu(){
         //contruyepnlInferior();
         //contruyepnlIzquierdo();
         contruyepnlDerecho();
         contruyepnlCentral();
         contruyeVentana();
+
+        btnH.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Ver hoteles");
+            }
+        });
+        btnR.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Ver restaurantes");
+            }
+        });
+        btnE.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Ver eventos");
+            }
+        });
+        btnM.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Ver monumentos");
+            }
+        });
+        btnMu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Ver museos");
+            }
+        });
+        btnP.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Ver parques");
+            }
+        });
+        btnPe.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Ver mi perfil");
+                //InfoUsuario iu = new InfoUsuario();
+            }
+        });
     }
 
     public static void main (String [] inforux){
-        new MapaPrueba();
+        new MapaMenu();
     }
 }
