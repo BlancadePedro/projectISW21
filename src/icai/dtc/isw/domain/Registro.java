@@ -2,6 +2,7 @@ package icai.dtc.isw.domain;
 import icai.dtc.isw.client.Client;
 import icai.dtc.isw.dao.CustomerDAO;
 import icai.dtc.isw.domain.Customer;
+import icai.dtc.isw.server.SocketServer;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -82,7 +83,11 @@ public class Registro extends JFrame{
                 //Hay que cambiar el orden o aquí o en la base de datos
                 dispose();
                 Customer perfil = new Customer(correo,descripcion,Integer.parseInt(edad),nacionalidad,nombreCompleto,Integer.parseInt(telefono),usuarioPerfil,contraseñaPerfil,0);
-                new InfoUsuario(perfil);
+
+                if (SocketServer.comprobacion(perfil)==null){
+                    new InfoUsuario(perfil);
+                }
+
 
                 Client client = new Client();
                 HashMap<String, Object> session = new HashMap<>();

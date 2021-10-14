@@ -54,10 +54,14 @@ public class SocketServer extends Thread {
 		    		break;
 				case "/altaUsuario":
 					Customer customer = (Customer)mensajeIn.getSession().get("id");
-					customerControler.addCliente(customer);
-					mensajeOut.setContext("/addClienteResponse");
-					if(comprobacion(customer)!=null){ //Existe ese usuario en la DB
-						mensajeOut.setComprobar(true);
+					if(comprobacion(customer)==null){
+						customerControler.addCliente(customer);
+						mensajeOut.setContext("/addClienteResponse");
+						if(comprobacion(customer)!=null){
+							mensajeOut.setComprobar(true);
+						}
+					}else{
+						mensajeOut.setContext("/addClienteResponseError");
 					}
 					objectOutputStream.writeObject(mensajeOut);
 					break;

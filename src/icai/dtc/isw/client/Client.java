@@ -60,6 +60,9 @@ public class Client {
 			case "/updateClienteResponse":
 				System.out.println("\nSe ha actualizado");
 				break;
+			case "/addClienteResponseError":
+				System.out.println("\nEl cliente ya está en la base de datos");
+				break;
 			default:
 				Logger.getRootLogger().info("Option not found");
 				System.out.println("\nError a la vuelta");
