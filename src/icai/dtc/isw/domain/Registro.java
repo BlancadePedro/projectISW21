@@ -93,13 +93,11 @@ public class Registro extends JFrame{
                 HashMap<String, Object> session = new HashMap<>();
                 session.put("id",perfil);
                 client.enviar("/altaUsuario",session);
-
             }
 
         });
         this.add(info,BorderLayout.NORTH);
         this.add(registro, BorderLayout.SOUTH);
-
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
         this.setResizable(false);//Para que no se pueda redimensionar

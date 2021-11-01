@@ -113,7 +113,7 @@ public class SocketServer extends Thread {
 		}
 	}
 
-	public static Customer comprobacion(Customer perfil){
+	public Customer comprobacion(Customer perfil){
 		CustomerControler customerControler = new CustomerControler();
 		ArrayList<Customer> lista = new ArrayList<Customer>();
 		customerControler.getCustomer(lista);
