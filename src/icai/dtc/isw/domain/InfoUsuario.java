@@ -19,12 +19,12 @@ import javax.swing.*;
 public class InfoUsuario extends JFrame
 {
    
-    public static void main(String[] argv){
+    /*public static void main(String[] argv){
         int foto = 0;
         Customer perfil = new Customer("correo", "descripcion", 20, "nacionalidad","nombreCompleto", 646513445, "usuario","clave",foto);
         new InfoUsuario(perfil);
 
-    }
+    }*/
     
     private JPanel info = new JPanel(new GridLayout(6, 1));
     private JPanel pnlfoto = new JPanel((new BorderLayout()));
@@ -68,7 +68,7 @@ public class InfoUsuario extends JFrame
         opcionesFotos();
         pnlfoto.add(opcionesFotos, BorderLayout.NORTH);
 
-        Image imagen = new ImageIcon("./src/icai/dtc/isw/resources/FotosPerfil/perfil0.PNG").getImage();
+        Image imagen = new ImageIcon("./src/icai/dtc/isw/resources/FotosPerfil/perfil"+perfil.getFoto()+".PNG").getImage();
         ImageIcon icono = new ImageIcon(imagen.getScaledInstance(250, 250 , Image.SCALE_SMOOTH));
         foto.setIcon(icono);
         pnlfoto.add(foto,BorderLayout.CENTER);
@@ -81,19 +81,18 @@ public class InfoUsuario extends JFrame
                 int i = opcionesFotos.getSelectedIndex();
                 int indice = i+1;
 
-                perfil.setFoto(indice);//A lo mejor se puede quitar
+                perfil.setFoto(indice);
+                Image imagen = new ImageIcon("./src/icai/dtc/isw/resources/FotosPerfil/perfil"+perfil.getFoto()+".PNG").getImage();
+                ImageIcon icono = new ImageIcon(imagen.getScaledInstance(250, 250 , Image.SCALE_SMOOTH));
+                foto.setIcon(icono);
+                pnlfoto.add(foto,BorderLayout.CENTER);
+                System.out.println(perfil.getFoto());
 
-                /*Client client = new Client();
-                HashMap<String, Object> session = new HashMap<>();
+                Client client = new Client();
+                HashMap<String, Object> session = new HashMap<String, Object>();
                 session.put("perfil",perfil);
                 session.put("foto",indice);
-                client.enviar("/updateUsuario",session);*/
-
-                    Image imagen = new ImageIcon("./src/icai/dtc/isw/resources/FotosPerfil/perfil"+perfil.getFoto()+".PNG").getImage();
-                    ImageIcon icono = new ImageIcon(imagen.getScaledInstance(250, 250 , Image.SCALE_SMOOTH));
-                    foto.setIcon(icono);
-                    pnlfoto.add(foto,BorderLayout.CENTER);
-                    System.out.println(perfil.getFoto());
+                client.enviar("/updateUsuario",session);
 
             }
         });

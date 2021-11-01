@@ -113,7 +113,7 @@ public class Customer implements Serializable {
 	public boolean equals(Object o){
 		if(o instanceof Customer){
 			Customer perfil = (Customer)o;
-			if(perfil.getUsuario().equals(this.usuario))
+			if(perfil.getUsuario().equals(this.usuario) || perfil.getClave().equals(this.clave))
 			{ return true;}else return false;
 		}else return false;
 	}

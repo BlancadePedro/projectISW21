@@ -40,20 +40,33 @@ public class SocketServer extends Thread {
 		    ObjectOutputStream objectOutputStream = new ObjectOutputStream(out);
 		    Message mensajeOut=new Message();
 
+			HashMap<String,Object> session=new HashMap<String, Object>();
 			CustomerControler customerControler=new CustomerControler();
 			ArrayList<Customer> lista=new ArrayList<Customer>();
+			Customer customer;
+
 		    switch (mensajeIn.getContext()) {
-				//Info localidades igual que este pero hay que cambiar la base de datos
+
 		    	case "/getCustomer":
 		    		customerControler.getCustomer(lista);
 		    		mensajeOut.setContext("/getCustomerResponse");
-		    		HashMap<String,Object> session=new HashMap<String, Object>();
 		    		session.put("Customer",lista);
 		    		mensajeOut.setSession(session);
 		    		objectOutputStream.writeObject(mensajeOut);		    		
 		    		break;
+
+				case "/getUsuario":
+					String usuario = (String)mensajeIn.getSession().get("usuario");
+					String contraseña = (String)mensajeIn.getSession().get("contraseña");
+					customer = customerControler.getCliente(usuario, contraseña);
+					mensajeOut.setContext("/getClienteResponse");
+					session.put("Usuario",customer);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+
 				case "/altaUsuario":
-					Customer customer = (Customer)mensajeIn.getSession().get("id");
+					customer = (Customer)mensajeIn.getSession().get("id");
 					if(comprobacion(customer)==null){
 						customerControler.addCliente(customer);
 						mensajeOut.setContext("/addClienteResponse");
@@ -63,6 +76,13 @@ public class SocketServer extends Thread {
 					}else{
 						mensajeOut.setContext("/addClienteResponseError");
 					}
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/updateUsuario":
+					int foto = (int)mensajeIn.getSession().get("foto");
+					Customer perfil = (Customer)mensajeIn.getSession().get("perfil");
+					customerControler.updateCliente(perfil, foto);
+					mensajeOut.setContext("/updateClienteResponse");
 					objectOutputStream.writeObject(mensajeOut);
 					break;
 
@@ -113,7 +133,7 @@ public class SocketServer extends Thread {
 		}
 	}
 
-	public Customer comprobacion(Customer perfil){
+	public static Customer comprobacion(Customer perfil){
 		CustomerControler customerControler = new CustomerControler();
 		ArrayList<Customer> lista = new ArrayList<Customer>();
 		customerControler.getCustomer(lista);

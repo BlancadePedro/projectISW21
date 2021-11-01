@@ -10,6 +10,7 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import icai.dtc.isw.domain.InfoUsuario;
 import org.apache.log4j.Logger;
 
 import icai.dtc.isw.configuration.PropertiesISW;
@@ -29,10 +30,7 @@ public class Client {
 		Logger.getRootLogger().info("Host: "+host+" port"+port);
 		//Create a cliente class
 		Client cliente=new Client(host, port);
-		
-		//HashMap<String,Object> session=new HashMap<String, Object>();
-		//session.put("/getCustomer","");
-		
+
 		Message mensajeEnvio=new Message();
 		Message mensajeVuelta=new Message();
 
@@ -42,20 +40,23 @@ public class Client {
 		
 		
 		switch (mensajeVuelta.getContext()) {
-			//Info localidades igual que este pero hay que cambiar la base de datos
+
 			case "/getCustomerResponse":
 				ArrayList<Customer> customerList=(ArrayList<Customer>)(mensajeVuelta.getSession().get("Customer"));
-				 for (Customer customer : customerList) {			
+				 for (Customer customer : customerList) {
 						System.out.println("Nombre: "+customer.getNombreCompleto()+"; Edad: "+customer.getEdad()+ "; Nacionalidad: "+customer.getNacionalidad());
 					}
 				break;
+			case "/getClienteResponse":
+				Customer customer = (Customer)(mensajeVuelta.getSession().get("Usuario"));
+				new InfoUsuario(customer);
+				System.out.println("Usuario: "+customer.getUsuario());
+				break;
 			case "/addClienteResponse":
 				System.out.println("\nSe ha enviado");
-
 				if(mensajeVuelta.getComprobar()){
 					System.out.println("\nSe ha introducido adecuadamente en la base de datos");
 				}else System.out.println("\nNO se ha introducido adecuadamente en la base de datos");
-
 				break;
 			case "/updateClienteResponse":
 				System.out.println("\nSe ha actualizado");

@@ -21,13 +21,13 @@ import javax.swing.JTextField;
 
 
 public class Registro extends JFrame{
-    public static void main(String[] argv){
+    /*public static void main(String[] argv){
         
         String usuario = JOptionPane.showInputDialog("Introduzca su nombre de usuario");
         String contraseña = JOptionPane.showInputDialog("Introduzca su contraseña");
         new Registro(usuario,contraseña);
         
-     }
+     }*/
     private JPanel info = new JPanel(new GridLayout(6, 2));
     private JPanel registro = new JPanel((new FlowLayout()));
 
@@ -83,11 +83,6 @@ public class Registro extends JFrame{
                 //Hay que cambiar el orden o aquí o en la base de datos
                 dispose();
                 Customer perfil = new Customer(correo,descripcion,Integer.parseInt(edad),nacionalidad,nombreCompleto,Integer.parseInt(telefono),usuarioPerfil,contraseñaPerfil,0);
-
-                if (SocketServer.comprobacion(perfil)==null){
-                    new InfoUsuario(perfil);
-                }
-
 
                 Client client = new Client();
                 HashMap<String, Object> session = new HashMap<>();
