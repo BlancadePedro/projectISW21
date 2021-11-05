@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import icai.dtc.isw.domain.InfoUsuario;
+import icai.dtc.isw.domain.Restaurante;
 import org.apache.log4j.Logger;
 
 import icai.dtc.isw.configuration.PropertiesISW;
@@ -22,7 +23,7 @@ public class Client {
 	private int port;
 	final static Logger logger = Logger.getLogger(Client.class);
 
-	public void enviar(String contexto, HashMap<String, Object> session)  //Deja ser main para ejecutarse reiteradamente
+	public void enviar(String contexto, HashMap<String, Object> session)
 		{
 		//Configure connections
 		String host = PropertiesISW.getInstance().getProperty("host");
@@ -63,6 +64,13 @@ public class Client {
 				break;
 			case "/addClienteResponseError":
 				System.out.println("\nEl cliente ya está en la base de datos");
+				break;
+			case "/getRestaurantesResponse":
+				System.out.println("\nEstos son los restaurantes guardados en la base de datos");
+				ArrayList<Restaurante> restauranteList=(ArrayList<Restaurante>)(mensajeVuelta.getSession().get("restaurantes"));
+				for (Restaurante r : restauranteList) {
+					System.out.println("Nombre: "+r.getNombre()+"; Dirección: "+r.getDireccion()+ "; Horario: "+r.getHorario());
+				}
 				break;
 			default:
 				Logger.getRootLogger().info("Option not found");

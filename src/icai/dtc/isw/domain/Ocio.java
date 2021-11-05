@@ -1,5 +1,8 @@
 package icai.dtc.isw.domain;
-public class Ocio {
+
+import java.io.Serializable;
+
+public class Ocio implements Serializable {
     private String nombre;
     private String direccion;
 

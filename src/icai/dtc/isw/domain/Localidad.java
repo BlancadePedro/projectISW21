@@ -1,6 +1,8 @@
 package icai.dtc.isw.domain;
 
-public class Localidad {
+import java.io.Serializable;
+
+public class Localidad implements Serializable {
     private String nombre;
     private String direccion;
     private String horario;

@@ -12,7 +12,9 @@ import java.util.HashMap;
 
 import icai.dtc.isw.client.Client;
 import icai.dtc.isw.controler.CustomerControler;
+import icai.dtc.isw.dao.CustomerDAO;
 import icai.dtc.isw.domain.Customer;
+import icai.dtc.isw.domain.Restaurante;
 import icai.dtc.isw.message.Message;
 
 public class SocketServer extends Thread {
@@ -42,6 +44,7 @@ public class SocketServer extends Thread {
 
 			HashMap<String,Object> session=new HashMap<String, Object>();
 			CustomerControler customerControler=new CustomerControler();
+
 			ArrayList<Customer> lista=new ArrayList<Customer>();
 			Customer customer;
 
@@ -86,6 +89,22 @@ public class SocketServer extends Thread {
 					objectOutputStream.writeObject(mensajeOut);
 					break;
 
+				case "/getRestaurantes":
+					ArrayList<Restaurante> restaurantes = (ArrayList<Restaurante>)mensajeIn.getSession().get("restaurantes");
+					customerControler.getRestaurantes(restaurantes);
+					System.out.println("Prueba3: "+session.get("restaurantes"));
+					for (Restaurante r : restaurantes) {
+						System.out.println("Nombre: "+r.getNombre()+"; Dirección: "+r.getDireccion()+ "; Horario: "+r.getHorario()+"; Contacto: "+r.getContacto()+"; Tipo de comida: "+r.getTipoComida()+"; Precio: "+r.getPrecio());
+					}
+					mensajeOut=new Message();
+					mensajeOut.setContext("/getRestaurantesResponse");
+					session.put("restaurantes",restaurantes);
+					System.out.println("Prueba: "+(String)mensajeOut.getContext());
+					System.out.println("Prueba2: "+session.get("restaurantes"));
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+
 				default:
 		    		System.out.println("\nParámetro no encontrado");
 		    		break;
@@ -118,7 +137,7 @@ public class SocketServer extends Thread {
 			*/
 
 		} catch (IOException ex) {
-			System.out.println("Unable to get streams from client");
+			System.out.println("Unable to get streams from client"+ex.toString());
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

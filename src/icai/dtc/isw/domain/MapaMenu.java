@@ -1,11 +1,17 @@
 package icai.dtc.isw.domain;
 
+import icai.dtc.isw.client.Client;
+import icai.dtc.isw.controler.CustomerControler;
+import icai.dtc.isw.dao.CustomerDAO;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MapaMenu {
     //variables y comtenedores
@@ -119,13 +125,25 @@ public class MapaMenu {
         btnH.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 System.out.println("Ver hoteles");
+
+
             }
         });
         btnR.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Ver restaurantes");
+
+                ArrayList<Restaurante> lista = new ArrayList<>();
+                //CustomerDAO.getRestaurantes(lista);
+                /*for (Restaurante r : lista) {
+                    System.out.println("Nombre: "+r.getNombre()+"; Dirección: "+r.getDireccion()+ "; Horario: "+r.getHorario());
+                }*/
+                Client client = new Client();
+                HashMap<String, Object> session = new HashMap<String, Object>();
+                session.put("restaurantes",lista);
+                client.enviar("/getRestaurantes",session);
             }
         });
         btnE.addActionListener(new ActionListener() {
