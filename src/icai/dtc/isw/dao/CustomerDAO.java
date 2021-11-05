@@ -119,5 +119,48 @@ public class CustomerDAO {
 		}
 	}
 
+	public static void getMonumentos(ArrayList<Monumento> lista) {
+		Connection con = ConnectionDAO.getInstance().getConnection();
+		try (PreparedStatement pst = con.prepareStatement("SELECT * FROM monumento");
+			 ResultSet rs = pst.executeQuery()) {
 
+			while (rs.next()) {
+				lista.add(new Monumento(rs.getString(1), rs.getString(2)));
+			}
+
+		} catch (SQLException ex) {
+
+			System.out.println(ex.getMessage());
+		}
+	}
+
+	public static void getParques(ArrayList<Parque> lista) {
+		Connection con = ConnectionDAO.getInstance().getConnection();
+		try (PreparedStatement pst = con.prepareStatement("SELECT * FROM parque");
+			 ResultSet rs = pst.executeQuery()) {
+
+			while (rs.next()) {
+				lista.add(new Parque(rs.getString(1), rs.getString(2), rs.getString(3)));
+			}
+
+		} catch (SQLException ex) {
+
+			System.out.println(ex.getMessage());
+		}
+	}
+
+	public static void getEventos(ArrayList<Evento> lista) {
+		Connection con = ConnectionDAO.getInstance().getConnection();
+		try (PreparedStatement pst = con.prepareStatement("SELECT * FROM evento");
+			 ResultSet rs = pst.executeQuery()) {
+
+			while (rs.next()) {
+				lista.add(new Evento(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+			}
+
+		} catch (SQLException ex) {
+
+			System.out.println(ex.getMessage());
+		}
+	}
 }

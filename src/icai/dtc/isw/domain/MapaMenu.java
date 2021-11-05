@@ -126,7 +126,12 @@ public class MapaMenu {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                System.out.println("Ver hoteles");
+                ArrayList<Hotel> listaH= new ArrayList<>();
+
+                Client client = new Client();
+                HashMap<String, Object> session = new HashMap<String, Object>();
+                session.put("hotel",listaH);
+                client.enviar("/getHoteles",session);
 
 
             }
@@ -135,39 +140,59 @@ public class MapaMenu {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                ArrayList<Restaurante> lista = new ArrayList<>();
-                //CustomerDAO.getRestaurantes(lista);
-                /*for (Restaurante r : lista) {
-                    System.out.println("Nombre: "+r.getNombre()+"; Dirección: "+r.getDireccion()+ "; Horario: "+r.getHorario());
-                }*/
+                ArrayList<Restaurante> listaR = new ArrayList<>();
+
                 Client client = new Client();
                 HashMap<String, Object> session = new HashMap<String, Object>();
-                session.put("restaurantes",lista);
+                session.put("restaurantes",listaR);
                 client.enviar("/getRestaurantes",session);
             }
         });
         btnE.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Ver eventos");
+
+                ArrayList<Evento> listaE= new ArrayList<>();
+
+                Client client = new Client();
+                HashMap<String, Object> session = new HashMap<String, Object>();
+                session.put("eventos",listaE);
+                client.enviar("/getEventos",session);
             }
         });
         btnM.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Ver monumentos");
+
+                ArrayList<Monumento> listaM= new ArrayList<>();
+
+                Client client = new Client();
+                HashMap<String, Object> session = new HashMap<String, Object>();
+                session.put("monumento",listaM);
+                client.enviar("/getMonumentos",session);
             }
         });
         btnMu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Ver museos");
+
+                ArrayList<Museo> listaM= new ArrayList<>();
+
+                Client client = new Client();
+                HashMap<String, Object> session = new HashMap<String, Object>();
+                session.put("museo",listaM);
+                client.enviar("/getMuseos",session);
             }
         });
         btnP.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Ver parques");
+                ArrayList<Parque> listaP= new ArrayList<>();
+
+                Client client = new Client();
+                HashMap<String, Object> session = new HashMap<String, Object>();
+                session.put("parques",listaP);
+                client.enviar("/getParques",session);
             }
         });
         btnPe.addActionListener(new ActionListener() {

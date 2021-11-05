@@ -10,12 +10,10 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import icai.dtc.isw.domain.InfoUsuario;
-import icai.dtc.isw.domain.Restaurante;
+import icai.dtc.isw.domain.*;
 import org.apache.log4j.Logger;
 
 import icai.dtc.isw.configuration.PropertiesISW;
-import icai.dtc.isw.domain.Customer;
 import icai.dtc.isw.message.Message;
 
 public class Client {
@@ -70,6 +68,41 @@ public class Client {
 				ArrayList<Restaurante> restauranteList=(ArrayList<Restaurante>)(mensajeVuelta.getSession().get("restaurantes"));
 				for (Restaurante r : restauranteList) {
 					System.out.println("Nombre: "+r.getNombre()+"; Dirección: "+r.getDireccion()+ "; Horario: "+r.getHorario());
+				}
+				break;
+			case "/getHotelesResponse":
+				System.out.println("\nEstos son los hoteles guardados en la base de datos");
+				ArrayList<Hotel> hotelList=(ArrayList<Hotel>)(mensajeVuelta.getSession().get("hotel"));
+				for (Hotel h : hotelList) {
+					System.out.println("Nombre: "+h.getNombre()+"; Dirección: "+h.getDireccion()+ "; Horario: "+h.getHorario());
+				}
+				break;
+			case "/getMuseosResponse":
+				System.out.println("\nEstos son los museos guardados en la base de datos");
+				ArrayList<Museo> museoList=(ArrayList<Museo>)(mensajeVuelta.getSession().get("museo"));
+				for (Museo m : museoList) {
+					System.out.println("Nombre: "+m.getNombre()+"; Dirección: "+m.getDireccion()+ "; Horario: "+m.getHorario());
+				}
+				break;
+			case "/getMonumentosResponse":
+				System.out.println("\nEstos son los monumentos guardados en la base de datos");
+				ArrayList<Monumento> monumentoList=(ArrayList<Monumento>)(mensajeVuelta.getSession().get("monumento"));
+				for (Monumento m : monumentoList) {
+					System.out.println("Nombre: "+m.getNombre()+"; Dirección: "+m.getDireccion());
+				}
+				break;
+			case "/getEventosResponse":
+				System.out.println("\nEstos son los hoteles eventos en la base de datos");
+				ArrayList<Evento> eventosList=(ArrayList<Evento>)(mensajeVuelta.getSession().get("eventos"));
+				for (Evento e : eventosList) {
+					System.out.println("Nombre: "+e.getNombre()+"; Dirección: "+e.getDireccion());
+				}
+				break;
+			case "/getParquesResponse":
+				System.out.println("\nEstos son los parques guardados en la base de datos");
+				ArrayList<Parque> parqueList=(ArrayList<Parque>)(mensajeVuelta.getSession().get("parques"));
+				for (Parque p : parqueList) {
+					System.out.println("Nombre: "+p.getNombre()+"; Dirección: "+p.getDireccion());
 				}
 				break;
 			default:

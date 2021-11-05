@@ -35,7 +35,7 @@ public class Mapa extends JFrame {
         Museo museo = new Museo("nombre", "direccion", "horario", "contacto", "precio","tipoMuseo");
         Evento evento = new Evento("nombre", "direccion", "precio", "autor", "celebracion", "fecha");
         Monumento monumento = new Monumento("nombre", "direccion");
-        Parque parque = new Parque("nombre", "direccion");
+        Parque parque = new Parque("nombre", "direccion","horario");
 
         //botonesMapa(museo, pnlMapa,250,100);
         this.add(pnlMapa);

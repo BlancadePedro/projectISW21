@@ -13,9 +13,10 @@ import java.util.HashMap;
 import icai.dtc.isw.client.Client;
 import icai.dtc.isw.controler.CustomerControler;
 import icai.dtc.isw.dao.CustomerDAO;
-import icai.dtc.isw.domain.Customer;
-import icai.dtc.isw.domain.Restaurante;
+import icai.dtc.isw.domain.*;
 import icai.dtc.isw.message.Message;
+
+import javax.print.MultiDocPrintService;
 
 public class SocketServer extends Thread {
 	public static final int PORT_NUMBER = 8081;
@@ -92,19 +93,57 @@ public class SocketServer extends Thread {
 				case "/getRestaurantes":
 					ArrayList<Restaurante> restaurantes = (ArrayList<Restaurante>)mensajeIn.getSession().get("restaurantes");
 					customerControler.getRestaurantes(restaurantes);
-					System.out.println("Prueba3: "+session.get("restaurantes"));
-					for (Restaurante r : restaurantes) {
-						System.out.println("Nombre: "+r.getNombre()+"; Dirección: "+r.getDireccion()+ "; Horario: "+r.getHorario()+"; Contacto: "+r.getContacto()+"; Tipo de comida: "+r.getTipoComida()+"; Precio: "+r.getPrecio());
-					}
 					mensajeOut=new Message();
 					mensajeOut.setContext("/getRestaurantesResponse");
 					session.put("restaurantes",restaurantes);
-					System.out.println("Prueba: "+(String)mensajeOut.getContext());
-					System.out.println("Prueba2: "+session.get("restaurantes"));
 					mensajeOut.setSession(session);
 					objectOutputStream.writeObject(mensajeOut);
 					break;
-
+				case "/getHoteles":
+					ArrayList<Hotel> hoteles = (ArrayList<Hotel>)mensajeIn.getSession().get("hotel");
+					customerControler.getHoteles(hoteles);
+					mensajeOut=new Message();
+					mensajeOut.setContext("/getHotelesResponse");
+					session.put("hotel",hoteles);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/getMuseos":
+					ArrayList<Museo> museos = (ArrayList<Museo>)mensajeIn.getSession().get("museo");
+					customerControler.getMuseos(museos);
+					mensajeOut=new Message();
+					mensajeOut.setContext("/getMuseosResponse");
+					session.put("museo",museos);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/getMonumentos":
+					ArrayList<Monumento> monumentos = (ArrayList<Monumento>)mensajeIn.getSession().get("monumento");
+					customerControler.getMonumentos(monumentos);
+					mensajeOut=new Message();
+					mensajeOut.setContext("/getMonumentosResponse");
+					session.put("monumento",monumentos);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/getEventos":
+					ArrayList<Evento> eventos = (ArrayList<Evento>)mensajeIn.getSession().get("eventos");
+					customerControler.getEventos(eventos);
+					mensajeOut=new Message();
+					mensajeOut.setContext("/getEventosResponse");
+					session.put("eventos",eventos);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/getParques":
+					ArrayList<Parque> parques = (ArrayList<Parque>)mensajeIn.getSession().get("parques");
+					customerControler.getParques(parques);
+					mensajeOut=new Message();
+					mensajeOut.setContext("/getParquesResponse");
+					session.put("parques",parques);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
 				default:
 		    		System.out.println("\nParámetro no encontrado");
 		    		break;

@@ -18,16 +18,20 @@ public class CustomerControler {
 	public void updateCliente(Customer perfil,int foto){CustomerDAO.cambiarFoto(foto, perfil);}
 
 	//Relacionado con las localidades
-	public  void getRestaurantes(ArrayList<Restaurante> lista) {
-		System.out.println("Se ha creado la lista");
-		CustomerDAO.getRestaurantes(lista);
-	}
-
+	public  void getRestaurantes(ArrayList<Restaurante> lista) {CustomerDAO.getRestaurantes(lista);}
 	public void getHoteles(ArrayList<Hotel> lista) {
 		CustomerDAO.getHoteles(lista);
 	}
 	public void getMuseos(ArrayList<Museo> lista) {
 		CustomerDAO.getMuseos(lista);
+	}
+	//Relacionado ocio
+	public  void getMonumentos(ArrayList<Monumento> lista) {CustomerDAO.getMonumentos(lista);}
+	public void getParques(ArrayList<Parque> lista) {
+		CustomerDAO.getParques(lista);
+	}
+	public void getEventos(ArrayList<Evento> lista) {
+		CustomerDAO.getEventos(lista);
 	}
 
 }
