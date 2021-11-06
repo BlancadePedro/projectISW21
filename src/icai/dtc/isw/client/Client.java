@@ -36,7 +36,7 @@ public class Client {
 		mensajeEnvio.setSession(session);
 		mensajeEnvio.setContext(contexto);
 		cliente.sent(mensajeEnvio,mensajeVuelta);
-		
+		Customer perfil = (Customer)(mensajeVuelta.getSession().get("perfil"));
 		
 		switch (mensajeVuelta.getContext()) {
 
@@ -48,7 +48,7 @@ public class Client {
 				break;
 			case "/getClienteResponse":
 				Customer customer = (Customer)(mensajeVuelta.getSession().get("Usuario"));
-				new InfoUsuario(customer);
+				new MapaMenu(customer);
 				System.out.println("Usuario: "+customer.getUsuario());
 				break;
 			case "/addClienteResponse":
@@ -66,44 +66,32 @@ public class Client {
 			case "/getRestaurantesResponse":
 				System.out.println("\nEstos son los restaurantes guardados en la base de datos");
 				ArrayList<Restaurante> restauranteList=(ArrayList<Restaurante>)(mensajeVuelta.getSession().get("restaurantes"));
-				for (Restaurante r : restauranteList) {
-					System.out.println("Nombre: "+r.getNombre()+"; Dirección: "+r.getDireccion()+ "; Horario: "+r.getHorario());
-				}
+				new PnlRestaurantes(restauranteList,perfil);
 				break;
 			case "/getHotelesResponse":
 				System.out.println("\nEstos son los hoteles guardados en la base de datos");
 				ArrayList<Hotel> hotelList=(ArrayList<Hotel>)(mensajeVuelta.getSession().get("hotel"));
-				for (Hotel h : hotelList) {
-					System.out.println("Nombre: "+h.getNombre()+"; Dirección: "+h.getDireccion()+ "; Horario: "+h.getHorario());
-				}
+				new PnlHoteles(hotelList,perfil);
 				break;
 			case "/getMuseosResponse":
 				System.out.println("\nEstos son los museos guardados en la base de datos");
 				ArrayList<Museo> museoList=(ArrayList<Museo>)(mensajeVuelta.getSession().get("museo"));
-				for (Museo m : museoList) {
-					System.out.println("Nombre: "+m.getNombre()+"; Dirección: "+m.getDireccion()+ "; Horario: "+m.getHorario());
-				}
+				new PnlMuseos(museoList,perfil);
 				break;
 			case "/getMonumentosResponse":
 				System.out.println("\nEstos son los monumentos guardados en la base de datos");
 				ArrayList<Monumento> monumentoList=(ArrayList<Monumento>)(mensajeVuelta.getSession().get("monumento"));
-				for (Monumento m : monumentoList) {
-					System.out.println("Nombre: "+m.getNombre()+"; Dirección: "+m.getDireccion());
-				}
+				new PnlMonumentos(monumentoList,perfil);
 				break;
 			case "/getEventosResponse":
 				System.out.println("\nEstos son los hoteles eventos en la base de datos");
 				ArrayList<Evento> eventosList=(ArrayList<Evento>)(mensajeVuelta.getSession().get("eventos"));
-				for (Evento e : eventosList) {
-					System.out.println("Nombre: "+e.getNombre()+"; Dirección: "+e.getDireccion());
-				}
+				new PnlEventos(eventosList,perfil);
 				break;
 			case "/getParquesResponse":
 				System.out.println("\nEstos son los parques guardados en la base de datos");
 				ArrayList<Parque> parqueList=(ArrayList<Parque>)(mensajeVuelta.getSession().get("parques"));
-				for (Parque p : parqueList) {
-					System.out.println("Nombre: "+p.getNombre()+"; Dirección: "+p.getDireccion());
-				}
+				new PnlParques(parqueList,perfil);
 				break;
 			default:
 				Logger.getRootLogger().info("Option not found");

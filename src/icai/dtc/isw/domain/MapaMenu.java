@@ -13,70 +13,19 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MapaMenu {
+public class MapaMenu extends JFrame{
     //variables y comtenedores
     private JLabel etiquetaSu;
-    private JPanel pnlIzquierdo, pnlDerecho, pnlCentral;
+    private JPanel pnlCentral, pnlSuperior;
+    private JButton btnH, btnR, btnE, btnM, btnMu, btnP;
+    private JComboBox<String> opciones;
     private JButton btnIz1, btnIz2, btnIz3, btnIz4, btnIz5;
-    private JButton btnH, btnR, btnE, btnM, btnMu, btnP, btnPe;
+    private JButton btnPerfil;
     private JButton    btnIn1, btnIn2;
     private JScrollPane scroll;
 
-    public void contruyepnlIzquierdo(){
-        pnlIzquierdo = new JPanel();
-        btnIz1=new JButton("General");
-        btnIz2=new JButton("Zona norte");
-        btnIz3=new JButton("Zona sur");
-        btnIz4=new JButton("Zona este");
-        btnIz5=new JButton("Zona oeste");
-        pnlIzquierdo.setLayout(new BoxLayout(pnlIzquierdo,BoxLayout.Y_AXIS));
-        //pnlIzquierdo.setBackground(Color.red);
-        pnlIzquierdo.add(Box.createVerticalStrut(40));
-        pnlIzquierdo.add(btnIz1);
-        pnlIzquierdo.add(Box.createVerticalStrut(40));
-        pnlIzquierdo.add(btnIz2);
-        pnlIzquierdo.add(Box.createVerticalStrut(40));
-        pnlIzquierdo.add(btnIz3);
-        pnlIzquierdo.add(Box.createVerticalStrut(40));
-        pnlIzquierdo.add(btnIz4);
-        pnlIzquierdo.add(Box.createVerticalStrut(40));
-        pnlIzquierdo.add(btnIz5);
-        ImageIcon icon = new ImageIcon("./src/icai/dtc/isw/resources/FotosMapa/Restaurantes.PNG");
-        JLabel label = new JLabel(icon);
-        label.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent me) {
-                System.out.println("CLICKED");
-            }
-        });
-        pnlIzquierdo.add(label);
-    }
 
-    public void contruyepnlDerecho(){
-        pnlDerecho = new JPanel();
-        btnH = new JButton("Hoteles");
-        btnR = new JButton("Restaurantes");
-        btnE = new JButton("Eventos");
-        btnM = new JButton("Monumentos");
-        btnMu = new JButton("Museos");
-        btnP = new JButton("Parques");
-        btnPe = new JButton("Mi perfil");
-        pnlDerecho.setLayout(new BoxLayout(pnlDerecho,BoxLayout.Y_AXIS));
-        //pnlDerecho.setBackground(Color.blue);
-        pnlDerecho.add(Box.createVerticalStrut(20));
-        pnlDerecho.add(btnH);
-        pnlDerecho.add(Box.createVerticalStrut(40));
-        pnlDerecho.add(btnR);
-        pnlDerecho.add(Box.createVerticalStrut(40));
-        pnlDerecho.add(btnE);
-        pnlDerecho.add(Box.createVerticalStrut(40));
-        pnlDerecho.add(btnM);
-        pnlDerecho.add(Box.createVerticalStrut(40));
-        pnlDerecho.add(btnMu);
-        pnlDerecho.add(Box.createVerticalStrut(40));
-        pnlDerecho.add(btnP);
-        pnlDerecho.add(Box.createVerticalStrut(350));
-        pnlDerecho.add(btnPe);
-    }
+
 
     public void contruyepnlCentral(){
         pnlCentral = new JPanel();
@@ -85,42 +34,61 @@ public class MapaMenu {
         pnlCentral.add(label1);
     }
 
-    /*public void contruyepnlInferior(){
-        pnlInferior = new JPanel();
-        btnIn1=new JButton("Aceptar");
-        btnIn2=new JButton("Cancelar");
-        pnlInferior.setLayout(new FlowLayout());
-        pnlInferior.setBackground(Color.green);
-        pnlInferior.add(btnIn1);
-        pnlInferior.add(btnIn2);
-    }*/
+    public void contruyepnlSuperior(Customer customer){
+        pnlSuperior = new JPanel(new FlowLayout());
+        opciones= new JComboBox<String>();
 
-    public void contruyeVentana(){
-        JFrame frame = new JFrame("Mapa del centro de Madrid");
-        //scroll = new JScrollPane(new JTextArea("JTextArea",10,15));
-        etiquetaSu = new JLabel("Para ver más información sobre cada categoría haga click en los botones junto al mapa");
+        etiquetaSu = new JLabel("Para ver más información haga click en el mapa");
         Font aux=etiquetaSu.getFont();
         etiquetaSu.setFont(new Font(aux.getFontName(), aux.getStyle(), 16));
-        frame.setLayout(new BorderLayout());
 
-        //agregamos los pnles al frame principal
-        frame.add(etiquetaSu,BorderLayout.NORTH);
-        frame.add(pnlCentral, BorderLayout.CENTER);
-        //frame.add(pnlIzquierdo,BorderLayout.WEST);
-        frame.add(pnlDerecho,BorderLayout.EAST);
-        //frame.add(pnlInferior,BorderLayout.SOUTH);
-        //Configuramos el frame
-        frame.pack();
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    }
+        btnH = new JButton("Hoteles");
+        btnR = new JButton("Restaurantes");
+        btnE = new JButton("Eventos");
+        btnM = new JButton("Monumentos");
+        btnMu = new JButton("Museos");
+        btnP = new JButton("Parques");
 
-    public MapaMenu(){
-        //contruyepnlInferior();
-        //contruyepnlIzquierdo();
-        contruyepnlDerecho();
-        contruyepnlCentral();
-        contruyeVentana();
+        opciones.addItem("INFO");
+        opciones.addItem("Mi perfil");
+        opciones.addItem("Mi Agenda");
+        opciones.addItem("Mi Chat");
+        opciones.addItem("Mis favoritos");
+        opciones.addItem("Información importante");
+        opciones.addItem("Cerrar sesión");
+
+
+        opciones.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                String opcion = (String)opciones.getSelectedItem();
+                if(opcion!=null){
+                    if(opcion.equals("Mi perfil")){
+
+                        new InfoUsuario(customer);
+                        dispose();
+                    }
+                    if(opcion.equals("Mi Agenda")){
+                        new Agenda(customer);
+                        dispose();
+                    }
+                    if(opcion.equals("Información importante")){
+                        System.out.println("En proceso");
+                    }
+                    if(opcion.equals("Mi Chat")){
+                        System.out.println("En proceso");
+                    }
+                    if(opcion.equals("Mis favoritos")){
+                        System.out.println("En proceso");
+                    }
+                    if(opcion.equals("Cerrar sesión")){
+                        dispose();
+                    }
+
+                }
+            }
+        });
+
 
         btnH.addActionListener(new ActionListener() {
             @Override
@@ -131,8 +99,8 @@ public class MapaMenu {
                 Client client = new Client();
                 HashMap<String, Object> session = new HashMap<String, Object>();
                 session.put("hotel",listaH);
+                session.put("perfil",customer);
                 client.enviar("/getHoteles",session);
-
 
             }
         });
@@ -145,7 +113,9 @@ public class MapaMenu {
                 Client client = new Client();
                 HashMap<String, Object> session = new HashMap<String, Object>();
                 session.put("restaurantes",listaR);
+                session.put("perfil",customer);
                 client.enviar("/getRestaurantes",session);
+
             }
         });
         btnE.addActionListener(new ActionListener() {
@@ -157,7 +127,9 @@ public class MapaMenu {
                 Client client = new Client();
                 HashMap<String, Object> session = new HashMap<String, Object>();
                 session.put("eventos",listaE);
+                session.put("perfil",customer);
                 client.enviar("/getEventos",session);
+
             }
         });
         btnM.addActionListener(new ActionListener() {
@@ -169,7 +141,9 @@ public class MapaMenu {
                 Client client = new Client();
                 HashMap<String, Object> session = new HashMap<String, Object>();
                 session.put("monumento",listaM);
+                session.put("perfil",customer);
                 client.enviar("/getMonumentos",session);
+
             }
         });
         btnMu.addActionListener(new ActionListener() {
@@ -181,7 +155,9 @@ public class MapaMenu {
                 Client client = new Client();
                 HashMap<String, Object> session = new HashMap<String, Object>();
                 session.put("museo",listaM);
+                session.put("perfil",customer);
                 client.enviar("/getMuseos",session);
+
             }
         });
         btnP.addActionListener(new ActionListener() {
@@ -192,19 +168,40 @@ public class MapaMenu {
                 Client client = new Client();
                 HashMap<String, Object> session = new HashMap<String, Object>();
                 session.put("parques",listaP);
+                session.put("perfil",customer);
                 client.enviar("/getParques",session);
             }
         });
-        btnPe.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Ver mi perfil");
-                //InfoUsuario iu = new InfoUsuario();
-            }
-        });
+
+        pnlSuperior.add(opciones);
+        pnlSuperior.add(btnH);
+        pnlSuperior.add(btnR);
+        pnlSuperior.add(btnE);
+        pnlSuperior.add(btnM);
+        pnlSuperior.add(btnMu);
+        pnlSuperior.add(btnP);
+
+    }
+
+
+    public MapaMenu(Customer customer){
+
+        contruyepnlCentral();
+        contruyepnlSuperior(customer);
+        //contruyeVentana();
+
+        this.add(pnlSuperior,BorderLayout.NORTH);
+        this.add(pnlCentral, BorderLayout.CENTER);
+
+        //Configuramos el frame
+        this.pack();
+        this.setVisible(true);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
     }
 
     public static void main (String [] inforux){
-        new MapaMenu();
+        Customer prueba = new Customer(null, null, 0, null, null, 0, "usuario", "contraseña", 0);
+        new MapaMenu(prueba);
     }
 }

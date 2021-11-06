@@ -37,6 +37,7 @@ public class InfoUsuario extends JFrame
     private JLabel lblCorreo = new JLabel();
     private JLabel lblTelefono = new JLabel();
     private JLabel foto = new JLabel();
+    private JButton btnVolver = new JButton("Volver menú principal");
     private JComboBox<String> opcionesFotos = new JComboBox<>();
 
     public InfoUsuario(Customer perfil){
@@ -67,6 +68,7 @@ public class InfoUsuario extends JFrame
 
         opcionesFotos();
         pnlfoto.add(opcionesFotos, BorderLayout.NORTH);
+        pnlfoto.add(btnVolver, BorderLayout.SOUTH);
 
         Image imagen = new ImageIcon("./src/icai/dtc/isw/resources/FotosPerfil/perfil"+perfil.getFoto()+".PNG").getImage();
         ImageIcon icono = new ImageIcon(imagen.getScaledInstance(250, 250 , Image.SCALE_SMOOTH));
@@ -96,6 +98,18 @@ public class InfoUsuario extends JFrame
 
             }
         });
+
+        btnVolver.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+                new MapaMenu(perfil);
+                dispose();
+
+            }
+        });
+
         this.add(pnlfoto,BorderLayout.WEST);
         this.add(info,BorderLayout.EAST);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
