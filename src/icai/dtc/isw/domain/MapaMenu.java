@@ -82,6 +82,7 @@ public class MapaMenu extends JFrame{
                         System.out.println("En proceso");
                     }
                     if(opcion.equals("Cerrar sesión")){
+                        JOptionPane.showMessageDialog(null,"Adios, vuelva pronto!");
                         dispose();
                     }
 
@@ -200,8 +201,8 @@ public class MapaMenu extends JFrame{
 
     }
 
-    public static void main (String [] inforux){
+    /*public static void main (String [] inforux){
         Customer prueba = new Customer(null, null, 0, null, null, 0, "usuario", "contraseña", 0);
         new MapaMenu(prueba);
-    }
+    }*/
 }

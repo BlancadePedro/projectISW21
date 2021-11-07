@@ -74,6 +74,8 @@ public class SocketServer extends Thread {
 					if(comprobacion(customer)==null){
 						customerControler.addCliente(customer);
 						mensajeOut.setContext("/addClienteResponse");
+						session.put("id",customer);
+						mensajeOut.setSession(session);
 						if(comprobacion(customer)!=null){
 							mensajeOut.setComprobar(true);
 						}

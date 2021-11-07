@@ -128,7 +128,6 @@ public class Agenda extends JFrame{
     }
 
     public void construyeVentana() {
-        //JFrame frame = new JFrame("Mi agenda");
         this.setLayout(new BorderLayout());
 
         //agregamos el panel al frame principal
