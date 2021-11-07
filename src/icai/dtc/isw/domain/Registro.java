@@ -82,12 +82,19 @@ public class Registro extends JFrame{
                 contraseñaPerfil = contraseña;
                 //Hay que cambiar el orden o aquí o en la base de datos
                 dispose();
-                Customer perfil = new Customer(correo,descripcion,Integer.parseInt(edad),nacionalidad,nombreCompleto,Integer.parseInt(telefono),usuarioPerfil,contraseñaPerfil,0);
+                try{
+                    Customer perfil = new Customer(correo,descripcion,Integer.parseInt(edad),nacionalidad,nombreCompleto,Integer.parseInt(telefono),usuarioPerfil,contraseñaPerfil,0);
 
-                Client client = new Client();
-                HashMap<String, Object> session = new HashMap<>();
-                session.put("id",perfil);
-                client.enviar("/altaUsuario",session);
+                    Client client = new Client();
+                    HashMap<String, Object> session = new HashMap<>();
+                    session.put("id",perfil);
+                    client.enviar("/altaUsuario",session);
+                }catch(NumberFormatException ex){
+                    JOptionPane.showMessageDialog(null,"Ha habido un problema,vuelva a introducir los datos");
+                    new Registro(usuario, contraseña);
+
+                }
+
             }
 
         });

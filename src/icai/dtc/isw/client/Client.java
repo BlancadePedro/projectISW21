@@ -53,12 +53,15 @@ public class Client {
 				break;
 			case "/addClienteResponse":
 				System.out.println("\nSe ha enviado");
+				Customer customerNuevo = (Customer)(mensajeVuelta.getSession().get("id"));
+				new MapaMenu(customerNuevo);
 				if(mensajeVuelta.getComprobar()){
 					System.out.println("\nSe ha introducido adecuadamente en la base de datos");
 				}else System.out.println("\nNO se ha introducido adecuadamente en la base de datos");
 				break;
 			case "/updateClienteResponse":
 				System.out.println("\nSe ha actualizado");
+
 				break;
 			case "/addClienteResponseError":
 				System.out.println("\nEl cliente ya está en la base de datos");
