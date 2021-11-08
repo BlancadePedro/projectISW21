@@ -1,0 +1,20 @@
+package icai.dtc.isw.domain.localidad;
+
+import icai.dtc.isw.domain.localidad.Localidad;
+
+public class Restaurante extends Localidad {
+    private String tipoComida;
+    
+
+    public Restaurante(String nombre, String direccion, String horario, String contacto, String precio, String tipoComida)  {
+        super(nombre, direccion, horario, contacto, precio);
+        this.tipoComida = tipoComida;
+
+    }
+    public String getTipoComida() {
+        return tipoComida;
+    }
+    public void setTipoComida(String tipoComida) {
+        this.tipoComida = tipoComida;
+    }
+}
