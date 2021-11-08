@@ -348,6 +348,7 @@ public class MapaMenu extends JFrame{
         //Configuramos el frame
         this.pack();
         this.setResizable(false);
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
