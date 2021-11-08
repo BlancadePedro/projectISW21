@@ -20,9 +20,9 @@ public class MapaMenu extends JFrame{
     private JPanel pnlCentral, pnlSuperior;
     private JButton btnH, btnR, btnE, btnM, btnMu, btnP;
     private JComboBox<String> opciones;
-    private JButton btnChueca, btnCondeDuque, btnMalasana, btnSalamanca, btnSalesas, btnLetras;
+    private JButton btnChueca, btnCondeDuque, btnMalasana, btnSalamanca, btnSalesas, btnLetras, btnLavaPies;
     private JButton btnAustrias, btnSol, btnPaseoArte, btnRetiro, btnMoncloa, btnLatina;
-    private JButton    btnIn1, btnIn2;
+    private JButton btnIn1, btnIn2;
     private JScrollPane scroll;
 
 
@@ -96,7 +96,7 @@ public class MapaMenu extends JFrame{
 
         btnLetras = new JButton("LETRAS");
         btnLetras.setBackground(new Color(186,121,93));
-        btnLetras.setBounds(840, 640, 100, size.height);
+        btnLetras.setBounds(840, 645, 100, size.height);
         c.add(btnLetras);
         btnLetras.addActionListener(new ActionListener() {
             @Override
@@ -162,12 +162,23 @@ public class MapaMenu extends JFrame{
 
         btnLatina = new JButton("LA LATINA");
         btnLatina.setBackground(new Color(220,90,120));
-        btnLatina.setBounds(270, 725, 110, size.height);
+        btnLatina.setBounds(260, 760, 110, size.height);
         c.add(btnLatina);
         btnLatina.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Ver barrio La Latina");
+            }
+        });
+
+        btnLavaPies = new JButton("LAVAPIÉS");
+        btnLavaPies.setBackground(new Color(220,250,120));
+        btnLavaPies.setBounds(730, 800, 110, size.height);
+        c.add(btnLavaPies);
+        btnLavaPies.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Ver barrio Lavapiés");
             }
         });
 
