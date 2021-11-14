@@ -148,6 +148,132 @@ public class SocketServer extends Thread {
 					mensajeOut.setSession(session);
 					objectOutputStream.writeObject(mensajeOut);
 					break;
+				case "/addFavorito":
+					customer = (Customer)mensajeIn.getSession().get("id");
+					Object lugar = (Object)mensajeIn.getSession().get("lugar");
+					customerControler.addFavorito(lugar,customer);
+					mensajeOut.setContext("/addFavoritoResponse");
+					session.put("id",customer);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/getAustrias":
+					ArrayList<Object> austrias = (ArrayList<Object>)mensajeIn.getSession().get("austrias");
+					customerControler.getAustrias(austrias);
+					mensajeOut=new Message();
+					mensajeOut.setContext("/getAustriasResponse");
+					session.put("austrias",austrias);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/getChueca":
+					ArrayList<Object> chueca = (ArrayList<Object>)mensajeIn.getSession().get("chueca");
+					customerControler.getChueca(chueca);
+					mensajeOut=new Message();
+					mensajeOut.setContext("/getChuecaResponse");
+					session.put("chueca",chueca);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/getCondeDuque":
+					ArrayList<Object> conde = (ArrayList<Object>)mensajeIn.getSession().get("conde");
+					customerControler.getCondeDuque(conde);
+					mensajeOut=new Message();
+					mensajeOut.setContext("/getCondeDuqueResponse");
+					session.put("conde",conde);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/getLatina":
+					ArrayList<Object> latina = (ArrayList<Object>)mensajeIn.getSession().get("latina");
+					customerControler.getLatina(latina);
+					mensajeOut=new Message();
+					mensajeOut.setContext("/getLatinaResponse");
+					session.put("latina",latina);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/getLavapies":
+					ArrayList<Object> lavapies = (ArrayList<Object>)mensajeIn.getSession().get("lavapies");
+					customerControler.getLavapies(lavapies);
+					mensajeOut=new Message();
+					mensajeOut.setContext("/getLavapiesResponse");
+					session.put("lavapies",lavapies);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/getLetras":
+					ArrayList<Object> letras = (ArrayList<Object>)mensajeIn.getSession().get("letras");
+					customerControler.getLetras(letras);
+					mensajeOut=new Message();
+					mensajeOut.setContext("/getLetrasResponse");
+					session.put("letras",letras);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/getMalasana":
+					ArrayList<Object> malasana = (ArrayList<Object>)mensajeIn.getSession().get("malasana");
+					customerControler.getMalasana(malasana);
+					mensajeOut=new Message();
+					mensajeOut.setContext("/getMalasanaResponse");
+					session.put("malasana",malasana);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/getMoncloa":
+					ArrayList<Object> moncloa = (ArrayList<Object>)mensajeIn.getSession().get("moncloa");
+					customerControler.getMoncloa(moncloa);
+					mensajeOut=new Message();
+					mensajeOut.setContext("/getMoncloaResponse");
+					session.put("moncloa",moncloa);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/getPaseoArte":
+					ArrayList<Object> paseo = (ArrayList<Object>)mensajeIn.getSession().get("paseo");
+					customerControler.getPaseoArte(paseo);
+					mensajeOut=new Message();
+					mensajeOut.setContext("/getPaseoArteResponse");
+					session.put("paseo",paseo);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/getRetiro":
+					ArrayList<Object> retiro = (ArrayList<Object>)mensajeIn.getSession().get("retiro");
+					customerControler.getRetiro(retiro);
+					mensajeOut=new Message();
+					mensajeOut.setContext("/getRetiroResponse");
+					session.put("retiro",retiro);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/getSalamanca":
+					ArrayList<Object> salamanca = (ArrayList<Object>)mensajeIn.getSession().get("salamanca");
+					customerControler.getSalamanca(salamanca);
+					mensajeOut=new Message();
+					mensajeOut.setContext("/getSalamancaResponse");
+					session.put("salamanca",salamanca);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/getSalesas":
+					ArrayList<Object> salesas = (ArrayList<Object>)mensajeIn.getSession().get("salesas");
+					customerControler.getMalasana(salesas);
+					mensajeOut=new Message();
+					mensajeOut.setContext("/getSalesasResponse");
+					session.put("salesas",salesas);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/getSol":
+					ArrayList<Object> sol = (ArrayList<Object>)mensajeIn.getSession().get("sol");
+					customerControler.getSol(sol);
+					mensajeOut=new Message();
+					mensajeOut.setContext("/getSolResponse");
+					session.put("sol",sol);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
 				default:
 		    		System.out.println("\nParámetro no encontrado");
 		    		break;

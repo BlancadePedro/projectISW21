@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MapaMenu extends JFrame{
+    private static Customer customer;
     //variables y comtenedores
     private JLabel etiquetaSu;
     private JPanel pnlCentral, pnlSuperior;
@@ -24,17 +25,10 @@ public class MapaMenu extends JFrame{
     private JComboBox<String> opciones;
     private JButton btnChueca, btnCondeDuque, btnMalasana, btnSalamanca, btnSalesas, btnLetras, btnLavaPies;
     private JButton btnAustrias, btnSol, btnPaseoArte, btnRetiro, btnMoncloa, btnLatina;
-    private JButton btnIn1, btnIn2;
-    private JScrollPane scroll;
 
-
-
-
-    public void contruyepnlCentral(){
+    public void contruyepnlCentral(Customer customer){
         pnlCentral = new JPanel();
-        ImageIcon image1 = new ImageIcon("./src/icai/dtc/isw/resources/FotosMapa/madridcentro.jpg", null);
-        /*JLabel label1 = new JLabel(image1, JLabel.LEFT);
-        pnlCentral.add(label1);*/
+        ImageIcon image1 = new ImageIcon("./src/main/java/icai/dtc/isw/resources/FotosMapa/madridcentro.jpg", null);
 
         //Click en los barrios
         Container c = new JLabel(image1);
@@ -49,6 +43,13 @@ public class MapaMenu extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Ver barrio Chueca");
+                ArrayList<Object> listaChueca= new ArrayList<>();
+
+                Client client = new Client();
+                HashMap<String, Object> session = new HashMap<String, Object>();
+                session.put("chueca",listaChueca);
+                session.put("perfil",customer);
+                client.enviar("/getChueca",session);
             }
         });
 
@@ -60,6 +61,13 @@ public class MapaMenu extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Ver barrio Conde Duque");
+                ArrayList<Object> listaConde= new ArrayList<>();
+
+                Client client = new Client();
+                HashMap<String, Object> session = new HashMap<String, Object>();
+                session.put("conde",listaConde);
+                session.put("perfil",customer);
+                client.enviar("/getCondeDuque",session);
             }
         });
 
@@ -71,7 +79,13 @@ public class MapaMenu extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Ver barrio Malasaña");
-            }
+                ArrayList<Object> listaMalasana= new ArrayList<>();
+
+                Client client = new Client();
+                HashMap<String, Object> session = new HashMap<String, Object>();
+                session.put("malasana",listaMalasana);
+                session.put("perfil",customer);
+                client.enviar("/getMalasana",session);            }
         });
 
         btnSalamanca = new JButton("SALAMANCA");
@@ -82,7 +96,13 @@ public class MapaMenu extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Ver barrio Salamanca");
-            }
+                ArrayList<Object> listaSalamanca= new ArrayList<>();
+
+                Client client = new Client();
+                HashMap<String, Object> session = new HashMap<String, Object>();
+                session.put("salamanca",listaSalamanca);
+                session.put("perfil",customer);
+                client.enviar("/getSalamanca",session);            }
         });
 
         btnSalesas = new JButton("SALESAS");
@@ -93,7 +113,13 @@ public class MapaMenu extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Ver barrio Salesas");
-            }
+                ArrayList<Object> listaSalesas= new ArrayList<>();
+
+                Client client = new Client();
+                HashMap<String, Object> session = new HashMap<String, Object>();
+                session.put("salesas",listaSalesas);
+                session.put("perfil",customer);
+                client.enviar("/getSalesas",session);            }
         });
 
         btnLetras = new JButton("LETRAS");
@@ -104,7 +130,13 @@ public class MapaMenu extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Ver barrio Letras");
-            }
+                ArrayList<Object> listaLetras= new ArrayList<>();
+
+                Client client = new Client();
+                HashMap<String, Object> session = new HashMap<String, Object>();
+                session.put("letras",listaLetras);
+                session.put("perfil",customer);
+                client.enviar("/getLetras",session);            }
         });
 
         btnAustrias = new JButton("AUSTRIAS");
@@ -115,7 +147,13 @@ public class MapaMenu extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Ver barrio Austrias");
-            }
+                ArrayList<Object> listaAustrias= new ArrayList<>();
+
+                Client client = new Client();
+                HashMap<String, Object> session = new HashMap<String, Object>();
+                session.put("austrias",listaAustrias);
+                session.put("perfil",customer);
+                client.enviar("/getAustrias",session);            }
         });
 
         btnSol = new JButton("SOL");
@@ -126,7 +164,13 @@ public class MapaMenu extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Ver barrio Sol");
-            }
+                ArrayList<Object> listaSol= new ArrayList<>();
+
+                Client client = new Client();
+                HashMap<String, Object> session = new HashMap<String, Object>();
+                session.put("sol",listaSol);
+                session.put("perfil",customer);
+                client.enviar("/getSol",session);            }
         });
 
         btnRetiro = new JButton("EL RETIRO");
@@ -137,7 +181,13 @@ public class MapaMenu extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Ver barrio El Retiro");
-            }
+                ArrayList<Object> listaRetiro= new ArrayList<>();
+
+                Client client = new Client();
+                HashMap<String, Object> session = new HashMap<String, Object>();
+                session.put("retiro",listaRetiro);
+                session.put("perfil",customer);
+                client.enviar("/getRetiro",session);            }
         });
 
         btnPaseoArte = new JButton("PASEO DEL ARTE");
@@ -148,7 +198,13 @@ public class MapaMenu extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Ver barrio Paseo del Arte");
-            }
+                ArrayList<Object> listaPaseo= new ArrayList<>();
+
+                Client client = new Client();
+                HashMap<String, Object> session = new HashMap<String, Object>();
+                session.put("paseo",listaPaseo);
+                session.put("perfil",customer);
+                client.enviar("/getPaseoArte",session);            }
         });
 
         btnMoncloa = new JButton("MONCLOA");
@@ -158,7 +214,15 @@ public class MapaMenu extends JFrame{
         btnMoncloa.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 System.out.println("Ver barrio Moncloa");
+                ArrayList<Object> listaMoncloa= new ArrayList<>();
+
+                Client client = new Client();
+                HashMap<String, Object> session = new HashMap<String, Object>();
+                session.put("moncloa",listaMoncloa);
+                session.put("perfil",customer);
+                client.enviar("/getMoncloa",session);
             }
         });
 
@@ -170,18 +234,30 @@ public class MapaMenu extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Ver barrio La Latina");
-            }
+                ArrayList<Object> listaLatina= new ArrayList<>();
+
+                Client client = new Client();
+                HashMap<String, Object> session = new HashMap<String, Object>();
+                session.put("latina",listaLatina);
+                session.put("perfil",customer);
+                client.enviar("/getLatina",session);            }
         });
 
-        btnLavaPies = new JButton("LAVAPIÉS");
+        btnLavaPies = new JButton("LAVAPIES");
         btnLavaPies.setBackground(new Color(220,250,120));
         btnLavaPies.setBounds(730, 800, 110, size.height);
         c.add(btnLavaPies);
         btnLavaPies.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Ver barrio Lavapiés");
-            }
+                System.out.println("Ver barrio Lavapies");
+                ArrayList<Object> listaLavapies= new ArrayList<>();
+
+                Client client = new Client();
+                HashMap<String, Object> session = new HashMap<String, Object>();
+                session.put("lavapies",listaLavapies);
+                session.put("perfil",customer);
+                client.enviar("/getLavapies",session);            }
         });
 
         pnlCentral.add(c);
@@ -340,30 +416,36 @@ public class MapaMenu extends JFrame{
 
     public MapaMenu(Customer customer){
 
-        contruyepnlCentral();
+        this.customer=customer;
+        contruyepnlCentral(customer);
         contruyepnlSuperior(customer);
-        //contruyeVentana();
 
         this.add(pnlSuperior,BorderLayout.NORTH);
         this.add(pnlCentral, BorderLayout.CENTER);
 
         //Configuramos el frame
-        //this.setSize(100,400);
-        ImageIcon image1 = new ImageIcon("./src/icai/dtc/isw/resources/FotosMapa/madridcentro.jpg", null);
-        Dimension size = new Dimension(image1.getIconWidth(),image1.getIconHeight());
+
+        this.setTitle("Mapa de Madrid");
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.pack();
-        this.setLayout(null);
-        this.setSize(size);
-        this.setResizable(false);
+        this.setResizable(true);//Para que no se pueda redimensionar
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
     }
 
     public static void main (String [] inforux){
         Customer prueba = new Customer(null, null, 0, null, null, 0, "usuario", "contraseña", 0);
         new MapaMenu(prueba);
+    }
+
+    public static void addFavorito(Object object){
+        System.out.println("Comprobacion lugar Mapa Menu: "+((Hotel)object).getNombre());
+        Client client = new Client();
+        HashMap<String, Object> session = new HashMap<>();
+        session.put("id",customer);
+        session.put("lugar",object); //Contiene el lugar que se quiere poner como favorito
+        client.enviar("/addFavorito",session);
+
     }
 }

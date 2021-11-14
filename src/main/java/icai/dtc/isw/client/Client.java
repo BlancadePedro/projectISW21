@@ -104,6 +104,75 @@ public class Client {
 				ArrayList<Parque> parqueList=(ArrayList<Parque>)(mensajeVuelta.getSession().get("parques"));
 				new PnlParques(parqueList,perfil);
 				break;
+			case "/addFavoritoResponse":
+				System.out.println("\nSe ha guardado el favorito");
+				System.out.println("");
+				break;
+			case "/getAustriasResponse":
+				System.out.println("\nEstos son los lugares en el barrio de Austrias");
+				ArrayList<Object> austriasList=(ArrayList<Object>)(mensajeVuelta.getSession().get("austrias"));
+				new PnlBarrio(austriasList,perfil);
+				break;
+			case "/getChuecaResponse":
+				System.out.println("\nEstos son los lugares en el barrio de Chueca");
+				ArrayList<Object> chuecaList=(ArrayList<Object>)(mensajeVuelta.getSession().get("chueca"));
+				new PnlBarrio(chuecaList,perfil);
+				break;
+			case "/getCondeDuqueResponse":
+				System.out.println("\nEstos son los lugares en el barrio de Conde Duque");
+				ArrayList<Object> condeList=(ArrayList<Object>)(mensajeVuelta.getSession().get("conde"));
+				new PnlBarrio(condeList,perfil);
+				break;
+			case "/getLatinaResponse":
+				System.out.println("\nEstos son los lugares en el barrio de La Latina");
+				ArrayList<Object> latinaList=(ArrayList<Object>)(mensajeVuelta.getSession().get("latina"));
+				new PnlBarrio(latinaList,perfil);
+				break;
+			case "/getLavapiesResponse":
+				System.out.println("\nEstos son los lugares en el barrio de Lavapies");
+				ArrayList<Object> lavapiesList=(ArrayList<Object>)(mensajeVuelta.getSession().get("lavapies"));
+				new PnlBarrio(lavapiesList,perfil);
+				break;
+			case "/getLetrasResponse":
+				System.out.println("\nEstos son los lugares en el barrio de Letras");
+				ArrayList<Object> letrasList=(ArrayList<Object>)(mensajeVuelta.getSession().get("letras"));
+				new PnlBarrio(letrasList,perfil);
+				break;
+			case "/getMalasanaResponse":
+				System.out.println("\nEstos son los lugares en el barrio de Malasaña");
+				ArrayList<Object> malasanaList=(ArrayList<Object>)(mensajeVuelta.getSession().get("malasana"));
+				new PnlBarrio(malasanaList,perfil);
+				break;
+			case "/getMoncloaResponse":
+				System.out.println("\nEstos son los lugares en el barrio de Moncloa");
+				ArrayList<Object> moncloaList=(ArrayList<Object>)(mensajeVuelta.getSession().get("moncloa"));
+				new PnlBarrio(moncloaList,perfil);
+				break;
+			case "/getPaseoArteResponse":
+				System.out.println("\nEstos son los lugares en el barrio de Paseo del Arte");
+				ArrayList<Object> paseoList=(ArrayList<Object>)(mensajeVuelta.getSession().get("paseo"));
+				new PnlBarrio(paseoList,perfil);
+				break;
+			case "/getRetiroResponse":
+				System.out.println("\nEstos son los lugares en el barrio de El Retiro");
+				ArrayList<Object> retiroList=(ArrayList<Object>)(mensajeVuelta.getSession().get("retiro"));
+				new PnlBarrio(retiroList,perfil);
+				break;
+			case "/getSalamancaResponse":
+				System.out.println("\nEstos son los lugares en el barrio de Salamanca");
+				ArrayList<Object> salamancaList=(ArrayList<Object>)(mensajeVuelta.getSession().get("salamanca"));
+				new PnlBarrio(salamancaList,perfil);
+				break;
+			case "/getSalesasResponse":
+				System.out.println("\nEstos son los lugares en el barrio de Salesas");
+				ArrayList<Object> salesasList=(ArrayList<Object>)(mensajeVuelta.getSession().get("salesas"));
+				new PnlBarrio(salesasList,perfil);
+				break;
+			case "/getSolResponse":
+				System.out.println("\nEstos son los lugares en el barrio de Sol");
+				ArrayList<Object> solList=(ArrayList<Object>)(mensajeVuelta.getSession().get("sol"));
+				new PnlBarrio(solList,perfil);
+				break;
 			default:
 				Logger.getRootLogger().info("Option not found");
 				System.out.println("\nError a la vuelta");

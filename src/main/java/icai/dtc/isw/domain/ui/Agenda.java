@@ -11,7 +11,7 @@ import java.time.*;
 public class Agenda extends JFrame{
     private JPanel pnlCentral;
     private JPanel pnlSur = new JPanel((new BorderLayout()));
-    private JButton btnMapa, btnPerfil;
+    private JButton btnMapa, btnPerfil, btnBorrar;
 
     public void construyepnlCentral() {
         pnlCentral = new JPanel(new GridLayout(26, 2, 2, 4));
@@ -125,6 +125,7 @@ public class Agenda extends JFrame{
         pnlSur = new JPanel();
         btnMapa = new JButton("Ir al mapa");
         btnPerfil = new JButton("Mi perfil");
+        btnBorrar = new JButton("Borrar info");
         pnlCentral.add(btnMapa);
         pnlCentral.add(btnPerfil);
     }

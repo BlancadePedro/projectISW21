@@ -38,5 +38,24 @@ public class CustomerControler {
 	public void getEventos(ArrayList<Evento> lista) {
 		CustomerDAO.getEventos(lista);
 	}
+	public void addFavorito(Object lugar, Customer perfil){CustomerDAO.addFavorito(lugar, perfil);
+		System.out.println("ENTRO EN Controler /addFavorito");}
+
+	////////////////////////////////
+
+	//Relacionado con barrios
+	public void getAustrias(ArrayList<Object> lista){CustomerDAO.getAustrias(lista);}
+	public void getChueca(ArrayList<Object> lista){CustomerDAO.getChueca(lista);}
+	public void getCondeDuque(ArrayList<Object> lista){CustomerDAO.getCondeDuque(lista);}
+	public void getLatina(ArrayList<Object> lista){CustomerDAO.getLatina(lista);}
+	public void getLavapies(ArrayList<Object> lista){CustomerDAO.getLavapies(lista);}
+	public void getLetras(ArrayList<Object> lista){CustomerDAO.getLetras(lista);}
+	public void getMalasana(ArrayList<Object> lista){CustomerDAO.getMoncloa(lista);}
+	public void getMoncloa(ArrayList<Object> lista){CustomerDAO.getMoncloa(lista);}
+	public void getPaseoArte(ArrayList<Object> lista){CustomerDAO.getPaseoArte(lista);}
+	public void getRetiro(ArrayList<Object> lista){CustomerDAO.getRetiro(lista);}
+	public void getSalamanca(ArrayList<Object> lista){CustomerDAO.getSalamanca(lista);}
+	public void getSalesas(ArrayList<Object> lista){CustomerDAO.getSalesas(lista);}
+	public void getSol(ArrayList<Object> lista){CustomerDAO.getSol(lista);}
 
 }

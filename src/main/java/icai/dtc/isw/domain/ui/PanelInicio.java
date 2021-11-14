@@ -23,7 +23,7 @@ public class PanelInicio extends JFrame{
     }
     private JPanel panelNorte = new JPanel((new BorderLayout()));
     private JPanel panelSur = new JPanel((new BorderLayout()));
-    private JPanel panelPrincipal;
+    //private JPanel panelPrincipal;
     private JButton registro = new JButton("resgistro");
     private JButton inicioSesion = new JButton("inicio sesión");
     private JLabel foto = new JLabel();
@@ -33,7 +33,7 @@ public class PanelInicio extends JFrame{
         panelSur.add(registro, BorderLayout.EAST);
         panelSur.add(inicioSesion, BorderLayout.WEST);
 
-        Image imagen = new ImageIcon("./src/icai/dtc/isw/resources/FotosMapa/smartCity.png").getImage();
+        Image imagen = new ImageIcon("./src/main/java/icai/dtc/isw/resources/FotosMapa/smartCity.png").getImage();
         ImageIcon icono = new ImageIcon(imagen.getScaledInstance(250, 250 , Image.SCALE_SMOOTH));
         foto.setIcon(icono);
         panelNorte.add(foto,BorderLayout.CENTER);
@@ -80,23 +80,15 @@ public class PanelInicio extends JFrame{
             }
         });
 
-        panelPrincipal = new JPanel(new BorderLayout());
-        panelPrincipal.add(panelNorte, BorderLayout.NORTH);
-        panelPrincipal.add(panelSur, BorderLayout.SOUTH);
 
-        //ImageIcon image1 = new ImageIcon("./src/icai/dtc/isw/resources/FotosMapa/madridcentro.jpg", null);
-        //Dimension size = new Dimension(image1.getIconWidth(),image1.getIconHeight());
-
-        //panelPrincipal.setPreferredSize(size);
-        this.add(panelPrincipal,BorderLayout.CENTER);
+        this.add(panelNorte, BorderLayout.NORTH);
+        this.add(panelSur, BorderLayout.SOUTH);
         this.pack();
-        //this.setLayout(null);
 
-        //this.setSize(size);
-        this.setResizable(false);
+        this.setResizable(true);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-        this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
 
