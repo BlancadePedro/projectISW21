@@ -32,7 +32,7 @@ public class MapaMenu extends JFrame{
 
     public void contruyepnlCentral(){
         pnlCentral = new JPanel();
-        ImageIcon image1 = new ImageIcon("./src/icai/dtc/isw/resources/FotosMapa/madridcentro.jpg", null);
+        ImageIcon image1 = new ImageIcon("./src/main/java/icai/dtc/isw/resources/FotosMapa/madridcentro.jpg", null);
         /*JLabel label1 = new JLabel(image1, JLabel.LEFT);
         pnlCentral.add(label1);*/
 
@@ -348,17 +348,12 @@ public class MapaMenu extends JFrame{
         this.add(pnlCentral, BorderLayout.CENTER);
 
         //Configuramos el frame
-        //this.setSize(100,400);
-        ImageIcon image1 = new ImageIcon("./src/icai/dtc/isw/resources/FotosMapa/madridcentro.jpg", null);
-        Dimension size = new Dimension(image1.getIconWidth(),image1.getIconHeight());
+
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.pack();
-        this.setLayout(null);
-        this.setSize(size);
-        this.setResizable(false);
+        this.setResizable(true);//Para que no se pueda redimensionar
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
     }
 

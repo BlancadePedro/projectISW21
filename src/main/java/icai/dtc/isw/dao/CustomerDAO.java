@@ -79,13 +79,9 @@ public class CustomerDAO {
 		Connection con = ConnectionDAO.getInstance().getConnection();
 		try (PreparedStatement pst = con.prepareStatement("SELECT * FROM restaurantes");
 			 ResultSet rs = pst.executeQuery()) {
-			System.out.println("Estamos dentro de getRestaurantes()");
 			while (rs.next()) {
-				System.out.println("Estamos dentro de getRestaurantes() bucle");
 				lista.add(new Restaurante(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
 			}
-			System.out.println("Salimos de getRestaurantes()");
-
 		} catch (SQLException ex) {
 
 			System.out.println(ex.getMessage());

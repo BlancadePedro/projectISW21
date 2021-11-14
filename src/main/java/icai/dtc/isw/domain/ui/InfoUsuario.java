@@ -65,7 +65,7 @@ public class InfoUsuario extends JFrame
         pnlfoto.add(opcionesFotos, BorderLayout.NORTH);
         pnlfoto.add(btnVolver, BorderLayout.SOUTH);
 
-        Image imagen = new ImageIcon("./src/icai/dtc/isw/resources/FotosPerfil/perfil"+perfil.getFoto()+".PNG").getImage();
+        Image imagen = new ImageIcon("./src/main/java/icai/dtc/isw/resources/FotosPerfil/perfil"+perfil.getFoto()+".PNG").getImage();
         ImageIcon icono = new ImageIcon(imagen.getScaledInstance(250, 250 , Image.SCALE_SMOOTH));
         foto.setIcon(icono);
         pnlfoto.add(foto,BorderLayout.CENTER);
@@ -79,7 +79,7 @@ public class InfoUsuario extends JFrame
                 int indice = i+1;
 
                 perfil.setFoto(indice);
-                Image imagen = new ImageIcon("./src/icai/dtc/isw/resources/FotosPerfil/perfil"+perfil.getFoto()+".PNG").getImage();
+                Image imagen = new ImageIcon("./src/main/java/icai/dtc/isw/resources/FotosPerfil/perfil"+perfil.getFoto()+".PNG").getImage();
                 ImageIcon icono = new ImageIcon(imagen.getScaledInstance(250, 250 , Image.SCALE_SMOOTH));
                 foto.setIcon(icono);
                 pnlfoto.add(foto,BorderLayout.CENTER);
