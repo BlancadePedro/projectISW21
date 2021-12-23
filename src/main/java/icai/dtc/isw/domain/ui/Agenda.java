@@ -1,12 +1,15 @@
 package icai.dtc.isw.domain.ui;
 
+import icai.dtc.isw.client.Client;
 import icai.dtc.isw.domain.Customer;
+import icai.dtc.isw.domain.localidad.Hotel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.*;
+import java.util.HashMap;
 
 public class Agenda extends JFrame{
     private JPanel pnlCentral;
@@ -63,7 +66,7 @@ public class Agenda extends JFrame{
         JTextField textFranja21 = new JTextField(20);
         JTextField textFranja22 = new JTextField(20);
         JTextField textFranja23 = new JTextField(20);
-        //String texto = textFranja0.getText();
+
 
         LocalDate hoy = LocalDate.now();
         JLabel labelFecha = new JLabel("Agenda para el día " + hoy.getDayOfMonth() + " de " + hoy.getMonth() + " de " + hoy.getYear());
@@ -162,6 +165,40 @@ public class Agenda extends JFrame{
                 dispose();
             }
         });
+
+
+    }
+
+    public static void main (String [] inforux){
+        Customer prueba = new Customer(null, null, 0, null, null, 0, "usuario", "contraseña", 0);
+        new Agenda(prueba);
+    }
+
+    public static void addAgenda(Customer perfil,String hora,String add){
+        Client client = new Client();
+        HashMap<String, Object> session = new HashMap<>();
+        session.put("idAdd",perfil);
+        session.put("horaAdd",hora); //La hora que se va a modificar
+        session.put("añadir",add);
+        client.enviar("/addAgenda",session);
+    }
+
+    public static void updateAgenda(Customer perfil,String hora,String update){
+        Client client = new Client();
+        HashMap<String, Object> session = new HashMap<>();
+        session.put("idUpdate",perfil);
+        session.put("horaUpdate",hora); //La hora que se va a modificar
+        session.put("actualizar",update);
+        client.enviar("/updateAgenda",session);
+    }
+
+    public static void deleteAgenda(Customer perfil,String hora,String delete){
+        Client client = new Client();
+        HashMap<String, Object> session = new HashMap<>();
+        session.put("idDelete",perfil);
+        session.put("horaDelete",hora); //La hora que se va a modificar
+        session.put("eliminar",delete);
+        client.enviar("/deleteAgenda",session);
     }
 
 }

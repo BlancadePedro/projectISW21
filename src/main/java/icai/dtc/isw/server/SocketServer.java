@@ -78,6 +78,13 @@ public class SocketServer extends Thread {
 					mensajeOut.setSession(session);
 					objectOutputStream.writeObject(mensajeOut);
 					break;
+				case "/dropUsuario":
+					customer= (Customer)mensajeIn.getSession().get("eliminarCliente");
+					customerControler.darsedeBaja(customer);
+					mensajeOut.setContext("/dropClienteResponse");
+
+					objectOutputStream.writeObject(mensajeOut);
+					break;
 
 				case "/altaUsuario":
 					customer = (Customer)mensajeIn.getSession().get("id");
@@ -94,17 +101,7 @@ public class SocketServer extends Thread {
 					}
 					objectOutputStream.writeObject(mensajeOut);
 					break;
-				case "/dropUsuario":
-					customer = (Customer)mensajeIn.getSession().get("id");
-					if(comprobacion(customer)==null){
 
-						mensajeOut.setContext("/dropClienteResponse");
-
-					}else{
-						mensajeOut.setContext("/dropClienteResponseError");
-					}
-					objectOutputStream.writeObject(mensajeOut);
-					break;
 				case "/updateNombre":
 					customer = (Customer)mensajeIn.getSession().get("perfilNombre");
 					String nombre = (String)mensajeIn.getSession().get("cambioNombre");
@@ -329,13 +326,28 @@ public class SocketServer extends Thread {
 					mensajeOut.setSession(session);
 					objectOutputStream.writeObject(mensajeOut);
 					break;
-				case "/getSol":
-					ArrayList<Object> sol = (ArrayList<Object>)mensajeIn.getSession().get("sol");
-					barriosControler.getSol(sol);
-					mensajeOut=new Message();
-					mensajeOut.setContext("/getSolResponse");
-					session.put("sol",sol);
-					mensajeOut.setSession(session);
+				case "/addAgenda":
+					customer=(Customer)mensajeIn.getSession().get("idAdd");
+					String horaAdd = (String)mensajeIn.getSession().get("horaAdd");
+					String add = (String)mensajeIn.getSession().get("añadir");
+					agendaControler.addAgenda(customer,horaAdd,add);
+					mensajeOut.setContext("/addAgendaResponse");
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/updateAgenda":
+					customer=(Customer)mensajeIn.getSession().get("idUpdate");
+					String horaUpdate = (String)mensajeIn.getSession().get("horaUpdate");
+					String update = (String)mensajeIn.getSession().get("actualizar");
+					agendaControler.updateAgenda(customer,horaUpdate,update);
+					mensajeOut.setContext("/updateAgendaResponse");
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/deleteAgenda":
+					customer=(Customer)mensajeIn.getSession().get("idDelete");
+					String horaDelete = (String)mensajeIn.getSession().get("horaDelete");
+					String delete = (String)mensajeIn.getSession().get("eliminar");
+					agendaControler.deleteAgenda(customer,horaDelete,delete);
+					mensajeOut.setContext("/deleteAgendaResponse");
 					objectOutputStream.writeObject(mensajeOut);
 					break;
 				default:

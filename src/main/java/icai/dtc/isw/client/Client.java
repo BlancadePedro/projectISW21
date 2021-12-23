@@ -20,6 +20,7 @@ import icai.dtc.isw.domain.ocio.Parque;
 import icai.dtc.isw.domain.ui.InfoUsuario;
 import icai.dtc.isw.domain.ui.MapaMenu;
 import icai.dtc.isw.domain.paneles.*;
+import icai.dtc.isw.domain.ui.PanelInicio;
 import org.apache.log4j.Logger;
 
 import icai.dtc.isw.configuration.PropertiesISW;
@@ -73,9 +74,8 @@ public class Client {
 				break;
 			case "/dropClienteResponse":
 				System.out.println("\nSe ha eliminado");
-				if(mensajeVuelta.getComprobar()){
-					System.out.println("\nSe ha introducido adecuadamente en la base de datos");
-				}else System.out.println("\nNO se ha introducido adecuadamente en la base de datos");
+				new PanelInicio();
+
 				break;
 			case "/updateFotoResponse":
 				System.out.println("\nSe ha actualizado");
@@ -185,6 +185,17 @@ public class Client {
 				ArrayList<Object> solList=(ArrayList<Object>)(mensajeVuelta.getSession().get("sol"));
 				new PnlBarrio(solList,perfil);
 				break;
+
+			case "/addAgendaResponse":
+				System.out.println("\nSe ha añadido contenido a la agenda");
+				break;
+			case "/updateAgendaResponse":
+				System.out.println("\nSe ha actualizado la agenda");
+				break;
+			case "/deleteAgendaResponse":
+				System.out.println("\nSe ha borrado parte del contenido de la agenda");
+				break;
+
 			default:
 				Logger.getRootLogger().info("Option not found");
 				System.out.println("\nError a la vuelta");

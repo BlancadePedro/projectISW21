@@ -284,7 +284,9 @@ public class MapaMenu extends JFrame{
         opciones.addItem("Mi Chat");
         opciones.addItem("Mis favoritos");
         opciones.addItem("Información importante");
+        opciones.addItem("Darse de baja");
         opciones.addItem("Cerrar sesión");
+
 
 
         opciones.addActionListener(new ActionListener() {
@@ -312,7 +314,19 @@ public class MapaMenu extends JFrame{
                     }
                     if(opcion.equals("Cerrar sesión")){
                         JOptionPane.showMessageDialog(null,"Adios, vuelva pronto!");
-                        dispose();
+                        new PanelInicio();
+                    }
+                    if(opcion.equals("Darse de baja")){
+                        Object [] botones = {"Sí","No"};
+                        int respuesta = JOptionPane.showOptionDialog(null,"¿Está seguro de que quiere darse de baja?","Darse de baja de la aplicación",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null, botones,botones[0]);
+                        if(respuesta==0){
+                            Client client = new Client();
+                            HashMap<String, Object> session = new HashMap<String, Object>();
+                            session.put("eliminarCliente",customer);
+                            client.enviar("/dropUsuario",session);
+                            dispose();
+                        }
+                        
                     }
 
                 }
