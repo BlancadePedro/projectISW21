@@ -20,6 +20,7 @@ import icai.dtc.isw.domain.ocio.Parque;
 import icai.dtc.isw.domain.ui.InfoUsuario;
 import icai.dtc.isw.domain.ui.MapaMenu;
 import icai.dtc.isw.domain.paneles.*;
+import icai.dtc.isw.domain.ui.PanelInicio;
 import org.apache.log4j.Logger;
 
 import icai.dtc.isw.configuration.PropertiesISW;
@@ -73,9 +74,8 @@ public class Client {
 				break;
 			case "/dropClienteResponse":
 				System.out.println("\nSe ha eliminado");
-				if(mensajeVuelta.getComprobar()){
-					System.out.println("\nSe ha introducido adecuadamente en la base de datos");
-				}else System.out.println("\nNO se ha introducido adecuadamente en la base de datos");
+				new PanelInicio();
+
 				break;
 			case "/updateFotoResponse":
 				System.out.println("\nSe ha actualizado");

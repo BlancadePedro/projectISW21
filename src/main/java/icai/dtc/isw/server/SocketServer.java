@@ -78,6 +78,13 @@ public class SocketServer extends Thread {
 					mensajeOut.setSession(session);
 					objectOutputStream.writeObject(mensajeOut);
 					break;
+				case "/dropUsuario":
+					customer= (Customer)mensajeIn.getSession().get("eliminarCliente");
+					customerControler.darsedeBaja(customer);
+					mensajeOut.setContext("/dropClienteResponse");
+
+					objectOutputStream.writeObject(mensajeOut);
+					break;
 
 				case "/altaUsuario":
 					customer = (Customer)mensajeIn.getSession().get("id");
@@ -94,17 +101,7 @@ public class SocketServer extends Thread {
 					}
 					objectOutputStream.writeObject(mensajeOut);
 					break;
-				case "/dropUsuario":
-					customer = (Customer)mensajeIn.getSession().get("id");
-					if(comprobacion(customer)==null){
 
-						mensajeOut.setContext("/dropClienteResponse");
-
-					}else{
-						mensajeOut.setContext("/dropClienteResponseError");
-					}
-					objectOutputStream.writeObject(mensajeOut);
-					break;
 				case "/updateNombre":
 					customer = (Customer)mensajeIn.getSession().get("perfilNombre");
 					String nombre = (String)mensajeIn.getSession().get("cambioNombre");
