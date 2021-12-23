@@ -7,10 +7,14 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import icai.dtc.isw.controler.AgendaControler;
+import icai.dtc.isw.controler.BarriosControler;
 import icai.dtc.isw.controler.CustomerControler;
+import icai.dtc.isw.controler.MapaControler;
 import icai.dtc.isw.domain.*;
 import icai.dtc.isw.domain.localidad.Hotel;
 import icai.dtc.isw.domain.ocio.Monumento;
@@ -47,6 +51,10 @@ public class SocketServer extends Thread {
 
 			HashMap<String,Object> session=new HashMap<String, Object>();
 			CustomerControler customerControler=new CustomerControler();
+			MapaControler mapaControler = new MapaControler();
+			BarriosControler barriosControler = new BarriosControler();
+			AgendaControler agendaControler = new AgendaControler();
+
 
 			ArrayList<Customer> lista=new ArrayList<Customer>();
 			Customer customer;
@@ -86,17 +94,70 @@ public class SocketServer extends Thread {
 					}
 					objectOutputStream.writeObject(mensajeOut);
 					break;
-				case "/updateUsuario":
+				case "/dropUsuario":
+					customer = (Customer)mensajeIn.getSession().get("id");
+					if(comprobacion(customer)==null){
+
+						mensajeOut.setContext("/dropClienteResponse");
+
+					}else{
+						mensajeOut.setContext("/dropClienteResponseError");
+					}
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/updateNombre":
+					customer = (Customer)mensajeIn.getSession().get("perfilNombre");
+					String nombre = (String)mensajeIn.getSession().get("cambioNombre");
+					customerControler.updateNombre(customer, nombre);
+					mensajeOut.setContext("/updateNombreResponse");
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/updateEdad":
+					customer = (Customer)mensajeIn.getSession().get("perfilEdad");
+					String edad = (String)mensajeIn.getSession().get("cambioEdad");
+					customerControler.updateEdad(customer, edad);
+					mensajeOut.setContext("/updateEdadResponse");
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/updateCorreo":
+					customer = (Customer)mensajeIn.getSession().get("perfilCorreo");
+					String cambio = (String)mensajeIn.getSession().get("cambioCorreo");
+					customerControler.updateCorreo(customer, cambio);
+					mensajeOut.setContext("/updateCorreoResponse");
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/updateNacionalidad":
+					customer = (Customer)mensajeIn.getSession().get("perfilNacionalidad");
+					String nacionalidad = (String)mensajeIn.getSession().get("cambioNacionalidad");
+					customerControler.updateNacionalidad(customer, nacionalidad);
+					mensajeOut.setContext("/updateNacionalidadResponse");
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/updateDescripcion":
+					customer = (Customer)mensajeIn.getSession().get("perfilDescripcion");
+					String descripcion = (String)mensajeIn.getSession().get("cambioDescripcion");
+					customerControler.updateDescripcion(customer,descripcion);
+					mensajeOut.setContext("/updateDescripcionResponse");
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/updateTelefono":
+					customer = (Customer)mensajeIn.getSession().get("perfilTelefono");
+					String telefono = (String)mensajeIn.getSession().get("cambioTelefono");
+					customerControler.updateTelefono(customer, telefono);
+					mensajeOut.setContext("/updateTelefonoResponse");
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/updateFoto":
 					int foto = (int)mensajeIn.getSession().get("foto");
 					Customer perfil = (Customer)mensajeIn.getSession().get("perfil");
-					customerControler.updateCliente(perfil, foto);
-					mensajeOut.setContext("/updateClienteResponse");
+					customerControler.updateFoto(perfil, foto);
+					mensajeOut.setContext("/updateFotoResponse");
 					objectOutputStream.writeObject(mensajeOut);
 					break;
 
 				case "/getRestaurantes":
 					ArrayList<Restaurante> restaurantes = (ArrayList<Restaurante>)mensajeIn.getSession().get("restaurantes");
-					customerControler.getRestaurantes(restaurantes);
+					mapaControler.getRestaurantes(restaurantes);
 					mensajeOut=new Message();
 					mensajeOut.setContext("/getRestaurantesResponse");
 					session.put("restaurantes",restaurantes);
@@ -105,7 +166,7 @@ public class SocketServer extends Thread {
 					break;
 				case "/getHoteles":
 					ArrayList<Hotel> hoteles = (ArrayList<Hotel>)mensajeIn.getSession().get("hotel");
-					customerControler.getHoteles(hoteles);
+					mapaControler.getHoteles(hoteles);
 					mensajeOut=new Message();
 					mensajeOut.setContext("/getHotelesResponse");
 					session.put("hotel",hoteles);
@@ -114,7 +175,7 @@ public class SocketServer extends Thread {
 					break;
 				case "/getMuseos":
 					ArrayList<Museo> museos = (ArrayList<Museo>)mensajeIn.getSession().get("museo");
-					customerControler.getMuseos(museos);
+					mapaControler.getMuseos(museos);
 					mensajeOut=new Message();
 					mensajeOut.setContext("/getMuseosResponse");
 					session.put("museo",museos);
@@ -123,7 +184,7 @@ public class SocketServer extends Thread {
 					break;
 				case "/getMonumentos":
 					ArrayList<Monumento> monumentos = (ArrayList<Monumento>)mensajeIn.getSession().get("monumento");
-					customerControler.getMonumentos(monumentos);
+					mapaControler.getMonumentos(monumentos);
 					mensajeOut=new Message();
 					mensajeOut.setContext("/getMonumentosResponse");
 					session.put("monumento",monumentos);
@@ -132,7 +193,7 @@ public class SocketServer extends Thread {
 					break;
 				case "/getEventos":
 					ArrayList<Evento> eventos = (ArrayList<Evento>)mensajeIn.getSession().get("eventos");
-					customerControler.getEventos(eventos);
+					mapaControler.getEventos(eventos);
 					mensajeOut=new Message();
 					mensajeOut.setContext("/getEventosResponse");
 					session.put("eventos",eventos);
@@ -141,7 +202,7 @@ public class SocketServer extends Thread {
 					break;
 				case "/getParques":
 					ArrayList<Parque> parques = (ArrayList<Parque>)mensajeIn.getSession().get("parques");
-					customerControler.getParques(parques);
+					mapaControler.getParques(parques);
 					mensajeOut=new Message();
 					mensajeOut.setContext("/getParquesResponse");
 					session.put("parques",parques);
@@ -151,7 +212,7 @@ public class SocketServer extends Thread {
 				case "/addFavorito":
 					customer = (Customer)mensajeIn.getSession().get("id");
 					Object lugar = (Object)mensajeIn.getSession().get("lugar");
-					customerControler.addFavorito(lugar,customer);
+					barriosControler.addFavorito(lugar,customer);
 					mensajeOut.setContext("/addFavoritoResponse");
 					session.put("id",customer);
 					mensajeOut.setSession(session);
@@ -159,7 +220,7 @@ public class SocketServer extends Thread {
 					break;
 				case "/getAustrias":
 					ArrayList<Object> austrias = (ArrayList<Object>)mensajeIn.getSession().get("austrias");
-					customerControler.getAustrias(austrias);
+					barriosControler.getAustrias(austrias);
 					mensajeOut=new Message();
 					mensajeOut.setContext("/getAustriasResponse");
 					session.put("austrias",austrias);
@@ -168,7 +229,7 @@ public class SocketServer extends Thread {
 					break;
 				case "/getChueca":
 					ArrayList<Object> chueca = (ArrayList<Object>)mensajeIn.getSession().get("chueca");
-					customerControler.getChueca(chueca);
+					barriosControler.getChueca(chueca);
 					mensajeOut=new Message();
 					mensajeOut.setContext("/getChuecaResponse");
 					session.put("chueca",chueca);
@@ -177,7 +238,7 @@ public class SocketServer extends Thread {
 					break;
 				case "/getCondeDuque":
 					ArrayList<Object> conde = (ArrayList<Object>)mensajeIn.getSession().get("conde");
-					customerControler.getCondeDuque(conde);
+					barriosControler.getCondeDuque(conde);
 					mensajeOut=new Message();
 					mensajeOut.setContext("/getCondeDuqueResponse");
 					session.put("conde",conde);
@@ -186,7 +247,7 @@ public class SocketServer extends Thread {
 					break;
 				case "/getLatina":
 					ArrayList<Object> latina = (ArrayList<Object>)mensajeIn.getSession().get("latina");
-					customerControler.getLatina(latina);
+					barriosControler.getLatina(latina);
 					mensajeOut=new Message();
 					mensajeOut.setContext("/getLatinaResponse");
 					session.put("latina",latina);
@@ -195,7 +256,7 @@ public class SocketServer extends Thread {
 					break;
 				case "/getLavapies":
 					ArrayList<Object> lavapies = (ArrayList<Object>)mensajeIn.getSession().get("lavapies");
-					customerControler.getLavapies(lavapies);
+					barriosControler.getLavapies(lavapies);
 					mensajeOut=new Message();
 					mensajeOut.setContext("/getLavapiesResponse");
 					session.put("lavapies",lavapies);
@@ -204,7 +265,7 @@ public class SocketServer extends Thread {
 					break;
 				case "/getLetras":
 					ArrayList<Object> letras = (ArrayList<Object>)mensajeIn.getSession().get("letras");
-					customerControler.getLetras(letras);
+					barriosControler.getLetras(letras);
 					mensajeOut=new Message();
 					mensajeOut.setContext("/getLetrasResponse");
 					session.put("letras",letras);
@@ -213,7 +274,7 @@ public class SocketServer extends Thread {
 					break;
 				case "/getMalasana":
 					ArrayList<Object> malasana = (ArrayList<Object>)mensajeIn.getSession().get("malasana");
-					customerControler.getMalasana(malasana);
+					barriosControler.getMalasana(malasana);
 					mensajeOut=new Message();
 					mensajeOut.setContext("/getMalasanaResponse");
 					session.put("malasana",malasana);
@@ -222,7 +283,7 @@ public class SocketServer extends Thread {
 					break;
 				case "/getMoncloa":
 					ArrayList<Object> moncloa = (ArrayList<Object>)mensajeIn.getSession().get("moncloa");
-					customerControler.getMoncloa(moncloa);
+					barriosControler.getMoncloa(moncloa);
 					mensajeOut=new Message();
 					mensajeOut.setContext("/getMoncloaResponse");
 					session.put("moncloa",moncloa);
@@ -231,7 +292,7 @@ public class SocketServer extends Thread {
 					break;
 				case "/getPaseoArte":
 					ArrayList<Object> paseo = (ArrayList<Object>)mensajeIn.getSession().get("paseo");
-					customerControler.getPaseoArte(paseo);
+					barriosControler.getPaseoArte(paseo);
 					mensajeOut=new Message();
 					mensajeOut.setContext("/getPaseoArteResponse");
 					session.put("paseo",paseo);
@@ -240,7 +301,7 @@ public class SocketServer extends Thread {
 					break;
 				case "/getRetiro":
 					ArrayList<Object> retiro = (ArrayList<Object>)mensajeIn.getSession().get("retiro");
-					customerControler.getRetiro(retiro);
+					barriosControler.getRetiro(retiro);
 					mensajeOut=new Message();
 					mensajeOut.setContext("/getRetiroResponse");
 					session.put("retiro",retiro);
@@ -249,7 +310,7 @@ public class SocketServer extends Thread {
 					break;
 				case "/getSalamanca":
 					ArrayList<Object> salamanca = (ArrayList<Object>)mensajeIn.getSession().get("salamanca");
-					customerControler.getSalamanca(salamanca);
+					barriosControler.getSalamanca(salamanca);
 					mensajeOut=new Message();
 					mensajeOut.setContext("/getSalamancaResponse");
 					session.put("salamanca",salamanca);
@@ -258,7 +319,7 @@ public class SocketServer extends Thread {
 					break;
 				case "/getSalesas":
 					ArrayList<Object> salesas = (ArrayList<Object>)mensajeIn.getSession().get("salesas");
-					customerControler.getMalasana(salesas);
+					barriosControler.getMalasana(salesas);
 					mensajeOut=new Message();
 					mensajeOut.setContext("/getSalesasResponse");
 					session.put("salesas",salesas);
@@ -267,7 +328,7 @@ public class SocketServer extends Thread {
 					break;
 				case "/getSol":
 					ArrayList<Object> sol = (ArrayList<Object>)mensajeIn.getSession().get("sol");
-					customerControler.getSol(sol);
+					barriosControler.getSol(sol);
 					mensajeOut=new Message();
 					mensajeOut.setContext("/getSolResponse");
 					session.put("sol",sol);

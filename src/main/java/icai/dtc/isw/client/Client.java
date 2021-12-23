@@ -59,6 +59,11 @@ public class Client {
 				new MapaMenu(customer);
 				System.out.println("Usuario: "+customer.getUsuario());
 				break;
+			case "/updateNombreResponse":
+				System.out.println("\nSe ha actualizado supuestamente");
+				String cambio = (String)(mensajeVuelta.getSession().get("cambio"));
+				System.out.println(cambio);
+				break;
 			case "/addClienteResponse":
 				System.out.println("\nSe ha enviado");
 				Customer customerNuevo = (Customer)(mensajeVuelta.getSession().get("id"));
@@ -67,12 +72,20 @@ public class Client {
 					System.out.println("\nSe ha introducido adecuadamente en la base de datos");
 				}else System.out.println("\nNO se ha introducido adecuadamente en la base de datos");
 				break;
-			case "/updateClienteResponse":
+			case "/dropClienteResponse":
+				System.out.println("\nSe ha eliminado");
+				if(mensajeVuelta.getComprobar()){
+					System.out.println("\nSe ha introducido adecuadamente en la base de datos");
+				}else System.out.println("\nNO se ha introducido adecuadamente en la base de datos");
+				break;
+			case "/updateFotoResponse":
 				System.out.println("\nSe ha actualizado");
-
 				break;
 			case "/addClienteResponseError":
 				System.out.println("\nEl cliente ya está en la base de datos");
+				break;
+			case "/dropClienteResponseError":
+				System.out.println("\nEl cliente no se ha eliminado correctamente");
 				break;
 			case "/getRestaurantesResponse":
 				System.out.println("\nEstos son los restaurantes guardados en la base de datos");

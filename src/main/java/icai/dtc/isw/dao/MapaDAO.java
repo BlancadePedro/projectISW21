@@ -15,4 +15,93 @@ import icai.dtc.isw.domain.ocio.Evento;
 import icai.dtc.isw.domain.ocio.Parque;
 
 public class MapaDAO {
+    public static void getRestaurantes(ArrayList<Restaurante> lista) {
+        Connection con = ConnectionDAO.getInstance().getConnection();
+        try (PreparedStatement pst = con.prepareStatement("SELECT * FROM restaurantes");
+             ResultSet rs = pst.executeQuery()) {
+            while (rs.next()) {
+                lista.add(new Restaurante(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+            }
+        } catch (SQLException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+
+    }
+
+    public static void getHoteles(ArrayList<Hotel> lista) {
+        Connection con = ConnectionDAO.getInstance().getConnection();
+        try (PreparedStatement pst = con.prepareStatement("SELECT * FROM hoteles");
+             ResultSet rs = pst.executeQuery()) {
+
+            while (rs.next()) {
+                lista.add(new Hotel(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(7),rs.getString(8)));
+            }
+
+        } catch (SQLException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public static void getMuseos(ArrayList<Museo> lista) {
+        Connection con = ConnectionDAO.getInstance().getConnection();
+        try (PreparedStatement pst = con.prepareStatement("SELECT * FROM museos");
+             ResultSet rs = pst.executeQuery()) {
+
+            while (rs.next()) {
+                lista.add(new Museo(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+            }
+
+        } catch (SQLException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public static void getMonumentos(ArrayList<Monumento> lista) {
+        Connection con = ConnectionDAO.getInstance().getConnection();
+        try (PreparedStatement pst = con.prepareStatement("SELECT * FROM monumento");
+             ResultSet rs = pst.executeQuery()) {
+
+            while (rs.next()) {
+                lista.add(new Monumento(rs.getString(1), rs.getString(2)));
+            }
+
+        } catch (SQLException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public static void getParques(ArrayList<Parque> lista) {
+        Connection con = ConnectionDAO.getInstance().getConnection();
+        try (PreparedStatement pst = con.prepareStatement("SELECT * FROM parque");
+             ResultSet rs = pst.executeQuery()) {
+
+            while (rs.next()) {
+                lista.add(new Parque(rs.getString(1), rs.getString(2), rs.getString(3)));
+            }
+
+        } catch (SQLException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public static void getEventos(ArrayList<Evento> lista) {
+        Connection con = ConnectionDAO.getInstance().getConnection();
+        try (PreparedStatement pst = con.prepareStatement("SELECT * FROM evento");
+             ResultSet rs = pst.executeQuery()) {
+
+            while (rs.next()) {
+                lista.add(new Evento(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+            }
+
+        } catch (SQLException ex) {
+
+            System.out.println(ex.getMessage());
+        }
+    }
+
 }
