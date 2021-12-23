@@ -110,6 +110,8 @@ public class SocketServer extends Thread {
 					String nombre = (String)mensajeIn.getSession().get("cambioNombre");
 					customerControler.updateNombre(customer, nombre);
 					mensajeOut.setContext("/updateNombreResponse");
+					session.put("perfilNombre",customer);
+					mensajeOut.setSession(session);
 					objectOutputStream.writeObject(mensajeOut);
 					break;
 				case "/updateEdad":
@@ -131,6 +133,7 @@ public class SocketServer extends Thread {
 					String nacionalidad = (String)mensajeIn.getSession().get("cambioNacionalidad");
 					customerControler.updateNacionalidad(customer, nacionalidad);
 					mensajeOut.setContext("/updateNacionalidadResponse");
+
 					objectOutputStream.writeObject(mensajeOut);
 					break;
 				case "/updateDescripcion":

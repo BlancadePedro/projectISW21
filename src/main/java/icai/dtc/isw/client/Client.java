@@ -17,6 +17,7 @@ import icai.dtc.isw.domain.localidad.Museo;
 import icai.dtc.isw.domain.localidad.Restaurante;
 import icai.dtc.isw.domain.ocio.Evento;
 import icai.dtc.isw.domain.ocio.Parque;
+import icai.dtc.isw.domain.ui.InfoUsuario;
 import icai.dtc.isw.domain.ui.MapaMenu;
 import icai.dtc.isw.domain.paneles.*;
 import org.apache.log4j.Logger;
@@ -60,9 +61,7 @@ public class Client {
 				System.out.println("Usuario: "+customer.getUsuario());
 				break;
 			case "/updateNombreResponse":
-				System.out.println("\nSe ha actualizado supuestamente");
-				String cambio = (String)(mensajeVuelta.getSession().get("cambio"));
-				System.out.println(cambio);
+				System.out.println("\nSe ha actualizado");
 				break;
 			case "/addClienteResponse":
 				System.out.println("\nSe ha enviado");

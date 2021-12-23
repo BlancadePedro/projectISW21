@@ -144,8 +144,7 @@ public class CustomerDAO {
 	public static void cambiarNombre(Customer perfil, String nombrecompleto){
 
 			Connection con = ConnectionDAO.getInstance().getConnection();
-			try (PreparedStatement pst = con.prepareStatement("" +
-					"");
+			try (PreparedStatement pst = con.prepareStatement("UPDATE usuarios SET nombrecompleto ='" + nombrecompleto + "' WHERE usuario = '" + perfil.getUsuario() + "'");
 				 ResultSet rs = pst.executeQuery()) {
 
 			} catch (SQLException ex) {

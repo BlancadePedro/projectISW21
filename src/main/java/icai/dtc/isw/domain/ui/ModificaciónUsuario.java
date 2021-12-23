@@ -59,6 +59,7 @@ public class ModificaciónUsuario extends JFrame {
 
                 String nombre = JOptionPane.showInputDialog("Introduzca su nuevo nombre: ");
                 System.out.println(nombre);
+                perfil.setNombreCompleto(nombre);
                 Client client = new Client();
                 HashMap<String, Object> session = new HashMap<String, Object>();
                 session.put("perfilNombre",perfil);
@@ -75,7 +76,7 @@ public class ModificaciónUsuario extends JFrame {
             public void actionPerformed(ActionEvent actionEvent) {
 
                 String edad = JOptionPane.showInputDialog("Introduzca su edad: ");
-
+                perfil.setEdad(Integer.parseInt(edad));
                 Client client = new Client();
                 HashMap<String, Object> session = new HashMap<String, Object>();
                 session.put("perfilEdad",perfil);
@@ -92,6 +93,7 @@ public class ModificaciónUsuario extends JFrame {
             public void actionPerformed(ActionEvent actionEvent) {
 
                 String correo = JOptionPane.showInputDialog("Introduzca su nuevo correo: ");
+                perfil.setCorreo(correo);
                 Client client = new Client();
                 HashMap<String, Object> session = new HashMap<String, Object>();
                 session.put("perfilCorreo",perfil);
@@ -106,6 +108,7 @@ public class ModificaciónUsuario extends JFrame {
             public void actionPerformed(ActionEvent actionEvent) {
 
                 String descripcion = JOptionPane.showInputDialog("Introduzca una descripción actualizada: ");
+                perfil.setDescripcion(descripcion);
                 Client client = new Client();
                 HashMap<String, Object> session = new HashMap<String, Object>();
                 session.put("perfilDescripcion",perfil);
@@ -120,6 +123,7 @@ public class ModificaciónUsuario extends JFrame {
             public void actionPerformed(ActionEvent actionEvent) {
 
                 String telefono = JOptionPane.showInputDialog("Introduzca su telefono: ");
+                perfil.setTelefono(Integer.parseInt(telefono));
                 Client client = new Client();
                 HashMap<String, Object> session = new HashMap<String, Object>();
                 session.put("perfilTelefono",perfil);
@@ -135,6 +139,7 @@ public class ModificaciónUsuario extends JFrame {
             public void actionPerformed(ActionEvent actionEvent) {
 
                 String nacionalidad = JOptionPane.showInputDialog("Introduzca su nacionalidad: ");
+                perfil.setNacionalidad(nacionalidad);
                 Client client = new Client();
                 HashMap<String, Object> session = new HashMap<String, Object>();
                 session.put("perfilNacionalidad",perfil);
