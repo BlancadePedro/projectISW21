@@ -8,11 +8,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import icai.dtc.isw.domain.Customer;
+import icai.dtc.isw.domain.ui.Agenda;
+//import jdk.internal.org.objectweb.asm.commons.InstructionAdapter;
 
 public class AgendaDAO {
     public static void addAgenda(Customer perfil,String horaAdd, String add) {
         Connection con = ConnectionDAO.getInstance().getConnection();
-        try (PreparedStatement pst = con.prepareStatement("INSERT INTO agenda(usuario,hora,descripcion) VALUES ('" + perfil.getUsuario() + "','" + horaAdd + "'," + add + "");
+        try (PreparedStatement pst = con.prepareStatement("INSERT INTO agenda (usuario,hora,descripcion) VALUES ('" + perfil.getUsuario() + "','" + horaAdd + "'," + add + "");
              ResultSet rs = pst.executeQuery()) {
 
         } catch (SQLException ex) {
@@ -39,6 +41,6 @@ public class AgendaDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-
     }
+
 }

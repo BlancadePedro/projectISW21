@@ -21,7 +21,8 @@ public class PnlBarrio extends JFrame {
     private JButton btnVolver = new JButton("Cerrar");
 
     public PnlBarrio(ArrayList<Object> barrioList, Customer perfil) {
-        //JFrame frame = new JFrame();
+        JFrame frame = new JFrame();
+        Font fuente = new Font("Tahoma", Font.ITALIC, 15);
         int size = barrioList.size();
         panelCentro = new JPanel((new GridLayout(size,2)));
         JButton btnFav;
@@ -31,29 +32,36 @@ public class PnlBarrio extends JFrame {
         for (Object l : barrioList) {
             if (l instanceof Hotel){
                 Hotel h = (Hotel)l;
-                JLabel label = new JLabel("Nombre: "+h.getNombre()+"; Dirección: "+h.getDireccion()+ "; Horario: "+h.getHorario());
+                JLabel label = new JLabel("-"+h.getNombre()+"; Dirección: "+h.getDireccion());
+                label.setFont(fuente);
                 panelCentro.add(label);
             }else if(l instanceof Restaurante){
                 Restaurante r = (Restaurante)l;
-                JLabel label = new JLabel("Nombre: "+r.getNombre()+"; Dirección: "+r.getDireccion()+ "; Horario: "+r.getHorario());
+                JLabel label = new JLabel("-"+r.getNombre()+"; Dirección: "+r.getDireccion());
+                label.setFont(fuente);
                 panelCentro.add(label);
             }else if(l instanceof Museo) {
                 Museo m = (Museo) l;
-                JLabel label = new JLabel("Nombre: "+m.getNombre()+"; Dirección: "+m.getDireccion()+ "; Horario: "+m.getHorario());
+                JLabel label = new JLabel("-"+m.getNombre()+"; Dirección: "+m.getDireccion());
+                label.setFont(fuente);
                 panelCentro.add(label);
             }else if(l instanceof Parque) {
                 Parque p = (Parque) l;
-                JLabel label = new JLabel("Nombre: "+p.getNombre()+"; Dirección: "+p.getDireccion()+ "; Horario: "+p.getHorario());
+                JLabel label = new JLabel("-"+p.getNombre()+"; Dirección: "+p.getDireccion());
+                label.setFont(fuente);
                 panelCentro.add(label);
             }else if(l instanceof Monumento) {
                 Monumento mo = (Monumento) l;
-                JLabel label = new JLabel("Nombre: "+mo.getNombre()+"; Dirección: "+mo.getDireccion());
+                JLabel label = new JLabel("-"+mo.getNombre()+"; Dirección: "+mo.getDireccion());
+                label.setFont(fuente);
                 panelCentro.add(label);
             }else if(l instanceof Evento) {
                 Evento e = (Evento) l;
-                JLabel label = new JLabel("Nombre: "+e.getNombre()+"; Dirección: "+e.getDireccion()+ "; Autor: "+e.getAutor());
+                JLabel label = new JLabel("-"+e.getNombre()+"; Dirección: "+e.getDireccion()+ "; Autor: "+e.getAutor());
+                label.setFont(fuente);
                 panelCentro.add(label);
             }
+
             btnFav = new JButton("Añadir a favoritos");
             int finalContador = contador;
             btnFav.addActionListener(new ActionListener() {

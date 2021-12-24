@@ -315,6 +315,7 @@ public class MapaMenu extends JFrame{
                     if(opcion.equals("Cerrar sesión")){
                         JOptionPane.showMessageDialog(null,"Adios, vuelva pronto!");
                         new PanelInicio();
+                        dispose();
                     }
                     if(opcion.equals("Darse de baja")){
                         Object [] botones = {"Sí","No"};

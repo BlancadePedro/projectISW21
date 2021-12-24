@@ -15,11 +15,13 @@ public class PnlParques extends JFrame {
     private JButton btnVolver = new JButton("Cerrar");
 
     public PnlParques(ArrayList<Parque> lista, Customer perfil){
-
+        super("Información de todos los parques disponibles");
+        Font fuente = new Font("Tahoma", Font.ITALIC, 17);
         int size = lista.size();
         panelCentro = new JPanel((new GridLayout(size,1)));
         for (Parque l : lista) {
-            JLabel label = new JLabel("Nombre: "+l.getNombre()+"; Dirección: "+l.getDireccion()+ "; Horario: "+l.getHorario());
+            JLabel label = new JLabel("-"+l.getNombre()+"; Dirección: "+l.getDireccion()+ "; Horario: "+l.getHorario()+"\n");
+            label.setFont(fuente);
             panelCentro.add(label);
         }
         btnVolver.addActionListener(new ActionListener() {

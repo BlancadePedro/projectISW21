@@ -18,15 +18,18 @@ public class Evento extends Ocio{
     public String getAutor() {
         return autor;
     }
+    public String getPrecio(){return precio;}
     public String getCelebracion() {
         return celebracion;
     }
+    public String getFecha(){return fecha;}
 
     public void setAutor(String autor) {
         this.autor = autor;
     }
+    public void setPrecio(String precio){this.precio = precio;}
     public void setCelebracion(String celebracion) {
         this.celebracion = celebracion;
     }
-
+    public void setFecha(String fecha){this.fecha = fecha;}
 }

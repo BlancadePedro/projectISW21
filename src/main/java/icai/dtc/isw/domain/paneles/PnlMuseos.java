@@ -15,11 +15,14 @@ public class PnlMuseos extends JFrame {
     private JButton btnVolver = new JButton("Cerrar");
 
     public PnlMuseos(ArrayList<Museo> lista, Customer perfil){
-
+        super("Información de todos los hoteles disponibles");
+        Font fuente = new Font("Tahoma", Font.ITALIC, 17);
         int size = lista.size();
+        //String nombre, String direccion, String horario, String contacto, String precio, String tipoMuseo
         panelCentro = new JPanel((new GridLayout(size,1)));
         for (Museo l : lista) {
-            JLabel label = new JLabel("Nombre: "+l.getNombre()+"; Dirección: "+l.getDireccion()+ "; Horario: "+l.getHorario());
+            JLabel label = new JLabel("\n -"+l.getNombre()+"; Dirección: "+l.getDireccion()+ "; Horario: "+l.getHorario()+"; Contacto: "+l.getContacto()+"; Precio: "+l.getPrecio()+"; El museo es de: "+l.getTipoMuseo()+"");
+            label.setFont(fuente);
             panelCentro.add(label);
         }
         btnVolver.addActionListener(new ActionListener() {

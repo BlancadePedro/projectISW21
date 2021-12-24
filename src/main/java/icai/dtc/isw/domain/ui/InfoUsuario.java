@@ -15,7 +15,7 @@ import javax.swing.*;
 public class InfoUsuario extends JFrame
 {
 
-    private JPanel pnlInfo = new JPanel(new GridLayout(7, 1));
+    private JPanel pnlInfo = new JPanel(new GridLayout(6, 1));
     private JPanel pnlFoto = new JPanel((new BorderLayout()));
     private JPanel pnlBotones = new JPanel(new FlowLayout());
     private JPanel pnlPrueba = new JPanel(new GridLayout(1,2));
@@ -32,7 +32,7 @@ public class InfoUsuario extends JFrame
     private JComboBox<String> opcionesFotos = new JComboBox<>();
 
     public InfoUsuario(Customer perfil){
-    
+
         this.setLayout(new BorderLayout());
         this.setVisible(true);
 

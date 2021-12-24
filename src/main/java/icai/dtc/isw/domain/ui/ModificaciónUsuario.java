@@ -107,7 +107,7 @@ public class ModificaciónUsuario extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
 
-                String descripcion = JOptionPane.showInputDialog("Introduzca una descripción actualizada: ");
+                String descripcion = JOptionPane.showInputDialog("Introduzca una descripción breve (máx 16 caracteres): ");
                 perfil.setDescripcion(descripcion);
                 Client client = new Client();
                 HashMap<String, Object> session = new HashMap<String, Object>();
@@ -154,7 +154,7 @@ public class ModificaciónUsuario extends JFrame {
         this.add(pnlTerminar, BorderLayout.SOUTH);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.pack();
-        this.setResizable(true);//Para que se pueda redimensionar
+        this.setResizable(false);//Para que se pueda redimensionar
         this.setLocationRelativeTo(null);
         this.setVisible(true);
 
