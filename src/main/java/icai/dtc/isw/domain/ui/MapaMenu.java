@@ -281,7 +281,6 @@ public class MapaMenu extends JFrame{
         opciones.addItem("INFO");
         opciones.addItem("Mi perfil");
         opciones.addItem("Mi Agenda");
-        opciones.addItem("Mi Chat");
         opciones.addItem("Mis favoritos");
         opciones.addItem("Información importante");
         opciones.addItem("Darse de baja");
@@ -300,21 +299,26 @@ public class MapaMenu extends JFrame{
                         dispose();
                     }
                     if(opcion.equals("Mi Agenda")){
-                        new Agenda(customer);
+                        //new PanelAgenda(customer);
+                        Client client = new Client();
+                        HashMap<String, Object> session = new HashMap<String, Object>();
+                        ArrayList<FranjaHoraria> listaInfo = new ArrayList<>();
+                        session.put("listaAgenda",listaInfo);
+                        session.put("perfilAgenda",customer);
+                        client.enviar("/infoAgenda",session);
                         dispose();
+
                     }
                     if(opcion.equals("Información importante")){
                         System.out.println("En proceso");
                     }
-                    if(opcion.equals("Mi Chat")){
-                        System.out.println("En proceso");
-                    }
                     if(opcion.equals("Mis favoritos")){
-                        System.out.println("En proceso");
+                        MapaMenu.verFavoritos();
                     }
                     if(opcion.equals("Cerrar sesión")){
                         JOptionPane.showMessageDialog(null,"Adios, vuelva pronto!");
                         new PanelInicio();
+                        dispose();
                     }
                     if(opcion.equals("Darse de baja")){
                         Object [] botones = {"Sí","No"};
@@ -449,17 +453,31 @@ public class MapaMenu extends JFrame{
     }
 
     public static void main (String [] inforux){
-        Customer prueba = new Customer(null, null, 0, null, null, 0, "usuario", "contraseña", 0);
+        Customer prueba = new Customer(null, null, 0, null, null, 0, "blancadepedr", "contraseña", 0);
         new MapaMenu(prueba);
     }
 
     public static void addFavorito(Object object){
-        System.out.println("Comprobacion lugar Mapa Menu: "+((Hotel)object).getNombre());
         Client client = new Client();
         HashMap<String, Object> session = new HashMap<>();
         session.put("id",customer);
         session.put("lugar",object); //Contiene el lugar que se quiere poner como favorito
         client.enviar("/addFavorito",session);
+    }
+    public static void eliminarFavorito(Object object){
+        Client client = new Client();
+        HashMap<String, Object> session = new HashMap<>();
+        session.put("id",customer);
+        session.put("lugar",object); //Contiene el lugar que se quiere poner como favorito
+        client.enviar("/eliminarFavorito",session);
+    }
 
+    public static void verFavoritos(){
+        Client client = new Client();
+        HashMap<String, Object> session = new HashMap<>();
+        ArrayList<Object> listaFavoritos= new ArrayList<>();
+        session.put("favoritos",listaFavoritos);
+        session.put("id",customer);
+        client.enviar("/verFavorito",session);
     }
 }

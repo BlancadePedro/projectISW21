@@ -12,14 +12,19 @@ import icai.dtc.isw.domain.localidad.Museo;
 import icai.dtc.isw.domain.localidad.Restaurante;
 import icai.dtc.isw.domain.ocio.Evento;
 import icai.dtc.isw.domain.ocio.Parque;
+import icai.dtc.isw.domain.ui.Agenda;
+import icai.dtc.isw.domain.ui.FranjaHoraria;
 
 public class AgendaControler {
-    public  void deleteAgenda(Customer customer,String horaDelete,String delete){
-        AgendaDAO.deleteAgenda(customer,horaDelete,delete);}
-    public void addAgenda(Customer customer,String horaAdd,String add){
-        AgendaDAO.addAgenda(customer,horaAdd,add);
+    public void getInfo(ArrayList<FranjaHoraria> lista, Customer customer) {
+        AgendaDAO.getInfo(lista,customer);
     }
-    public void updateAgenda( Customer customer,String horaUpdate,String update){
-        AgendaDAO.updateAgenda(customer,horaUpdate,update);
+    public  void deleteAgenda(FranjaHoraria lista,Customer customer){
+        AgendaDAO.deleteAgenda(lista,customer);}
+    public void addAgenda(FranjaHoraria lista,Customer customer){
+        AgendaDAO.addAgenda(lista,customer);
     }
+    /*public void updateAgenda(ArrayList<FranjaHoraria> lista,Customer customer){
+        AgendaDAO.updateAgenda(lista,customer);
+    }*/
 }

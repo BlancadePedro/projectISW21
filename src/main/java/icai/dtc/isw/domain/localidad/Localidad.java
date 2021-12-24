@@ -8,13 +8,17 @@ public class Localidad implements Serializable {
     private String horario;
     private String contacto;
     private String precio;
+    private String barrio;
+    private int id;
 
-    public Localidad(String nombre, String direccion, String horario, String contacto, String precio) {
+    public Localidad(String nombre, String direccion, String horario, String contacto, String precio, String barrio, int id) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.horario = horario;
         this.contacto = contacto;
         this.precio = precio;
+        this.barrio = barrio;
+        this.id = id;
     }
     public String getNombre() {
         return nombre;
@@ -31,7 +35,13 @@ public class Localidad implements Serializable {
     public String getPrecio() {
         return precio;
     }
-   
+    public String getBarrio() {
+        return barrio;
+    }
+    public int getId() {
+        return id;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -47,8 +57,14 @@ public class Localidad implements Serializable {
     public void setPrecio(String precio) {
         this.precio = precio;
     }
+    public void setBarrio(String barrio) {
+        this.barrio = barrio;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    @Override 
+    @Override
     public String toString()
     {
         return nombre + direccion + horario + contacto;

@@ -22,6 +22,7 @@ public class BarriosControler {
     public void getSalamanca(ArrayList<Object> lista){BarriosDAO.getSalamanca(lista);}
     public void getSalesas(ArrayList<Object> lista){BarriosDAO.getSalesas(lista);}
     public void getSol(ArrayList<Object> lista){BarriosDAO.getSol(lista);}
-    public void addFavorito(Object lugar, Customer perfil){BarriosDAO.addFavorito(lugar, perfil);
-        System.out.println("ENTRO EN Controler /addFavorito");}
+    public static void addFavorito(Object lugar, Customer perfil){BarriosDAO.addFavorito(lugar, perfil);}
+    public static void eliminarFavorito(Object lugar, Customer perfil){BarriosDAO.eliminarFavorito(lugar, perfil);}
+    public static void verFavoritos(Customer perfil, ArrayList<Object> lista){BarriosDAO.verFavoritos(perfil,lista);}
 }

@@ -34,12 +34,6 @@ public class Mapa extends JFrame {
         this.setVisible(true);
         //Compobacion de que funciona-> Lo dejo por si se necesita, pero se podría borrar
 
-        Restaurante restaurante = new Restaurante("nombre","direccion","horario","contacto","precio","tipoComida");
-        Hotel hotel = new Hotel("nombre", "direccion", "horario", "contacto", "precio", "estrellas", "mascotas", "publico");
-        Museo museo = new Museo("nombre", "direccion", "horario", "contacto", "precio","tipoMuseo");
-        Evento evento = new Evento("nombre", "direccion", "precio", "autor", "celebracion", "fecha");
-        Monumento monumento = new Monumento("nombre", "direccion");
-        Parque parque = new Parque("nombre", "direccion","horario");
 
         //botonesMapa(museo, pnlMapa,250,100);
         this.add(pnlMapa);

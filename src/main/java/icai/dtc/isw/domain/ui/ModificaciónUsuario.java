@@ -25,7 +25,7 @@ public class ModificaciónUsuario extends JFrame {
     private JLabel lblMensaje = new JLabel("Elija la opción que sea cambiar");
 
     private JPanel pnlMensaje = new JPanel(new FlowLayout());
-    private JPanel pnlBotones = new JPanel(new GridLayout(3,2));
+    private JPanel pnlBotones = new JPanel(new GridLayout(3,2,2, 4));
     private JPanel pnlTerminar = new JPanel(new FlowLayout());
 
     public ModificaciónUsuario(Customer perfil){
@@ -107,7 +107,7 @@ public class ModificaciónUsuario extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
 
-                String descripcion = JOptionPane.showInputDialog("Introduzca una descripción actualizada: ");
+                String descripcion = JOptionPane.showInputDialog("Introduzca una descripción breve (máx 16 caracteres): ");
                 perfil.setDescripcion(descripcion);
                 Client client = new Client();
                 HashMap<String, Object> session = new HashMap<String, Object>();
@@ -154,7 +154,7 @@ public class ModificaciónUsuario extends JFrame {
         this.add(pnlTerminar, BorderLayout.SOUTH);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.pack();
-        this.setResizable(true);//Para que se pueda redimensionar
+        this.setResizable(false);//Para que se pueda redimensionar
         this.setLocationRelativeTo(null);
         this.setVisible(true);
 

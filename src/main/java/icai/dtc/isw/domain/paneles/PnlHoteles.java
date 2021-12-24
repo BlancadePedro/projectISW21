@@ -15,11 +15,17 @@ public class PnlHoteles extends JFrame {
     private JButton btnVolver = new JButton("Cerrar");
 
     public PnlHoteles(ArrayList<Hotel> lista, Customer perfil){
+        super("Información de todos los hoteles disponibles");
+        Font fuente = new Font("Tahoma", Font.ITALIC, 17);
         int size = lista.size();
-        panelCentro = new JPanel((new GridLayout(size,1)));
+        //String nombre, String direccion, String horario, String contacto, String precio, String estrellas, String mascotas, String public
+        panelCentro = new JPanel((new GridLayout(size*2,1)));
         for (Hotel l : lista) {
-            JLabel label = new JLabel("Nombre: "+l.getNombre()+"; Dirección: "+l.getDireccion()+ "; Horario: "+l.getHorario());
+            JLabel label = new JLabel("-"+l.getNombre()+"; Dirección: "+l.getDireccion()+ "; Horario: "+l.getHorario()+"Contacto: "+l.getContacto()+"; Precio: "+l.getPrecio()+ "; Estrellas: "+l.getEstrellas()+"; Es "+l.getPublico()+"\n");
+            JLabel espacio = new JLabel(" ");
+            label.setFont(fuente);
             panelCentro.add(label);
+            panelCentro.add(espacio);
         }
         btnVolver.addActionListener(new ActionListener() {
 

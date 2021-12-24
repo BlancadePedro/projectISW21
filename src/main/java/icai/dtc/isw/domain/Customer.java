@@ -89,7 +89,10 @@ public class Customer implements Serializable {
 	}
 
 	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+
+		if(descripcion.length()>15){
+			this.descripcion = descripcion.substring(0,15);
+		}else this.descripcion = descripcion;
 	}
 
 	public void setTelefono(int telefono) {

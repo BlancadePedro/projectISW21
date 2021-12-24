@@ -17,10 +17,8 @@ import icai.dtc.isw.domain.localidad.Museo;
 import icai.dtc.isw.domain.localidad.Restaurante;
 import icai.dtc.isw.domain.ocio.Evento;
 import icai.dtc.isw.domain.ocio.Parque;
-import icai.dtc.isw.domain.ui.InfoUsuario;
-import icai.dtc.isw.domain.ui.MapaMenu;
+import icai.dtc.isw.domain.ui.*;
 import icai.dtc.isw.domain.paneles.*;
-import icai.dtc.isw.domain.ui.PanelInicio;
 import org.apache.log4j.Logger;
 
 import icai.dtc.isw.configuration.PropertiesISW;
@@ -75,7 +73,6 @@ public class Client {
 			case "/dropClienteResponse":
 				System.out.println("\nSe ha eliminado");
 				new PanelInicio();
-
 				break;
 			case "/updateFotoResponse":
 				System.out.println("\nSe ha actualizado");
@@ -115,10 +112,6 @@ public class Client {
 				System.out.println("\nEstos son los parques guardados en la base de datos");
 				ArrayList<Parque> parqueList=(ArrayList<Parque>)(mensajeVuelta.getSession().get("parques"));
 				new PnlParques(parqueList,perfil);
-				break;
-			case "/addFavoritoResponse":
-				System.out.println("\nSe ha guardado el favorito");
-				System.out.println("");
 				break;
 			case "/getAustriasResponse":
 				System.out.println("\nEstos son los lugares en el barrio de Austrias");
@@ -195,11 +188,28 @@ public class Client {
 			case "/deleteAgendaResponse":
 				System.out.println("\nSe ha borrado parte del contenido de la agenda");
 				break;
+			case "/addFavoritoResponse":
+				System.out.println("\nSe ha guardado el favorito");
+				break;
+			case "/infoAgendaResponse":
+				ArrayList<FranjaHoraria> lista = (ArrayList<FranjaHoraria>)(mensajeVuelta.getSession().get("listaAgenda"));
+				System.out.println("Tenemos la info guardada en la base de datos");
+				new Agenda(perfil,lista);
+				break;
+			case "/eliminarFavoritoResponse":
+				System.out.println("\nSe ha eliminado el favorito");
+				break;
+			case "/verFavoritosResponse":
+				System.out.println("\nEstos son los lugares en el barrio de Salesas");
+				ArrayList<Object> favoritosList=(ArrayList<Object>)(mensajeVuelta.getSession().get("favoritos"));
+				new PnlFavoritos(favoritosList,perfil);
+				break;
 
 			default:
 				Logger.getRootLogger().info("Option not found");
 				System.out.println("\nError a la vuelta");
 				break;
+
 		
 		}
 		//System.out.println("3.- En Main.- El valor devuelto es: "+((String)mensajeVuelta.getSession().get("Nombre")));

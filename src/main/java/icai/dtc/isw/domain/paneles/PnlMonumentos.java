@@ -15,11 +15,13 @@ public class PnlMonumentos extends JFrame {
     private JButton btnVolver = new JButton("Cerrar");
 
     public PnlMonumentos(ArrayList<Monumento> lista, Customer perfil){
-
+        super("Información de todos los monumentos disponibles");
+        Font fuente = new Font("Tahoma", Font.ITALIC, 17);
         int size = lista.size();
         panelCentro = new JPanel((new GridLayout(size,1)));
         for (Monumento l : lista) {
-            JLabel label = new JLabel("Nombre: "+l.getNombre()+"; Dirección: "+l.getDireccion());
+            JLabel label = new JLabel("-"+l.getNombre()+"; Dirección: "+l.getDireccion()+"\n");
+            label.setFont(fuente);
             panelCentro.add(label);
         }
         btnVolver.addActionListener(new ActionListener() {

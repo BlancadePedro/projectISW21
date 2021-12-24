@@ -22,6 +22,7 @@ import icai.dtc.isw.domain.localidad.Museo;
 import icai.dtc.isw.domain.localidad.Restaurante;
 import icai.dtc.isw.domain.ocio.Evento;
 import icai.dtc.isw.domain.ocio.Parque;
+import icai.dtc.isw.domain.ui.FranjaHoraria;
 import icai.dtc.isw.message.Message;
 
 public class SocketServer extends Thread {
@@ -209,15 +210,6 @@ public class SocketServer extends Thread {
 					mensajeOut.setSession(session);
 					objectOutputStream.writeObject(mensajeOut);
 					break;
-				case "/addFavorito":
-					customer = (Customer)mensajeIn.getSession().get("id");
-					Object lugar = (Object)mensajeIn.getSession().get("lugar");
-					barriosControler.addFavorito(lugar,customer);
-					mensajeOut.setContext("/addFavoritoResponse");
-					session.put("id",customer);
-					mensajeOut.setSession(session);
-					objectOutputStream.writeObject(mensajeOut);
-					break;
 				case "/getAustrias":
 					ArrayList<Object> austrias = (ArrayList<Object>)mensajeIn.getSession().get("austrias");
 					barriosControler.getAustrias(austrias);
@@ -326,7 +318,16 @@ public class SocketServer extends Thread {
 					mensajeOut.setSession(session);
 					objectOutputStream.writeObject(mensajeOut);
 					break;
-				case "/addAgenda":
+				case "/getSol":
+					ArrayList<Object> sol = (ArrayList<Object>)mensajeIn.getSession().get("sol");
+					barriosControler.getSol(sol);
+					mensajeOut=new Message();
+					mensajeOut.setContext("/getSolResponse");
+					session.put("sol",sol);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				/*case "/addAgenda":
 					customer=(Customer)mensajeIn.getSession().get("idAdd");
 					String horaAdd = (String)mensajeIn.getSession().get("horaAdd");
 					String add = (String)mensajeIn.getSession().get("añadir");
@@ -350,6 +351,49 @@ public class SocketServer extends Thread {
 					mensajeOut.setContext("/deleteAgendaResponse");
 					objectOutputStream.writeObject(mensajeOut);
 					break;
+
+				 */
+				case "/addFavorito":
+					customer = (Customer)mensajeIn.getSession().get("id");
+					Object lugar = (Object)mensajeIn.getSession().get("lugar");
+					BarriosControler.addFavorito(lugar,customer);
+					mensajeOut.setContext("/addFavoritoResponse");
+					session.put("id",customer);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/eliminarFavorito":
+					customer = (Customer)mensajeIn.getSession().get("id");
+					Object sitio = (Object)mensajeIn.getSession().get("lugar");
+					BarriosControler.eliminarFavorito(sitio,customer);
+					mensajeOut.setContext("/eliminarFavoritoResponse");
+					session.put("id",customer);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				case "/verFavorito":
+					ArrayList<Object> favoritos = (ArrayList<Object>)mensajeIn.getSession().get("favoritos");
+					customer = (Customer)mensajeIn.getSession().get("id");
+					BarriosControler.verFavoritos(customer,favoritos);
+					mensajeOut.setContext("/verFavoritosResponse");
+					session.put("favoritos",favoritos);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+
+				case "/infoAgenda":
+					ArrayList<FranjaHoraria> listaInfo = (ArrayList<FranjaHoraria>)mensajeIn.getSession().get("listaAgenda");
+					customer = (Customer)mensajeIn.getSession().get("perfilAgenda");
+					agendaControler.getInfo(listaInfo,customer);
+					mensajeOut=new Message();
+					mensajeOut.setContext("/infoAgendaResponse");
+					session.put("perfilAgenda",customer);
+					session.put("listaAgenda", listaInfo);
+					mensajeOut.setSession(session);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+
+
 				default:
 		    		System.out.println("\nParámetro no encontrado");
 		    		break;

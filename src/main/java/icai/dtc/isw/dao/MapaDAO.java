@@ -20,7 +20,7 @@ public class MapaDAO {
         try (PreparedStatement pst = con.prepareStatement("SELECT * FROM restaurantes");
              ResultSet rs = pst.executeQuery()) {
             while (rs.next()) {
-                lista.add(new Restaurante(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+                lista.add(new Restaurante(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8)));
             }
         } catch (SQLException ex) {
 
@@ -35,7 +35,7 @@ public class MapaDAO {
              ResultSet rs = pst.executeQuery()) {
 
             while (rs.next()) {
-                lista.add(new Hotel(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(7),rs.getString(8)));
+                lista.add(new Hotel(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getInt(10)));
             }
 
         } catch (SQLException ex) {
@@ -50,7 +50,7 @@ public class MapaDAO {
              ResultSet rs = pst.executeQuery()) {
 
             while (rs.next()) {
-                lista.add(new Museo(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+                lista.add(new Museo(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getInt(8)));
             }
 
         } catch (SQLException ex) {
@@ -65,7 +65,7 @@ public class MapaDAO {
              ResultSet rs = pst.executeQuery()) {
 
             while (rs.next()) {
-                lista.add(new Monumento(rs.getString(1), rs.getString(2)));
+                lista.add(new Monumento(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4)));
             }
 
         } catch (SQLException ex) {
@@ -80,7 +80,7 @@ public class MapaDAO {
              ResultSet rs = pst.executeQuery()) {
 
             while (rs.next()) {
-                lista.add(new Parque(rs.getString(1), rs.getString(2), rs.getString(3)));
+                lista.add(new Parque(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5)));
             }
 
         } catch (SQLException ex) {
@@ -95,7 +95,7 @@ public class MapaDAO {
              ResultSet rs = pst.executeQuery()) {
 
             while (rs.next()) {
-                lista.add(new Evento(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+                lista.add(new Evento(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(7),rs.getInt(8)));
             }
 
         } catch (SQLException ex) {
@@ -103,5 +103,6 @@ public class MapaDAO {
             System.out.println(ex.getMessage());
         }
     }
+
 
 }
