@@ -20,6 +20,7 @@ public class PnlRestaurantes extends JFrame {
         super("Información de todos los restaurantes disponibles");
         Font fuente = new Font("Tahoma", Font.ITALIC, 17);
         int size = lista.size();
+        //String nombre, String direccion, String horario, String contacto, String precio, String tipoComida
         panelCentro = new JPanel((new GridLayout(size,1)));
         for (Restaurante l : lista) {
             JLabel label = new JLabel("-"+l.getNombre()+"; Dirección: "+l.getDireccion()+ "; Horario: "+l.getHorario()+"; Contacto: "+l.getContacto()+"; Precio: "+l.getPrecio()+"; Es "+l.getTipoComida());

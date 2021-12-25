@@ -327,32 +327,44 @@ public class SocketServer extends Thread {
 					mensajeOut.setSession(session);
 					objectOutputStream.writeObject(mensajeOut);
 					break;
-				/*case "/addAgenda":
-					customer=(Customer)mensajeIn.getSession().get("idAdd");
-					String horaAdd = (String)mensajeIn.getSession().get("horaAdd");
-					String add = (String)mensajeIn.getSession().get("añadir");
-					agendaControler.addAgenda(customer,horaAdd,add);
-					mensajeOut.setContext("/addAgendaResponse");
+				case "/infoAgenda":
+					ArrayList<FranjaHoraria> listaInfo = (ArrayList<FranjaHoraria>)mensajeIn.getSession().get("listaAgenda");
+					customer = (Customer)mensajeIn.getSession().get("perfilAgenda");
+					agendaControler.getInfo(listaInfo,customer);
+					mensajeOut=new Message();
+					mensajeOut.setContext("/infoAgendaResponse");
+					session.put("perfilAgenda",customer);
+					session.put("listaAgenda", listaInfo);
+					mensajeOut.setSession(session);
 					objectOutputStream.writeObject(mensajeOut);
 					break;
-				case "/updateAgenda":
+				case "/addAgenda":
+					customer=(Customer)mensajeIn.getSession().get("idAdd");
+					FranjaHoraria listaAdd = (FranjaHoraria) mensajeIn.getSession().get("add");
+					agendaControler.addAgenda(listaAdd,customer);
+					mensajeOut=new Message();
+					mensajeOut.setContext("/addAgendaResponse");
+					session.put("idAdd", customer);
+					objectOutputStream.writeObject(mensajeOut);
+					break;
+				/*case "/updateAgenda":
 					customer=(Customer)mensajeIn.getSession().get("idUpdate");
 					String horaUpdate = (String)mensajeIn.getSession().get("horaUpdate");
 					String update = (String)mensajeIn.getSession().get("actualizar");
 					agendaControler.updateAgenda(customer,horaUpdate,update);
 					mensajeOut.setContext("/updateAgendaResponse");
 					objectOutputStream.writeObject(mensajeOut);
-					break;
+					break;*/
 				case "/deleteAgenda":
 					customer=(Customer)mensajeIn.getSession().get("idDelete");
-					String horaDelete = (String)mensajeIn.getSession().get("horaDelete");
-					String delete = (String)mensajeIn.getSession().get("eliminar");
-					agendaControler.deleteAgenda(customer,horaDelete,delete);
+					FranjaHoraria delete = (FranjaHoraria)mensajeIn.getSession().get("delete");
+					agendaControler.deleteAgenda(delete,customer);
 					mensajeOut.setContext("/deleteAgendaResponse");
+					session.put("idDelete", customer);
+					mensajeOut.setSession(session);
 					objectOutputStream.writeObject(mensajeOut);
 					break;
 
-				 */
 				case "/addFavorito":
 					customer = (Customer)mensajeIn.getSession().get("id");
 					Object lugar = (Object)mensajeIn.getSession().get("lugar");
@@ -381,17 +393,6 @@ public class SocketServer extends Thread {
 					objectOutputStream.writeObject(mensajeOut);
 					break;
 
-				case "/infoAgenda":
-					ArrayList<FranjaHoraria> listaInfo = (ArrayList<FranjaHoraria>)mensajeIn.getSession().get("listaAgenda");
-					customer = (Customer)mensajeIn.getSession().get("perfilAgenda");
-					agendaControler.getInfo(listaInfo,customer);
-					mensajeOut=new Message();
-					mensajeOut.setContext("/infoAgendaResponse");
-					session.put("perfilAgenda",customer);
-					session.put("listaAgenda", listaInfo);
-					mensajeOut.setSession(session);
-					objectOutputStream.writeObject(mensajeOut);
-					break;
 
 
 				default:

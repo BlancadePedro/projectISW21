@@ -299,10 +299,11 @@ public class MapaMenu extends JFrame{
                         dispose();
                     }
                     if(opcion.equals("Mi Agenda")){
-                        //new PanelAgenda(customer);
+
+                        ArrayList<FranjaHoraria> listaInfo = new ArrayList<>();
+
                         Client client = new Client();
                         HashMap<String, Object> session = new HashMap<String, Object>();
-                        ArrayList<FranjaHoraria> listaInfo = new ArrayList<>();
                         session.put("listaAgenda",listaInfo);
                         session.put("perfilAgenda",customer);
                         client.enviar("/infoAgenda",session);
@@ -453,7 +454,7 @@ public class MapaMenu extends JFrame{
     }
 
     public static void main (String [] inforux){
-        Customer prueba = new Customer(null, null, 0, null, null, 0, "blancadepedr", "contraseña", 0);
+        Customer prueba = new Customer(null, null, 0, null, null, 0, "usuario", "contraseña", 0);
         new MapaMenu(prueba);
     }
 

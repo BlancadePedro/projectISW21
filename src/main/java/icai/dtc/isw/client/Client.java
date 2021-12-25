@@ -181,6 +181,8 @@ public class Client {
 
 			case "/addAgendaResponse":
 				System.out.println("\nSe ha añadido contenido a la agenda");
+				ArrayList<FranjaHoraria> listaInfo = new ArrayList<>();
+				Customer add = (Customer)(mensajeVuelta.getSession().get("perfilAgenda"));
 				break;
 			case "/updateAgendaResponse":
 				System.out.println("\nSe ha actualizado la agenda");
@@ -192,9 +194,11 @@ public class Client {
 				System.out.println("\nSe ha guardado el favorito");
 				break;
 			case "/infoAgendaResponse":
-				ArrayList<FranjaHoraria> lista = (ArrayList<FranjaHoraria>)(mensajeVuelta.getSession().get("listaAgenda"));
 				System.out.println("Tenemos la info guardada en la base de datos");
-				new Agenda(perfil,lista);
+				Customer perfilAgenda = (Customer)(mensajeVuelta.getSession().get("perfilAgenda"));
+				ArrayList<FranjaHoraria> listaAgenda = (ArrayList<FranjaHoraria>)(mensajeVuelta.getSession().get("listaAgenda"));
+				//listaAgenda = Agenda.establecerID(listaAgenda,perfilAgenda);
+				new Agenda(perfilAgenda,listaAgenda);
 				break;
 			case "/eliminarFavoritoResponse":
 				System.out.println("\nSe ha eliminado el favorito");
@@ -210,7 +214,7 @@ public class Client {
 				System.out.println("\nError a la vuelta");
 				break;
 
-		
+
 		}
 		//System.out.println("3.- En Main.- El valor devuelto es: "+((String)mensajeVuelta.getSession().get("Nombre")));
 	}
