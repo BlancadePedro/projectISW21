@@ -6,7 +6,7 @@ import icai.dtc.isw.domain.ui.Usuario.Customer;
 import java.util.ArrayList;
 
 public class BarriosControler {
-    //Relacionado con barrios
+
     public void getAustrias(ArrayList<Object> lista){
         BarriosDAO.getAustrias(lista);}
     public void getChueca(ArrayList<Object> lista){BarriosDAO.getChueca(lista);}

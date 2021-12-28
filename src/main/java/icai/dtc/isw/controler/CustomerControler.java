@@ -9,14 +9,12 @@ import icai.dtc.isw.domain.ui.Usuario.Customer;
 
 public class CustomerControler {
 
-	//Relacionado con el usuario
 	public void getCustomer(ArrayList<Customer> lista) {
 		CustomerDAO.getClientes(lista);
 	}
 	public Customer getCliente(String usuario, String contraseña){
 		return CustomerDAO.getCliente(usuario, contraseña);}
 	public void addCliente(Customer perfil){ CustomerDAO.addCliente(perfil);}
-	////Modificaciones 23-12-21
 	public void updateNombre(Customer perfil,String cambio){CustomerDAO.cambiarNombre(perfil, cambio);}
 	public void updateEdad(Customer perfil, String cambio){CustomerDAO.cambiarEdad(perfil,cambio);}
 	public void updateCorreo(Customer perfil,String cambio){CustomerDAO.cambiarCorreo(perfil,cambio);}

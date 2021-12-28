@@ -30,19 +30,19 @@ public class PnlFavoritos extends JFrame {
         for (Object l : barrioList) {
             if (l instanceof Hotel){
                 Hotel h = (Hotel)l;
-                JLabel label = new JLabel("Nombre: "+h.getNombre()+"; Dirección: "+h.getDireccion()+ "; Horario: "+h.getHorario());
+                JLabel label = new JLabel("Nombre: "+h.getNombre()+"; Dirección: "+h.getDireccion());
                 panelCentro.add(label);
             }else if(l instanceof Restaurante){
                 Restaurante r = (Restaurante)l;
-                JLabel label = new JLabel("Nombre: "+r.getNombre()+"; Dirección: "+r.getDireccion()+ "; Horario: "+r.getHorario());
+                JLabel label = new JLabel("Nombre: "+r.getNombre()+"; Dirección: "+r.getDireccion());
                 panelCentro.add(label);
             }else if(l instanceof Museo) {
                 Museo m = (Museo) l;
-                JLabel label = new JLabel("Nombre: "+m.getNombre()+"; Dirección: "+m.getDireccion()+ "; Horario: "+m.getHorario());
+                JLabel label = new JLabel("Nombre: "+m.getNombre()+"; Dirección: "+m.getDireccion());
                 panelCentro.add(label);
             }else if(l instanceof Parque) {
                 Parque p = (Parque) l;
-                JLabel label = new JLabel("Nombre: "+p.getNombre()+"; Dirección: "+p.getDireccion()+ "; Horario: "+p.getHorario());
+                JLabel label = new JLabel("Nombre: "+p.getNombre()+"; Dirección: "+p.getDireccion());
                 panelCentro.add(label);
             }else if(l instanceof Monumento) {
                 Monumento mo = (Monumento) l;
@@ -50,7 +50,7 @@ public class PnlFavoritos extends JFrame {
                 panelCentro.add(label);
             }else if(l instanceof Evento) {
                 Evento e = (Evento) l;
-                JLabel label = new JLabel("Nombre: "+e.getNombre()+"; Dirección: "+e.getDireccion()+ "; Autor: "+e.getAutor());
+                JLabel label = new JLabel("Nombre: "+e.getNombre()+"; Dirección: "+e.getDireccion());
                 panelCentro.add(label);
             }
             btnEliminar = new JButton("Eliminar de favoritos");

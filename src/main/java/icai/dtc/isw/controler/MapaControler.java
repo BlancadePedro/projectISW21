@@ -11,6 +11,7 @@ import icai.dtc.isw.domain.ocio.Evento;
 import icai.dtc.isw.domain.ocio.Parque;
 
 public class MapaControler {
+
     //Relacionado con las localidades
     public  void getRestaurantes(ArrayList<Restaurante> lista) {MapaDAO.getRestaurantes(lista);}
     public void getHoteles(ArrayList<Hotel> lista) {

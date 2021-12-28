@@ -24,7 +24,7 @@ public class PnlHoteles extends JFrame {
         panelCentro.setBackground(new Color(174, 214, 241));
         for (Hotel l : lista) {
             int indice = contador+1;
-            JLabel label = new JLabel(indice+"_"+l.getNombre()+"; Dirección: "+l.getDireccion()+ "; Horario: "+l.getHorario()+"Contacto: "+l.getContacto()+"; Precio: "+l.getPrecio()+ "; Estrellas: "+l.getEstrellas()+"; Es "+l.getPublico()+"\n");
+            JLabel label = new JLabel(indice+"_"+l.getNombre()+"; Dirección: "+l.getDireccion()+ "; Horario: "+l.getHorario()+"Contacto: "+l.getContacto()+"; Precio: "+l.getPrecio()+ "; Estrellas: "+l.getEstrellas()+"; Es "+l.getPublico()+"; Moscotas: "+l.getMascotas());
             JLabel espacio = new JLabel(" ");
             label.setFont(fuente);
             panelCentro.add(label);
