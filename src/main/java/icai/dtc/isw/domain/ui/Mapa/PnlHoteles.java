@@ -1,7 +1,7 @@
-package icai.dtc.isw.domain.paneles;
+package icai.dtc.isw.domain.ui.Mapa;
 
-import icai.dtc.isw.domain.Customer;
-import icai.dtc.isw.domain.localidad.Museo;
+import icai.dtc.isw.domain.ui.Usuario.Customer;
+import icai.dtc.isw.domain.localidad.Hotel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,21 +9,26 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class PnlMuseos extends JFrame {
+public class PnlHoteles extends JFrame {
     private JPanel panelCentro = new JPanel((new GridLayout()));
     private JPanel panelSur = new JPanel((new BorderLayout()));
     private JButton btnVolver = new JButton("Cerrar");
 
-    public PnlMuseos(ArrayList<Museo> lista, Customer perfil){
+    public PnlHoteles(ArrayList<Hotel> lista, Customer perfil){
         super("Información de todos los hoteles disponibles");
         Font fuente = new Font("Tahoma", Font.ITALIC, 17);
         int size = lista.size();
-        //String nombre, String direccion, String horario, String contacto, String precio, String tipoMuseo
-        panelCentro = new JPanel((new GridLayout(size,1)));
-        for (Museo l : lista) {
-            JLabel label = new JLabel("\n -"+l.getNombre()+"; Dirección: "+l.getDireccion()+ "; Horario: "+l.getHorario()+"; Contacto: "+l.getContacto()+"; Precio: "+l.getPrecio()+"; El museo es de: "+l.getTipoMuseo()+"");
+        int contador = 0;
+
+        panelCentro = new JPanel((new GridLayout(size*2,1)));
+        for (Hotel l : lista) {
+            int indice = contador+1;
+            JLabel label = new JLabel(indice+"_"+l.getNombre()+"; Dirección: "+l.getDireccion()+ "; Horario: "+l.getHorario()+"Contacto: "+l.getContacto()+"; Precio: "+l.getPrecio()+ "; Estrellas: "+l.getEstrellas()+"; Es "+l.getPublico()+"\n");
+            JLabel espacio = new JLabel(" ");
             label.setFont(fuente);
             panelCentro.add(label);
+            panelCentro.add(espacio);
+            contador = contador+1;
         }
         btnVolver.addActionListener(new ActionListener() {
 

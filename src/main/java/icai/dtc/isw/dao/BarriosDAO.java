@@ -1,6 +1,6 @@
 package icai.dtc.isw.dao;
 
-import icai.dtc.isw.domain.Customer;
+import icai.dtc.isw.domain.ui.Usuario.Customer;
 import icai.dtc.isw.domain.localidad.Hotel;
 import icai.dtc.isw.domain.localidad.Museo;
 import icai.dtc.isw.domain.localidad.Restaurante;

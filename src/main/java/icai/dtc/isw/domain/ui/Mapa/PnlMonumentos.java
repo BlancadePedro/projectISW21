@@ -1,6 +1,6 @@
-package icai.dtc.isw.domain.paneles;
+package icai.dtc.isw.domain.ui.Mapa;
 
-import icai.dtc.isw.domain.Customer;
+import icai.dtc.isw.domain.ui.Usuario.Customer;
 import icai.dtc.isw.domain.ocio.Monumento;
 
 import javax.swing.*;
@@ -18,11 +18,17 @@ public class PnlMonumentos extends JFrame {
         super("Información de todos los monumentos disponibles");
         Font fuente = new Font("Tahoma", Font.ITALIC, 17);
         int size = lista.size();
-        panelCentro = new JPanel((new GridLayout(size,1)));
+        int contador=0;
+
+        panelCentro = new JPanel((new GridLayout(size*2,1)));
         for (Monumento l : lista) {
-            JLabel label = new JLabel("-"+l.getNombre()+"; Dirección: "+l.getDireccion()+"\n");
+            int indice = contador+1;
+            JLabel label = new JLabel(indice+"_"+l.getNombre()+"; Dirección: "+l.getDireccion()+"\n");
+            JLabel espacio = new JLabel(" ");
             label.setFont(fuente);
             panelCentro.add(label);
+            panelCentro.add(espacio);
+            contador=contador+1;
         }
         btnVolver.addActionListener(new ActionListener() {
 

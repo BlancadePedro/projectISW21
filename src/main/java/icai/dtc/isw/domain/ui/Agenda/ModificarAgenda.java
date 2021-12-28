@@ -1,14 +1,8 @@
-package icai.dtc.isw.domain.ui;
+package icai.dtc.isw.domain.ui.Agenda;
 
 import icai.dtc.isw.client.Client;
-import icai.dtc.isw.domain.Customer;
-import icai.dtc.isw.domain.localidad.Hotel;
-import icai.dtc.isw.domain.localidad.Museo;
-import icai.dtc.isw.domain.localidad.Restaurante;
-import icai.dtc.isw.domain.ocio.Evento;
-import icai.dtc.isw.domain.ocio.Monumento;
-import icai.dtc.isw.domain.ocio.Parque;
-import icai.dtc.isw.domain.ui.MapaMenu;
+import icai.dtc.isw.domain.ui.Usuario.Customer;
+import icai.dtc.isw.domain.ui.Agenda.FranjaHoraria;
 
 import javax.swing.*;
 import java.awt.*;
@@ -56,7 +50,7 @@ public class ModificarAgenda extends  JFrame{
             panelCentro.add(dia);
             panelCentro.add(mes);
             panelCentro.add(año);
-            panelCentro.add(descripcion)
+            panelCentro.add(descripcion);
 
             int finalContador = contador;
             btnEliminar.addActionListener(new ActionListener() {

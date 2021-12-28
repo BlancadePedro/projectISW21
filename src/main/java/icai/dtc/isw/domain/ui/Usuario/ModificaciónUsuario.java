@@ -1,15 +1,13 @@
-package icai.dtc.isw.domain.ui;
+package icai.dtc.isw.domain.ui.Usuario;
 
 import icai.dtc.isw.client.Client;
-import icai.dtc.isw.controler.CustomerControler;
-import icai.dtc.isw.dao.CustomerDAO;
-import icai.dtc.isw.domain.Customer;
+import icai.dtc.isw.domain.ui.Usuario.Customer;
+import icai.dtc.isw.domain.ui.Usuario.InfoUsuario;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.util.HashMap;
 
 public class ModificaciónUsuario extends JFrame {
@@ -25,7 +23,7 @@ public class ModificaciónUsuario extends JFrame {
     private JLabel lblMensaje = new JLabel("Elija la opción que sea cambiar");
 
     private JPanel pnlMensaje = new JPanel(new FlowLayout());
-    private JPanel pnlBotones = new JPanel(new GridLayout(3,2,2, 4));
+    private JPanel pnlBotones = new JPanel(new GridLayout(3,2,6, 6));
     private JPanel pnlTerminar = new JPanel(new FlowLayout());
 
     public ModificaciónUsuario(Customer perfil){

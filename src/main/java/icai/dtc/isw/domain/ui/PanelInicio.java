@@ -1,9 +1,10 @@
 package icai.dtc.isw.domain.ui;
 
 import icai.dtc.isw.client.Client;
-import icai.dtc.isw.domain.Customer;
 import icai.dtc.isw.domain.exception.InicioSesionException;
 import icai.dtc.isw.domain.exception.RegistroException;
+import icai.dtc.isw.domain.ui.Usuario.Customer;
+import icai.dtc.isw.domain.ui.Usuario.Registro;
 import icai.dtc.isw.server.SocketServer;
 
 import java.awt.*;

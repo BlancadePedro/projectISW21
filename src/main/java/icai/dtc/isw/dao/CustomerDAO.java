@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import icai.dtc.isw.domain.Customer;
+import icai.dtc.isw.domain.ui.Usuario.Customer;
 
 
 public class CustomerDAO {

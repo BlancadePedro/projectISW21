@@ -1,4 +1,4 @@
-package icai.dtc.isw.domain;
+package icai.dtc.isw.domain.ui.Usuario;
 
 import java.io.Serializable;
 

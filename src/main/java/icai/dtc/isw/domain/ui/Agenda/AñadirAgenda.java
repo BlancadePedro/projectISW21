@@ -1,7 +1,7 @@
-package icai.dtc.isw.domain.ui;
+package icai.dtc.isw.domain.ui.Agenda;
 
 import icai.dtc.isw.client.Client;
-import icai.dtc.isw.domain.Customer;
+import icai.dtc.isw.domain.ui.Usuario.Customer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -60,8 +60,7 @@ public class AñadirAgenda extends JFrame {
             }
         });
 
-        //int contador = idagenda;
-        //int contadorFinal = contador;
+
         btnAñadir.addActionListener(new ActionListener() {
             int contador=idagenda;
             @Override
@@ -91,9 +90,5 @@ public class AñadirAgenda extends JFrame {
         this.setVisible(true);
 
     }
-    public static void main (String [] inforux){
-        Customer prueba = new Customer(null, null, 0, null, null, 0, "blancadepedr", "contraseña", 0);
-        int i = 0;
-        new AñadirAgenda(prueba,i);
-    }
+
 }

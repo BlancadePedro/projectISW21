@@ -1,6 +1,5 @@
-package icai.dtc.isw.domain.ui;
+package icai.dtc.isw.domain.ui.Usuario;
 import icai.dtc.isw.client.Client;
-import icai.dtc.isw.domain.Customer;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;

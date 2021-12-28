@@ -1,7 +1,7 @@
-package icai.dtc.isw.domain.ui;
+package icai.dtc.isw.domain.ui.Agenda;
 
-import icai.dtc.isw.dao.AgendaDAO;
-import icai.dtc.isw.domain.Customer;
+import icai.dtc.isw.domain.ui.Usuario.Customer;
+import icai.dtc.isw.domain.ui.MapaMenu;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,12 +9,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Agenda extends JFrame{
 
     private JPanel pnlBotones;
     private JPanel pnlFecha;
+    private JPanel pnlPrincipal;
     private JButton btnAñadir = new JButton("Añadir");
     private JButton btnModificar = new JButton("Modificar");
     private JButton btnVolver = new JButton("Volver menú principal");
@@ -30,11 +30,11 @@ public class Agenda extends JFrame{
         Font fuenteTitulo = new Font("Tahoma", Font.BOLD, 17);
 
         int size = lista.size();
-        pnlFecha = new JPanel((new GridLayout(size,5)));
+        pnlPrincipal = new JPanel((new GridLayout(size,1)));
         pnlBotones = new JPanel(new FlowLayout());
 
         for (FranjaHoraria l : lista) {
-
+            pnlFecha = new JPanel(new FlowLayout());
             JLabel hora = new JLabel("Hora: "+l.getHora());
             hora.setFont(fuenteTitulo);
             JLabel dia = new JLabel("Día: "+l.getDia());
@@ -96,7 +96,8 @@ public class Agenda extends JFrame{
         });
 
 
-        this.add(pnlFecha,BorderLayout.CENTER);
+        pnlPrincipal.add(pnlFecha);
+        this.add(pnlPrincipal,BorderLayout.CENTER);
         this.add(pnlBotones,BorderLayout.SOUTH);
         this.setTitle(fecha);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -106,14 +107,6 @@ public class Agenda extends JFrame{
         this.setVisible(true);
     }
 
-    /*public static ArrayList<FranjaHoraria> establecerID(ArrayList<FranjaHoraria> lista,Customer perfil){
-        int size = lista.size();
-        ArrayList<FranjaHoraria> listaNueva= new ArrayList<>();
-        for(int i = 0; i<size;i++){
-            lista.get(i).setIdAgenda(i+1);
-            AgendaDAO.updateAgenda(lista.get(i), perfil);
-        }
-        return listaNueva;
-    }*/
+
 
 }

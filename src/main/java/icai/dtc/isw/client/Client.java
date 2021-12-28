@@ -10,7 +10,6 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import icai.dtc.isw.domain.*;
 import icai.dtc.isw.domain.localidad.Hotel;
 import icai.dtc.isw.domain.ocio.Monumento;
 import icai.dtc.isw.domain.localidad.Museo;
@@ -18,7 +17,11 @@ import icai.dtc.isw.domain.localidad.Restaurante;
 import icai.dtc.isw.domain.ocio.Evento;
 import icai.dtc.isw.domain.ocio.Parque;
 import icai.dtc.isw.domain.ui.*;
-import icai.dtc.isw.domain.paneles.*;
+import icai.dtc.isw.domain.ui.Agenda.Agenda;
+import icai.dtc.isw.domain.ui.Agenda.FranjaHoraria;
+import icai.dtc.isw.domain.ui.Mapa.*;
+import icai.dtc.isw.domain.ui.Usuario.Customer;
+import icai.dtc.isw.domain.ui.PanelInicio;
 import org.apache.log4j.Logger;
 
 import icai.dtc.isw.configuration.PropertiesISW;

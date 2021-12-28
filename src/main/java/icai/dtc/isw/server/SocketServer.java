@@ -7,7 +7,6 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -15,14 +14,14 @@ import icai.dtc.isw.controler.AgendaControler;
 import icai.dtc.isw.controler.BarriosControler;
 import icai.dtc.isw.controler.CustomerControler;
 import icai.dtc.isw.controler.MapaControler;
-import icai.dtc.isw.domain.*;
 import icai.dtc.isw.domain.localidad.Hotel;
 import icai.dtc.isw.domain.ocio.Monumento;
 import icai.dtc.isw.domain.localidad.Museo;
 import icai.dtc.isw.domain.localidad.Restaurante;
 import icai.dtc.isw.domain.ocio.Evento;
 import icai.dtc.isw.domain.ocio.Parque;
-import icai.dtc.isw.domain.ui.FranjaHoraria;
+import icai.dtc.isw.domain.ui.Agenda.FranjaHoraria;
+import icai.dtc.isw.domain.ui.Usuario.Customer;
 import icai.dtc.isw.message.Message;
 
 public class SocketServer extends Thread {

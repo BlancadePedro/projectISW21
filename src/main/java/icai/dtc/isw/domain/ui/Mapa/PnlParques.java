@@ -1,8 +1,7 @@
-package icai.dtc.isw.domain.paneles;
+package icai.dtc.isw.domain.ui.Mapa;
 
-import icai.dtc.isw.domain.Customer;
-import icai.dtc.isw.domain.ocio.Evento;
-import icai.dtc.isw.domain.ui.InfoUsuario;
+import icai.dtc.isw.domain.ui.Usuario.Customer;
+import icai.dtc.isw.domain.ocio.Parque;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,22 +9,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class PnlEventos extends JFrame {
+public class PnlParques extends JFrame {
     private JPanel panelCentro = new JPanel((new GridLayout()));
     private JPanel panelSur = new JPanel((new BorderLayout()));
     private JButton btnVolver = new JButton("Cerrar");
 
-    public PnlEventos(ArrayList<Evento> lista, Customer perfil){
-
-        super("Información de todos los eventos disponibles");
+    public PnlParques(ArrayList<Parque> lista, Customer perfil){
+        super("Información de todos los parques disponibles");
         Font fuente = new Font("Tahoma", Font.ITALIC, 17);
         int size = lista.size();
-        //nombre, String direccion, String precio, String autor, String celebracion, String fecha
-        panelCentro = new JPanel((new GridLayout(size,1)));
-        for (Evento l : lista) {
-            JLabel label = new JLabel("-"+l.getNombre()+"; Dirección: "+l.getDireccion()+ "; Autor: "+l.getAutor()+"; Precio: "+l.getPrecio()+"; Fecha: "+l.getFecha()+"; Es un "+l.getCelebracion()+"\n");
+        int contador=0;
+        panelCentro = new JPanel((new GridLayout(size*2,1)));
+        for (Parque l : lista) {
+            int indice = contador;
+            JLabel label = new JLabel(indice+"_"+l.getNombre()+"; Dirección: "+l.getDireccion()+ "; Horario: "+l.getHorario()+"\n");
+            JLabel espacio = new JLabel(" ");
             label.setFont(fuente);
             panelCentro.add(label);
+            panelCentro.add(espacio);
+            contador=contador+1;
         }
         btnVolver.addActionListener(new ActionListener() {
 

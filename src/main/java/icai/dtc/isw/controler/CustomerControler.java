@@ -4,7 +4,7 @@ package icai.dtc.isw.controler;
 import java.util.ArrayList;
 
 import icai.dtc.isw.dao.CustomerDAO;
-import icai.dtc.isw.domain.Customer;
+import icai.dtc.isw.domain.ui.Usuario.Customer;
 
 
 public class CustomerControler {

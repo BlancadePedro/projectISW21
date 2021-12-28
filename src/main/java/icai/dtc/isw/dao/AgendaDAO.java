@@ -7,9 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import icai.dtc.isw.domain.Customer;
-import icai.dtc.isw.domain.ui.Agenda;
-import icai.dtc.isw.domain.ui.FranjaHoraria;
+import icai.dtc.isw.domain.ui.Usuario.Customer;
+import icai.dtc.isw.domain.ui.Agenda.FranjaHoraria;
 //import jdk.internal.org.objectweb.asm.commons.InstructionAdapter;
 
 public class AgendaDAO {

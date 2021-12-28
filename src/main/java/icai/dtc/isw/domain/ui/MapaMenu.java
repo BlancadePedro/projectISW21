@@ -1,13 +1,15 @@
 package icai.dtc.isw.domain.ui;
 
 import icai.dtc.isw.client.Client;
-import icai.dtc.isw.domain.*;
 import icai.dtc.isw.domain.localidad.Hotel;
 import icai.dtc.isw.domain.ocio.Monumento;
 import icai.dtc.isw.domain.localidad.Museo;
 import icai.dtc.isw.domain.localidad.Restaurante;
 import icai.dtc.isw.domain.ocio.Evento;
 import icai.dtc.isw.domain.ocio.Parque;
+import icai.dtc.isw.domain.ui.Agenda.FranjaHoraria;
+import icai.dtc.isw.domain.ui.Usuario.Customer;
+import icai.dtc.isw.domain.ui.Usuario.InfoUsuario;
 
 import javax.swing.*;
 import java.awt.*;
@@ -453,10 +455,6 @@ public class MapaMenu extends JFrame{
 
     }
 
-    public static void main (String [] inforux){
-        Customer prueba = new Customer(null, null, 0, null, null, 0, "usuario", "contraseña", 0);
-        new MapaMenu(prueba);
-    }
 
     public static void addFavorito(Object object){
         Client client = new Client();

@@ -1,31 +1,36 @@
-package icai.dtc.isw.domain.paneles;
+package icai.dtc.isw.domain.ui.Mapa;
 
-import icai.dtc.isw.domain.Customer;
-import icai.dtc.isw.domain.localidad.Restaurante;
+import icai.dtc.isw.domain.ui.Usuario.Customer;
+import icai.dtc.isw.domain.ocio.Evento;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
 import java.util.ArrayList;
 
-public class PnlRestaurantes extends JFrame {
+public class PnlEventos extends JFrame {
     private JPanel panelCentro = new JPanel((new GridLayout()));
     private JPanel panelSur = new JPanel((new BorderLayout()));
     private JButton btnVolver = new JButton("Cerrar");
 
+    public PnlEventos(ArrayList<Evento> lista, Customer perfil){
 
-    public PnlRestaurantes(ArrayList<Restaurante> lista, Customer perfil){
-        super("Información de todos los restaurantes disponibles");
+        super("Información de todos los eventos disponibles");
         Font fuente = new Font("Tahoma", Font.ITALIC, 17);
         int size = lista.size();
-        //String nombre, String direccion, String horario, String contacto, String precio, String tipoComida
-        panelCentro = new JPanel((new GridLayout(size,1)));
-        for (Restaurante l : lista) {
-            JLabel label = new JLabel("-"+l.getNombre()+"; Dirección: "+l.getDireccion()+ "; Horario: "+l.getHorario()+"; Contacto: "+l.getContacto()+"; Precio: "+l.getPrecio()+"; Es "+l.getTipoComida());
+
+        panelCentro = new JPanel((new GridLayout(size*2,1)));
+        int contador=0;
+
+        for (Evento l : lista) {
+            int indice = contador+1;
+            JLabel label = new JLabel(indice+"_"+l.getNombre()+"; Dirección: "+l.getDireccion()+ "; Autor: "+l.getAutor()+"; Precio: "+l.getPrecio()+"; Fecha: "+l.getFecha()+"; Es un "+l.getCelebracion()+"\n");
             label.setFont(fuente);
+            JLabel espacio = new JLabel(" ");
             panelCentro.add(label);
+            panelCentro.add(espacio);
+            contador=contador+1;
         }
         btnVolver.addActionListener(new ActionListener() {
 
@@ -37,11 +42,7 @@ public class PnlRestaurantes extends JFrame {
             }
         });
 
-        addWindowListener(new WindowAdapter() {
-
-        });
-
-        panelSur.add(btnVolver, BorderLayout.CENTER);
+        panelSur.add(btnVolver);
 
         this.add(panelCentro,BorderLayout.CENTER);
         this.add(panelSur,BorderLayout.SOUTH);
@@ -52,4 +53,5 @@ public class PnlRestaurantes extends JFrame {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
+
 }

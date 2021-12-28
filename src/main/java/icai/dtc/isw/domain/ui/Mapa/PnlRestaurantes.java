@@ -1,28 +1,36 @@
-package icai.dtc.isw.domain.paneles;
+package icai.dtc.isw.domain.ui.Mapa;
 
-import icai.dtc.isw.domain.Customer;
-import icai.dtc.isw.domain.ocio.Parque;
+import icai.dtc.isw.domain.ui.Usuario.Customer;
+import icai.dtc.isw.domain.localidad.Restaurante;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
 import java.util.ArrayList;
 
-public class PnlParques extends JFrame {
+public class PnlRestaurantes extends JFrame {
     private JPanel panelCentro = new JPanel((new GridLayout()));
     private JPanel panelSur = new JPanel((new BorderLayout()));
     private JButton btnVolver = new JButton("Cerrar");
 
-    public PnlParques(ArrayList<Parque> lista, Customer perfil){
-        super("Información de todos los parques disponibles");
+
+    public PnlRestaurantes(ArrayList<Restaurante> lista, Customer perfil){
+        super("Información de todos los restaurantes disponibles");
         Font fuente = new Font("Tahoma", Font.ITALIC, 17);
         int size = lista.size();
-        panelCentro = new JPanel((new GridLayout(size,1)));
-        for (Parque l : lista) {
-            JLabel label = new JLabel("-"+l.getNombre()+"; Dirección: "+l.getDireccion()+ "; Horario: "+l.getHorario()+"\n");
+        int contador = 0;
+
+        panelCentro = new JPanel((new GridLayout(size*2,1)));
+        for (Restaurante l : lista) {
+            int indice = contador+1;
+            JLabel label = new JLabel(indice+"_"+l.getNombre()+"; Dirección: "+l.getDireccion()+ "; Horario: "+l.getHorario()+"; Contacto: "+l.getContacto()+"; Precio: "+l.getPrecio()+"; Es "+l.getTipoComida());
+            JLabel espacio = new JLabel(" ");
             label.setFont(fuente);
             panelCentro.add(label);
+            panelCentro.add(espacio);
+            contador=contador+1;
         }
         btnVolver.addActionListener(new ActionListener() {
 
@@ -34,7 +42,11 @@ public class PnlParques extends JFrame {
             }
         });
 
-        panelSur.add(btnVolver);
+        addWindowListener(new WindowAdapter() {
+
+        });
+
+        panelSur.add(btnVolver, BorderLayout.CENTER);
 
         this.add(panelCentro,BorderLayout.CENTER);
         this.add(panelSur,BorderLayout.SOUTH);
@@ -45,5 +57,4 @@ public class PnlParques extends JFrame {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
-
 }

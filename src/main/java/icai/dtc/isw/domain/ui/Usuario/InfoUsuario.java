@@ -1,8 +1,7 @@
-package icai.dtc.isw.domain.ui;
+package icai.dtc.isw.domain.ui.Usuario;
 
 import icai.dtc.isw.client.Client;
-import icai.dtc.isw.domain.Customer;
-import org.apache.log4j.Layout;
+import icai.dtc.isw.domain.ui.MapaMenu;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -137,13 +136,6 @@ public class InfoUsuario extends JFrame
         opcionesFotos.addItem("Personaje 5");
 
     }
-
-    public static void main (String [] inforux){
-        Customer prueba = new Customer(null, null, 0, null, null, 0, "usuario", "contraseña", 0);
-        new InfoUsuario(prueba);
-    }
-
-
 
 
 }

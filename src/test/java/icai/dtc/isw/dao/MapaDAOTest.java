@@ -1,17 +1,14 @@
 package icai.dtc.isw.dao;
 
-import icai.dtc.isw.domain.Customer;
 import icai.dtc.isw.domain.localidad.Hotel;
 import icai.dtc.isw.domain.localidad.Museo;
 import icai.dtc.isw.domain.localidad.Restaurante;
 import icai.dtc.isw.domain.ocio.Evento;
 import icai.dtc.isw.domain.ocio.Monumento;
 import icai.dtc.isw.domain.ocio.Parque;
-import junit.framework.TestCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.swing.*;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
