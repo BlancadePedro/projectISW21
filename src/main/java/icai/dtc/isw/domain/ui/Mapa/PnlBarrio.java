@@ -67,6 +67,7 @@ public class PnlBarrio extends JFrame {
             }
 
             btnFav = new JButton("Añadir a favoritos");
+
             int finalContador = contador;
             btnFav.addActionListener(new ActionListener() {
                 @Override
@@ -82,7 +83,8 @@ public class PnlBarrio extends JFrame {
             contador=contador+1;
 
         }
-
+        btnVolver.setBackground(new Color(52, 152, 219));
+        btnVolver.setForeground(Color.WHITE);
         btnVolver.addActionListener(new ActionListener() {
 
             @Override

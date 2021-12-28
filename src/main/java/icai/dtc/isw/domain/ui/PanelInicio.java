@@ -33,7 +33,7 @@ public class PanelInicio extends JFrame{
         super("Smart City");
         panelSur.add(registro, BorderLayout.EAST);
         panelSur.add(inicioSesion, BorderLayout.WEST);
-
+        panelSur.setBackground(Color.WHITE);
         Image imagen = new ImageIcon("./src/main/java/icai/dtc/isw/resources/FotosMapa/smartCity.png").getImage();
         ImageIcon icono = new ImageIcon(imagen.getScaledInstance(250, 250 , Image.SCALE_SMOOTH));
         foto.setIcon(icono);

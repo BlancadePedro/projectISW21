@@ -313,7 +313,7 @@ public class MapaMenu extends JFrame{
 
                     }
                     if(opcion.equals("Información importante")){
-                        System.out.println("En proceso");
+                        JOptionPane.showMessageDialog(null,"Número de teléfono de emergencia: 112");
                     }
                     if(opcion.equals("Mis favoritos")){
                         MapaMenu.verFavoritos();
