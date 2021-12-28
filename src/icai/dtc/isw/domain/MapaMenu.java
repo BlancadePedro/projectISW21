@@ -1,11 +1,11 @@
- package icai.dtc.isw.domain;
+package icai.dtc.isw.domain;
 
-        import javax.swing.*;
-        import java.awt.*;
-        import java.awt.event.ActionEvent;
-        import java.awt.event.ActionListener;
-        import java.awt.event.MouseAdapter;
-        import java.awt.event.MouseEvent;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MapaMenu {
     //variables y comtenedores
@@ -35,6 +35,14 @@ public class MapaMenu {
         pnlIzquierdo.add(btnIz4);
         pnlIzquierdo.add(Box.createVerticalStrut(40));
         pnlIzquierdo.add(btnIz5);
+        ImageIcon icon = new ImageIcon("./src/icai/dtc/isw/resources/FotosMapa/Restaurantes.PNG");
+        JLabel label = new JLabel(icon);
+        label.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent me) {
+                System.out.println("CLICKED");
+            }
+        });
+        pnlIzquierdo.add(label);
     }
 
     public void contruyepnlDerecho(){
@@ -46,16 +54,6 @@ public class MapaMenu {
         btnMu = new JButton("Museos");
         btnP = new JButton("Parques");
         btnPe = new JButton("Mi perfil");
-
-        btnH.setIcon(new ImageIcon(new ImageIcon("./src/icai/dtc/isw/resources/FotosMapa/Hoteles.PNG").getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT)));
-        btnR.setIcon(new ImageIcon(new ImageIcon("./src/icai/dtc/isw/resources/FotosMapa/Restaurantes.PNG").getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT)));
-        btnE.setIcon(new ImageIcon(new ImageIcon("./src/icai/dtc/isw/resources/FotosMapa/Eventos.PNG").getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT)));
-        btnM.setIcon(new ImageIcon(new ImageIcon("./src/icai/dtc/isw/resources/FotosMapa/Monumentos.PNG").getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT)));
-        btnMu.setIcon(new ImageIcon(new ImageIcon("./src/icai/dtc/isw/resources/FotosMapa/Museo.PNG").getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT)));
-        btnP.setIcon(new ImageIcon(new ImageIcon("./src/icai/dtc/isw/resources/FotosMapa/Parques.PNG").getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT)));
-        btnPe.setIcon(new ImageIcon(new ImageIcon("./src/icai/dtc/isw/resources/FotosMapa/Perfil.PNG").getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT)));
-
-
         pnlDerecho.setLayout(new BoxLayout(pnlDerecho,BoxLayout.Y_AXIS));
         //pnlDerecho.setBackground(Color.blue);
         pnlDerecho.add(Box.createVerticalStrut(20));
@@ -70,7 +68,7 @@ public class MapaMenu {
         pnlDerecho.add(btnMu);
         pnlDerecho.add(Box.createVerticalStrut(40));
         pnlDerecho.add(btnP);
-        pnlDerecho.add(Box.createVerticalStrut(290));
+        pnlDerecho.add(Box.createVerticalStrut(350));
         pnlDerecho.add(btnPe);
     }
 
@@ -93,12 +91,13 @@ public class MapaMenu {
 
     public void contruyeVentana(){
         JFrame frame = new JFrame("Mapa del centro de Madrid");
+        //scroll = new JScrollPane(new JTextArea("JTextArea",10,15));
         etiquetaSu = new JLabel("Para ver más información sobre cada categoría haga click en los botones junto al mapa");
         Font aux=etiquetaSu.getFont();
         etiquetaSu.setFont(new Font(aux.getFontName(), aux.getStyle(), 16));
         frame.setLayout(new BorderLayout());
 
-        //agregamos los paneles al frame principal
+        //agregamos los pnles al frame principal
         frame.add(etiquetaSu,BorderLayout.NORTH);
         frame.add(pnlCentral, BorderLayout.CENTER);
         //frame.add(pnlIzquierdo,BorderLayout.WEST);

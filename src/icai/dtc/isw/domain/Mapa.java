@@ -11,7 +11,11 @@ import java.awt.image.ImageProducer;
 
 public class Mapa extends JFrame {
 
-    private static JPanel pnlMapa = new JPanel(new FlowLayout());
+    private static JPanel pnlMapa = new JPanel(new CardLayout());
+    JPanel panelSuperior, panelInferior,panelInf1, panelInf2, panelInf3;
+    JLabel etiqueta, etiqueta1, etiqueta2,etiqueta3;
+    JComboBox combo;
+    String [] vectorCadena = {"panel1","panel2","panel3"};
 
     public static void main(String[] argv){
 
@@ -33,7 +37,7 @@ public class Mapa extends JFrame {
         Monumento monumento = new Monumento("nombre", "direccion");
         Parque parque = new Parque("nombre", "direccion");
 
-        botonesMapa(museo, pnlMapa,250,100);
+        //botonesMapa(museo, pnlMapa,250,100);
         this.add(pnlMapa);
 
 
