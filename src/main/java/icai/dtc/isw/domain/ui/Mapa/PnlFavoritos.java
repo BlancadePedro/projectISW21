@@ -25,7 +25,7 @@ public class PnlFavoritos extends JFrame {
         panelCentro = new JPanel((new GridLayout(size,2)));
         ArrayList<JButton> btnList = new ArrayList<JButton>();
         JButton btnEliminar;
-
+        panelCentro.setBackground(new Color(174, 214, 241));
         int contador=0;
         for (Object l : barrioList) {
             if (l instanceof Hotel){
@@ -68,6 +68,8 @@ public class PnlFavoritos extends JFrame {
             panelCentro.add(btnEliminar);
             contador=contador+1;
         }
+        btnVolver.setBackground(new Color(52, 152, 219));
+        btnVolver.setForeground(Color.WHITE);
         btnVolver.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent){

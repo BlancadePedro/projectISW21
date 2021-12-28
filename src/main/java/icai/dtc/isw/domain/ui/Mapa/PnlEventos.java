@@ -21,6 +21,7 @@ public class PnlEventos extends JFrame {
         int size = lista.size();
 
         panelCentro = new JPanel((new GridLayout(size*2,1)));
+        panelCentro.setBackground(new Color(174, 214, 241));
         int contador=0;
 
         for (Evento l : lista) {
@@ -32,6 +33,7 @@ public class PnlEventos extends JFrame {
             panelCentro.add(espacio);
             contador=contador+1;
         }
+        btnVolver.setBackground(new Color(52, 152, 219));
         btnVolver.addActionListener(new ActionListener() {
 
             @Override
