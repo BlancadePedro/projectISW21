@@ -60,7 +60,7 @@ public class PnlFavoritos extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     System.out.println("Se ha pulsado boton de "+barrioList.get(finalContador));
                     MapaMenu.eliminarFavorito(barrioList.get(finalContador));
-                    dispose();
+                    //dispose();
                     //new PnlFavoritos(barrioList,perfil);
                 }
             });

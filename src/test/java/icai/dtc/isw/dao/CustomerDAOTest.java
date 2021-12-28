@@ -18,9 +18,9 @@ class CustomerDAOTest extends TestCase {
 
     @Test
     public void testGetCliente() {
-        customer = new Customer("1","1",1,"1","1",1,"1","1",1);
-        String usuario = dao.getCliente(customer.getUsuario(),customer.getClave()).getUsuario();
-        assertEquals(usuario,"1");
+
+        Customer usuario = dao.getCliente("blancadepedr","blancadepedr");
+        assertEquals(usuario.getUsuario(),"blancadepedr");
     }
 
     @Test
@@ -32,4 +32,52 @@ class CustomerDAOTest extends TestCase {
     }
 
 
+    @Test
+    public void testCambiarCorreo() {
+        customer = new Customer("1","1",1,"1","1",1,"usuario","contraseña",0);
+        dao.cambiarCorreo(customer,"prueba@gmail.com");
+
+        assertEquals(dao.getCliente("usuario","contraseña").getCorreo(), "prueba@gmail.com");
+    }
+
+    @Test
+    public void testCambiarDescripcion() {
+        customer = new Customer("1","1",1,"1","1",1,"usuario","contraseña",0);
+        dao.cambiarDescripcion(customer,"cambio de la descripcion");
+
+        assertEquals(dao.getCliente("usuario","contraseña").getDescripcion(), "cambio de la descripcion");
+    }
+
+    @Test
+    public void testCambiarEdad() {
+        customer = new Customer("1","1",1,"1","1",1,"usuario","contraseña",0);
+        dao.cambiarEdad(customer,"20");
+
+        assertEquals(dao.getCliente("usuario","contraseña").getEdad(), 20);
+    }
+
+
+    @Test
+    public void testCambiarNacionalidad() {
+        customer = new Customer("1","1",1,"1","1",1,"usuario","contraseña",0);
+        dao.cambiarNacionalidad(customer,"cambio de la nacionalidad");
+
+        assertEquals(dao.getCliente("usuario","contraseña").getNacionalidad(), "cambio de la nacionalidad");
+    }
+
+    @Test
+    public void testCambiarTelefono() {
+        customer = new Customer("1","1",1,"1","1",1,"usuario","contraseña",0);
+        dao.cambiarTelefono(customer,"222222222");
+
+        assertEquals(dao.getCliente("usuario","contraseña").getTelefono(), 222222222);
+    }
+
+    @Test
+    public void testCambiarNombre() {
+        customer = new Customer("1","1",1,"1","1",1,"usuario","contraseña",0);
+        dao.cambiarNombre(customer,"cambio del nombre");
+
+        assertEquals(dao.getCliente("usuario","contraseña").getNombreCompleto(), "cambio del nombre");
+    }
 }

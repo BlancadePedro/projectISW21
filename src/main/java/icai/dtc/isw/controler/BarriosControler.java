@@ -14,7 +14,7 @@ public class BarriosControler {
     public void getLatina(ArrayList<Object> lista){BarriosDAO.getLatina(lista);}
     public void getLavapies(ArrayList<Object> lista){BarriosDAO.getLavapies(lista);}
     public void getLetras(ArrayList<Object> lista){BarriosDAO.getLetras(lista);}
-    public void getMalasana(ArrayList<Object> lista){BarriosDAO.getMoncloa(lista);}
+    public void getMalasana(ArrayList<Object> lista){BarriosDAO.getMalasana(lista);}
     public void getMoncloa(ArrayList<Object> lista){BarriosDAO.getMoncloa(lista);}
     public void getPaseoArte(ArrayList<Object> lista){BarriosDAO.getPaseoArte(lista);}
     public void getRetiro(ArrayList<Object> lista){BarriosDAO.getRetiro(lista);}

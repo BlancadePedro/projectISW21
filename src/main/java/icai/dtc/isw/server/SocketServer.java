@@ -310,7 +310,7 @@ public class SocketServer extends Thread {
 					break;
 				case "/getSalesas":
 					ArrayList<Object> salesas = (ArrayList<Object>)mensajeIn.getSession().get("salesas");
-					barriosControler.getMalasana(salesas);
+					barriosControler.getSalesas(salesas);
 					mensajeOut=new Message();
 					mensajeOut.setContext("/getSalesasResponse");
 					session.put("salesas",salesas);
@@ -346,14 +346,7 @@ public class SocketServer extends Thread {
 					session.put("idAdd", customer);
 					objectOutputStream.writeObject(mensajeOut);
 					break;
-				/*case "/updateAgenda":
-					customer=(Customer)mensajeIn.getSession().get("idUpdate");
-					String horaUpdate = (String)mensajeIn.getSession().get("horaUpdate");
-					String update = (String)mensajeIn.getSession().get("actualizar");
-					agendaControler.updateAgenda(customer,horaUpdate,update);
-					mensajeOut.setContext("/updateAgendaResponse");
-					objectOutputStream.writeObject(mensajeOut);
-					break;*/
+
 				case "/deleteAgenda":
 					customer=(Customer)mensajeIn.getSession().get("idDelete");
 					FranjaHoraria delete = (FranjaHoraria)mensajeIn.getSession().get("delete");
