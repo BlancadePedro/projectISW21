@@ -1,4 +1,4 @@
-package icai.dtc.isw.dao;
+package main.java.icai.dtc.isw.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import icai.dtc.isw.domain.localidad.Hotel;
-import icai.dtc.isw.domain.ocio.Monumento;
-import icai.dtc.isw.domain.localidad.Museo;
-import icai.dtc.isw.domain.localidad.Restaurante;
-import icai.dtc.isw.domain.ocio.Evento;
-import icai.dtc.isw.domain.ocio.Parque;
+import main.java.icai.dtc.isw.domain.localidad.Hotel;
+import main.java.icai.dtc.isw.domain.ocio.Monumento;
+import main.java.icai.dtc.isw.domain.localidad.Museo;
+import main.java.icai.dtc.isw.domain.localidad.Restaurante;
+import main.java.icai.dtc.isw.domain.ocio.Evento;
+import main.java.icai.dtc.isw.domain.ocio.Parque;
 
 public class MapaDAO implements Iterator {
     public static void getRestaurantes(ArrayList<Restaurante> lista) {

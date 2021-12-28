@@ -1,10 +1,10 @@
-package icai.dtc.isw.controler;
+package main.java.icai.dtc.isw.controler;
 
 import java.util.ArrayList;
 
-import icai.dtc.isw.dao.AgendaDAO;
-import icai.dtc.isw.domain.ui.Usuario.Customer;
-import icai.dtc.isw.domain.ui.Agenda.FranjaHorariaReal;
+import main.java.icai.dtc.isw.dao.AgendaDAO;
+import main.java.icai.dtc.isw.domain.ui.Usuario.Customer;
+import main.java.icai.dtc.isw.domain.ui.Agenda.FranjaHorariaReal;
 
 public class AgendaControler {
     public void getInfo(ArrayList<FranjaHorariaReal> lista, Customer customer) {

@@ -1,11 +1,11 @@
-package icai.dtc.isw.domain.ui;
+package main.java.icai.dtc.isw.domain.ui;
 
-import icai.dtc.isw.client.Client;
-import icai.dtc.isw.domain.exception.InicioSesionException;
-import icai.dtc.isw.domain.exception.RegistroException;
-import icai.dtc.isw.domain.ui.Usuario.Customer;
-import icai.dtc.isw.domain.ui.Usuario.Registro;
-import icai.dtc.isw.server.SocketServer;
+import main.java.icai.dtc.isw.client.Client;
+import main.java.icai.dtc.isw.domain.exception.InicioSesionException;
+import main.java.icai.dtc.isw.domain.exception.RegistroException;
+import main.java.icai.dtc.isw.domain.ui.Usuario.Customer;
+import main.java.icai.dtc.isw.domain.ui.Usuario.Registro;
+import main.java.icai.dtc.isw.server.SocketServer;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

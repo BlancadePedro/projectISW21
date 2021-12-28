@@ -1,7 +1,7 @@
-package icai.dtc.isw.domain.ui.Agenda;
+package main.java.icai.dtc.isw.domain.ui.Agenda;
 
-import icai.dtc.isw.domain.ui.Usuario.Customer;
-import icai.dtc.isw.domain.ui.MapaMenu;
+import main.java.icai.dtc.isw.domain.ui.Usuario.Customer;
+import main.java.icai.dtc.isw.domain.ui.MapaMenu;
 
 import javax.swing.*;
 import java.awt.*;

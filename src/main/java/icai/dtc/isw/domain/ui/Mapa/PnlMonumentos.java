@@ -1,7 +1,7 @@
-package icai.dtc.isw.domain.ui.Mapa;
+package main.java.icai.dtc.isw.domain.ui.Mapa;
 
-import icai.dtc.isw.domain.ui.Usuario.Customer;
-import icai.dtc.isw.domain.ocio.Monumento;
+import main.java.icai.dtc.isw.domain.ui.Usuario.Customer;
+import main.java.icai.dtc.isw.domain.ocio.Monumento;
 
 import javax.swing.*;
 import java.awt.*;

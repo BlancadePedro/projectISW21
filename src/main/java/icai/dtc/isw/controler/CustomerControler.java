@@ -1,10 +1,10 @@
-package icai.dtc.isw.controler;
+package main.java.icai.dtc.isw.controler;
 
 
 import java.util.ArrayList;
 
-import icai.dtc.isw.dao.CustomerDAO;
-import icai.dtc.isw.domain.ui.Usuario.Customer;
+import main.java.icai.dtc.isw.dao.CustomerDAO;
+import main.java.icai.dtc.isw.domain.ui.Usuario.Customer;
 
 
 public class CustomerControler {

@@ -1,10 +1,11 @@
 package icai.dtc.isw.dao;
 
-import icai.dtc.isw.domain.localidad.Hotel;
-import icai.dtc.isw.domain.localidad.Museo;
-import icai.dtc.isw.domain.localidad.Restaurante;
-import icai.dtc.isw.domain.ocio.Monumento;
-import icai.dtc.isw.domain.ui.Usuario.Customer;
+import main.java.icai.dtc.isw.dao.BarriosDAO;
+import main.java.icai.dtc.isw.domain.localidad.Hotel;
+import main.java.icai.dtc.isw.domain.localidad.Museo;
+import main.java.icai.dtc.isw.domain.localidad.Restaurante;
+import main.java.icai.dtc.isw.domain.ocio.Monumento;
+import main.java.icai.dtc.isw.domain.ui.Usuario.Customer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package icai.dtc.isw.domain.localidad;
+package main.java.icai.dtc.isw.domain.localidad;
 
 
 public class Hotel extends Localidad {

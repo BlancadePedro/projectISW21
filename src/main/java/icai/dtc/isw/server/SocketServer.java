@@ -1,4 +1,4 @@
-package icai.dtc.isw.server;
+package main.java.icai.dtc.isw.server;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,19 +10,19 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import icai.dtc.isw.controler.AgendaControler;
-import icai.dtc.isw.controler.BarriosControler;
-import icai.dtc.isw.controler.CustomerControler;
-import icai.dtc.isw.controler.MapaControler;
-import icai.dtc.isw.domain.localidad.Hotel;
-import icai.dtc.isw.domain.ocio.Monumento;
-import icai.dtc.isw.domain.localidad.Museo;
-import icai.dtc.isw.domain.localidad.Restaurante;
-import icai.dtc.isw.domain.ocio.Evento;
-import icai.dtc.isw.domain.ocio.Parque;
-import icai.dtc.isw.domain.ui.Agenda.FranjaHorariaReal;
-import icai.dtc.isw.domain.ui.Usuario.Customer;
-import icai.dtc.isw.message.Message;
+import main.java.icai.dtc.isw.controler.AgendaControler;
+import main.java.icai.dtc.isw.controler.BarriosControler;
+import main.java.icai.dtc.isw.controler.CustomerControler;
+import main.java.icai.dtc.isw.controler.MapaControler;
+import main.java.icai.dtc.isw.domain.localidad.Hotel;
+import main.java.icai.dtc.isw.domain.ocio.Monumento;
+import main.java.icai.dtc.isw.domain.localidad.Museo;
+import main.java.icai.dtc.isw.domain.localidad.Restaurante;
+import main.java.icai.dtc.isw.domain.ocio.Evento;
+import main.java.icai.dtc.isw.domain.ocio.Parque;
+import main.java.icai.dtc.isw.domain.ui.Agenda.FranjaHorariaReal;
+import main.java.icai.dtc.isw.domain.ui.Usuario.Customer;
+import main.java.icai.dtc.isw.message.Message;
 
 public class SocketServer extends Thread {
 	public static final int PORT_NUMBER = 8081;

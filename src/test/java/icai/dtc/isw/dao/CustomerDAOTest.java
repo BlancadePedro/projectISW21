@@ -1,6 +1,7 @@
 package icai.dtc.isw.dao;
 
-import icai.dtc.isw.domain.ui.Usuario.Customer;
+import main.java.icai.dtc.isw.dao.CustomerDAO;
+import main.java.icai.dtc.isw.domain.ui.Usuario.Customer;
 import junit.framework.TestCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

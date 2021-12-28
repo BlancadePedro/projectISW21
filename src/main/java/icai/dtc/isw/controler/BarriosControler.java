@@ -1,7 +1,7 @@
-package icai.dtc.isw.controler;
+package main.java.icai.dtc.isw.controler;
 
-import icai.dtc.isw.dao.BarriosDAO;
-import icai.dtc.isw.domain.ui.Usuario.Customer;
+import main.java.icai.dtc.isw.dao.BarriosDAO;
+import main.java.icai.dtc.isw.domain.ui.Usuario.Customer;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package icai.dtc.isw.dao;
+package main.java.icai.dtc.isw.dao;
 
 
 import java.sql.Connection;
@@ -8,8 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import icai.dtc.isw.domain.ui.Usuario.Customer;
-import icai.dtc.isw.domain.ui.Agenda.FranjaHorariaReal;
+import main.java.icai.dtc.isw.domain.ui.Usuario.Customer;
+import main.java.icai.dtc.isw.domain.ui.Agenda.FranjaHorariaReal;
 
 public class AgendaDAO implements Iterator {
     public static void addAgenda(FranjaHorariaReal lista, Customer perfil) {

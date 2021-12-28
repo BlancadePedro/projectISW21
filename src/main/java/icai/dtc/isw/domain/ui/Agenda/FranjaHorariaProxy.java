@@ -1,4 +1,4 @@
-package icai.dtc.isw.domain.ui.Agenda;
+package main.java.icai.dtc.isw.domain.ui.Agenda;
 
 import java.io.Serializable;
 

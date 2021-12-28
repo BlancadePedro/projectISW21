@@ -1,7 +1,8 @@
 package icai.dtc.isw.dao;
 
-import icai.dtc.isw.domain.ui.Agenda.FranjaHorariaReal;
-import icai.dtc.isw.domain.ui.Usuario.Customer;
+import main.java.icai.dtc.isw.dao.AgendaDAO;
+import main.java.icai.dtc.isw.domain.ui.Agenda.FranjaHorariaReal;
+import main.java.icai.dtc.isw.domain.ui.Usuario.Customer;
 import junit.framework.TestCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

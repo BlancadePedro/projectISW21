@@ -1,4 +1,4 @@
-package icai.dtc.isw.dao;
+package main.java.icai.dtc.isw.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import icai.dtc.isw.domain.ui.Usuario.Customer;
+import main.java.icai.dtc.isw.domain.ui.Usuario.Customer;
 
 
 public class CustomerDAO implements Iterator {
