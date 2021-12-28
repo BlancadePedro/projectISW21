@@ -5,11 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import icai.dtc.isw.domain.ui.Usuario.Customer;
 
 
-public class CustomerDAO {
+public class CustomerDAO implements Iterator {
 
 
 	public static void getClientes(ArrayList<Customer> lista) {
@@ -147,7 +148,17 @@ public class CustomerDAO {
 			}
 
 		}
+
+	@Override
+	public boolean hasNext() {
+		return false;
 	}
+
+	@Override
+	public Object next() {
+		return null;
+	}
+}
 
 
 

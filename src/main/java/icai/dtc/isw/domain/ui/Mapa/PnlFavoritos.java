@@ -26,31 +26,38 @@ public class PnlFavoritos extends JFrame {
         ArrayList<JButton> btnList = new ArrayList<JButton>();
         JButton btnEliminar;
         panelCentro.setBackground(new Color(174, 214, 241));
+        Font fuente = new Font("Tahoma", Font.ITALIC, 17);
         int contador=0;
         for (Object l : barrioList) {
             if (l instanceof Hotel){
                 Hotel h = (Hotel)l;
                 JLabel label = new JLabel("Nombre: "+h.getNombre()+"; Dirección: "+h.getDireccion());
+                label.setFont(fuente);
                 panelCentro.add(label);
             }else if(l instanceof Restaurante){
                 Restaurante r = (Restaurante)l;
                 JLabel label = new JLabel("Nombre: "+r.getNombre()+"; Dirección: "+r.getDireccion());
+                label.setFont(fuente);
                 panelCentro.add(label);
             }else if(l instanceof Museo) {
                 Museo m = (Museo) l;
                 JLabel label = new JLabel("Nombre: "+m.getNombre()+"; Dirección: "+m.getDireccion());
+                label.setFont(fuente);
                 panelCentro.add(label);
             }else if(l instanceof Parque) {
                 Parque p = (Parque) l;
                 JLabel label = new JLabel("Nombre: "+p.getNombre()+"; Dirección: "+p.getDireccion());
+                label.setFont(fuente);
                 panelCentro.add(label);
             }else if(l instanceof Monumento) {
                 Monumento mo = (Monumento) l;
                 JLabel label = new JLabel("Nombre: "+mo.getNombre()+"; Dirección: "+mo.getDireccion());
+                label.setFont(fuente);
                 panelCentro.add(label);
             }else if(l instanceof Evento) {
                 Evento e = (Evento) l;
                 JLabel label = new JLabel("Nombre: "+e.getNombre()+"; Dirección: "+e.getDireccion());
+                label.setFont(fuente);
                 panelCentro.add(label);
             }
             btnEliminar = new JButton("Eliminar de favoritos");
@@ -60,8 +67,7 @@ public class PnlFavoritos extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     System.out.println("Se ha pulsado boton de "+barrioList.get(finalContador));
                     MapaMenu.eliminarFavorito(barrioList.get(finalContador));
-                    //dispose();
-                    //new PnlFavoritos(barrioList,perfil);
+                    dispose();
                 }
             });
             btnList.add(btnEliminar);

@@ -22,7 +22,7 @@ public class PnlParques extends JFrame {
         panelCentro = new JPanel((new GridLayout(size*2,1)));
         panelCentro.setBackground(new Color(174, 214, 241));
         for (Parque l : lista) {
-            int indice = contador;
+            int indice = contador+1;
             JLabel label = new JLabel(indice+"_"+l.getNombre()+"; Dirección: "+l.getDireccion()+ "; Horario: "+l.getHorario()+"\n");
             JLabel espacio = new JLabel(" ");
             label.setFont(fuente);

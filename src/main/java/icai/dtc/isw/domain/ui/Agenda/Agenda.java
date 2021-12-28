@@ -19,7 +19,7 @@ public class Agenda extends JFrame{
     private JButton btnModificar = new JButton("Modificar");
     private JButton btnVolver = new JButton("Volver menú principal");
 
-    public Agenda(Customer perfil, ArrayList<FranjaHoraria> lista){
+    public Agenda(Customer perfil, ArrayList<FranjaHorariaReal> lista){
 
         LocalDate hoy = LocalDate.now();
         String fecha = "Agenda para el día " + hoy.getDayOfMonth() + " de " + hoy.getMonth() + " de " + hoy.getYear();
@@ -33,7 +33,7 @@ public class Agenda extends JFrame{
         pnlPrincipal = new JPanel((new GridLayout(size,1)));
         pnlBotones = new JPanel(new FlowLayout());
 
-        for (FranjaHoraria l : lista) {
+        for (FranjaHorariaReal l : lista) {
             pnlFecha = new JPanel(new FlowLayout());
             JLabel hora = new JLabel("Hora: "+l.getHora());
             hora.setFont(fuenteTitulo);

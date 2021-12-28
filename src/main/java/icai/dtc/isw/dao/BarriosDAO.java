@@ -13,8 +13,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class BarriosDAO {
+public class BarriosDAO implements Iterator {
     public static void getAustrias(ArrayList<Object> lista) {
         Connection con = ConnectionDAO.getInstance().getConnection();
         try (PreparedStatement pst = con.prepareStatement("SELECT * FROM hoteles WHERE barrio='Austrias'");
@@ -751,5 +752,15 @@ public class BarriosDAO {
                 lista.add(new Parque(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getInt(5)));
             }
         } catch (SQLException ex) { System.out.println(ex.getMessage()); }
+    }
+
+    @Override
+    public boolean hasNext() {
+        return false;
+    }
+
+    @Override
+    public Object next() {
+        return null;
     }
 }

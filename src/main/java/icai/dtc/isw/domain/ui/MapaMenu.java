@@ -7,7 +7,7 @@ import icai.dtc.isw.domain.localidad.Museo;
 import icai.dtc.isw.domain.localidad.Restaurante;
 import icai.dtc.isw.domain.ocio.Evento;
 import icai.dtc.isw.domain.ocio.Parque;
-import icai.dtc.isw.domain.ui.Agenda.FranjaHoraria;
+import icai.dtc.isw.domain.ui.Agenda.FranjaHorariaReal;
 import icai.dtc.isw.domain.ui.Usuario.Customer;
 import icai.dtc.isw.domain.ui.Usuario.InfoUsuario;
 
@@ -302,7 +302,7 @@ public class MapaMenu extends JFrame{
                     }
                     if(opcion.equals("Mi Agenda")){
 
-                        ArrayList<FranjaHoraria> listaInfo = new ArrayList<>();
+                        ArrayList<FranjaHorariaReal> listaInfo = new ArrayList<>();
 
                         Client client = new Client();
                         HashMap<String, Object> session = new HashMap<String, Object>();

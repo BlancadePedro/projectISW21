@@ -2,7 +2,6 @@ package icai.dtc.isw.domain.ui.Agenda;
 
 import icai.dtc.isw.client.Client;
 import icai.dtc.isw.domain.ui.Usuario.Customer;
-import icai.dtc.isw.domain.ui.Agenda.FranjaHoraria;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +17,7 @@ public class ModificarAgenda extends  JFrame{
     private JButton btnVolver = new JButton("Cerrar");
 
 
-    public ModificarAgenda(Customer perfil,ArrayList<FranjaHoraria> lista){
+    public ModificarAgenda(Customer perfil,ArrayList<FranjaHorariaReal> lista){
 
         Font fuente = new Font("Tahoma", Font.ITALIC, 17);
         Font fuenteTitulo = new Font("Tahoma", Font.BOLD, 17);
@@ -29,7 +28,7 @@ public class ModificarAgenda extends  JFrame{
         ArrayList<JButton> editarList = new ArrayList<>();
 
         int contador=0;
-        for (FranjaHoraria f : lista){
+        for (FranjaHorariaReal f : lista){
 
 
             JButton btnEliminar = new JButton("Eliminar");
@@ -83,7 +82,7 @@ public class ModificarAgenda extends  JFrame{
         btnVolver.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent){
-                ArrayList<FranjaHoraria> listaInfo = new ArrayList<>();
+                ArrayList<FranjaHorariaReal> listaInfo = new ArrayList<>();
 
                 Client client = new Client();
                 HashMap<String, Object> session = new HashMap<String, Object>();

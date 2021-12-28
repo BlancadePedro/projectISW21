@@ -20,7 +20,7 @@ import icai.dtc.isw.domain.localidad.Museo;
 import icai.dtc.isw.domain.localidad.Restaurante;
 import icai.dtc.isw.domain.ocio.Evento;
 import icai.dtc.isw.domain.ocio.Parque;
-import icai.dtc.isw.domain.ui.Agenda.FranjaHoraria;
+import icai.dtc.isw.domain.ui.Agenda.FranjaHorariaReal;
 import icai.dtc.isw.domain.ui.Usuario.Customer;
 import icai.dtc.isw.message.Message;
 
@@ -327,7 +327,7 @@ public class SocketServer extends Thread {
 					objectOutputStream.writeObject(mensajeOut);
 					break;
 				case "/infoAgenda":
-					ArrayList<FranjaHoraria> listaInfo = (ArrayList<FranjaHoraria>)mensajeIn.getSession().get("listaAgenda");
+					ArrayList<FranjaHorariaReal> listaInfo = (ArrayList<FranjaHorariaReal>)mensajeIn.getSession().get("listaAgenda");
 					customer = (Customer)mensajeIn.getSession().get("perfilAgenda");
 					agendaControler.getInfo(listaInfo,customer);
 					mensajeOut=new Message();
@@ -339,7 +339,7 @@ public class SocketServer extends Thread {
 					break;
 				case "/addAgenda":
 					customer=(Customer)mensajeIn.getSession().get("idAdd");
-					FranjaHoraria listaAdd = (FranjaHoraria) mensajeIn.getSession().get("add");
+					FranjaHorariaReal listaAdd = (FranjaHorariaReal) mensajeIn.getSession().get("add");
 					agendaControler.addAgenda(listaAdd,customer);
 					mensajeOut=new Message();
 					mensajeOut.setContext("/addAgendaResponse");
@@ -349,7 +349,7 @@ public class SocketServer extends Thread {
 
 				case "/deleteAgenda":
 					customer=(Customer)mensajeIn.getSession().get("idDelete");
-					FranjaHoraria delete = (FranjaHoraria)mensajeIn.getSession().get("delete");
+					FranjaHorariaReal delete = (FranjaHorariaReal)mensajeIn.getSession().get("delete");
 					agendaControler.deleteAgenda(delete,customer);
 					mensajeOut.setContext("/deleteAgendaResponse");
 					session.put("idDelete", customer);

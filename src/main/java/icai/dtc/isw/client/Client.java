@@ -18,7 +18,7 @@ import icai.dtc.isw.domain.ocio.Evento;
 import icai.dtc.isw.domain.ocio.Parque;
 import icai.dtc.isw.domain.ui.*;
 import icai.dtc.isw.domain.ui.Agenda.Agenda;
-import icai.dtc.isw.domain.ui.Agenda.FranjaHoraria;
+import icai.dtc.isw.domain.ui.Agenda.FranjaHorariaReal;
 import icai.dtc.isw.domain.ui.Mapa.*;
 import icai.dtc.isw.domain.ui.Usuario.Customer;
 import icai.dtc.isw.domain.ui.PanelInicio;
@@ -184,7 +184,7 @@ public class Client {
 
 			case "/addAgendaResponse":
 				System.out.println("\nSe ha añadido contenido a la agenda");
-				ArrayList<FranjaHoraria> listaInfo = new ArrayList<>();
+				ArrayList<FranjaHorariaReal> listaInfo = new ArrayList<>();
 				Customer add = (Customer)(mensajeVuelta.getSession().get("perfilAgenda"));
 				break;
 			case "/updateAgendaResponse":
@@ -199,7 +199,7 @@ public class Client {
 			case "/infoAgendaResponse":
 				System.out.println("Tenemos la info guardada en la base de datos");
 				Customer perfilAgenda = (Customer)(mensajeVuelta.getSession().get("perfilAgenda"));
-				ArrayList<FranjaHoraria> listaAgenda = (ArrayList<FranjaHoraria>)(mensajeVuelta.getSession().get("listaAgenda"));
+				ArrayList<FranjaHorariaReal> listaAgenda = (ArrayList<FranjaHorariaReal>)(mensajeVuelta.getSession().get("listaAgenda"));
 				//listaAgenda = Agenda.establecerID(listaAgenda,perfilAgenda);
 				new Agenda(perfilAgenda,listaAgenda);
 				break;
