@@ -1,4 +1,4 @@
-package icai.dtc.isw.dao;
+package main.java.icai.dtc.isw.dao;
 
 import main.java.icai.dtc.isw.dao.MapaDAO;
 import main.java.icai.dtc.isw.domain.localidad.Hotel;
