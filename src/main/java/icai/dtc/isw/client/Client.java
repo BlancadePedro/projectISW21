@@ -187,9 +187,7 @@ public class Client {
 				ArrayList<FranjaHorariaReal> listaInfo = new ArrayList<>();
 				Customer add = (Customer)(mensajeVuelta.getSession().get("perfilAgenda"));
 				break;
-			case "/updateAgendaResponse":
-				System.out.println("\nSe ha actualizado la agenda");
-				break;
+
 			case "/deleteAgendaResponse":
 				System.out.println("\nSe ha borrado parte del contenido de la agenda");
 				break;

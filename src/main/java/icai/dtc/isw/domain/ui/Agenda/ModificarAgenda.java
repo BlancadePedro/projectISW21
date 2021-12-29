@@ -65,18 +65,9 @@ public class ModificarAgenda extends  JFrame{
                 }
             });
 
-            /*btnEditar.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    System.out.println("Se ha pulsado boton de editar");
-                    //dispose();
-                }
-            });*/
 
             eliminarList.add(btnEliminar);
-            //editarList.add(btnEditar);
             panelCentro.add(btnEliminar);
-            //panelCentro.add(btnEditar);
             contador=contador+1;
         }
         btnVolver.addActionListener(new ActionListener() {
@@ -100,7 +91,7 @@ public class ModificarAgenda extends  JFrame{
 
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.pack();
-        this.setResizable(true);//Para que no se pueda redimensionar
+        this.setResizable(true);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
