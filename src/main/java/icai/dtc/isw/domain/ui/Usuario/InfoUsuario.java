@@ -121,6 +121,7 @@ public class InfoUsuario extends JFrame
         this.add(pnlBotones,BorderLayout.SOUTH);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.pack();
+        this.setSize(500,350);
         this.setResizable(true);//Para que se pueda redimensionar
         this.setLocationRelativeTo(null);
         this.setVisible(true);

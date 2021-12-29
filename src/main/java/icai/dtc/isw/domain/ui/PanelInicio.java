@@ -85,7 +85,7 @@ public class PanelInicio extends JFrame{
         this.add(panelNorte, BorderLayout.NORTH);
         this.add(panelSur, BorderLayout.SOUTH);
         this.pack();
-
+        this.setSize(250,312);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setVisible(true);

@@ -445,7 +445,7 @@ public class MapaMenu extends JFrame{
         this.add(pnlCentral, BorderLayout.CENTER);
 
         //Configuramos el frame
-
+        this.setSize(1400,1075);
         this.setTitle("Mapa de Madrid");
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.pack();
