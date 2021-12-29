@@ -29,12 +29,12 @@ public class ModificarAgenda extends  JFrame{
 
         int contador=0;
         for (FranjaHorariaReal f : lista){
-
+            int indice = contador+1;
 
             JButton btnEliminar = new JButton("Eliminar");
             JButton btnEditar = new JButton("Editar");
 
-            JLabel hora = new JLabel("Hora: "+f.getHora());
+            JLabel hora = new JLabel(indice+"_"+"Hora: "+f.getHora());
             hora.setFont(fuenteTitulo);
             JLabel dia = new JLabel("Día: "+f.getDia());
             dia.setFont(fuenteTitulo);
